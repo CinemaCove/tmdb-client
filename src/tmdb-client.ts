@@ -1,13 +1,18 @@
 import axios, {AxiosInstance} from "axios";
-import {MoviesEndpoint} from "./features/movies/movie.endpoint";
-
-import {ConfigurationEndpoint} from "./features/configuration/configuration-endpoint";
+import {
+    AccountEndpoint,
+    AuthenticationEndpoint,
+    ConfigurationEndpoint,
+    MoviesEndpoint
+} from "./features";
 
 export class TmdbClient {
     private readonly http: AxiosInstance;
 
     public readonly movies: MoviesEndpoint;
     public readonly configuration: ConfigurationEndpoint;
+    public readonly authentication: AuthenticationEndpoint;
+    public readonly account: AccountEndpoint;
 
     constructor(
         apiKey: string | { accessToken: string },
@@ -30,6 +35,8 @@ export class TmdbClient {
             }
         );
 
+        this.account = new AccountEndpoint(this);
+        this.authentication = new AuthenticationEndpoint(this);
         this.movies = new MoviesEndpoint(this);
         this.configuration = new ConfigurationEndpoint(this);
     }

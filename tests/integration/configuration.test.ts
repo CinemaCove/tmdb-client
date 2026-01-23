@@ -29,7 +29,7 @@ describe('TmdbClient - Configuration (real API)', () => {
         expect(res.images.base_url).toBe('http://image.tmdb.org/t/p/')
 
         console.log(`Fetched ${JSON.stringify(res)}`);
-    }, 10000); // ↑ timeout 10s — API can be slow sometimes
+    }, 10000);
 
     it('fetches real list of countries from /configuration/countries', async () => {
         const countries = await tmdb.configuration.getCountries();
@@ -50,7 +50,7 @@ describe('TmdbClient - Configuration (real API)', () => {
 
         // Optional: log count for visibility during dev
         console.log(`Fetched ${countries.length} countries`);
-    }, 10000); // ↑ timeout 10s — API can be slow sometimes
+    }, 10000);
 
     it('fetches configuration jobs from /configuration/jobs', async () => {
         const res = await tmdb.configuration.getJobs();
@@ -63,7 +63,7 @@ describe('TmdbClient - Configuration (real API)', () => {
         expect(entry).toBeDefined();
 
         console.log(`Fetched ${res.length} jobs`);
-    }, 10000); // ↑ timeout 10s — API can be slow sometimes
+    }, 10000);
 
     it('fetches configuration languages from /configuration/languages', async () => {
         const res = await tmdb.configuration.getLanguages();
@@ -76,7 +76,7 @@ describe('TmdbClient - Configuration (real API)', () => {
         expect(entry).toBeDefined();
 
         console.log(`Fetched ${res.length} languages`);
-    }, 10000); // ↑ timeout 10s — API can be slow sometimes
+    }, 10000);
 
     it('fetches primary translations from /configuration/primary_translations', async () => {
         const res = await tmdb.configuration.getPrimaryTranslations();
@@ -89,7 +89,7 @@ describe('TmdbClient - Configuration (real API)', () => {
         expect(entry).toBeDefined();
 
         console.log(`Fetched ${res.length} primary translations`);
-    }, 10000); // ↑ timeout 10s — API can be slow sometimes
+    }, 10000);
 
     it('fetches timezones from /configuration/timezones', async () => {
         const res = await tmdb.configuration.getTimezones();
@@ -102,5 +102,5 @@ describe('TmdbClient - Configuration (real API)', () => {
         expect(entry).toBeDefined();
 
         console.log(`Fetched ${res.length} timezones`);
-    }, 10000); // ↑ timeout 10s — API can be slow sometimes
+    }, 10000);
 });
