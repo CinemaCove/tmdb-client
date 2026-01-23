@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import dotenv from 'dotenv';
-import {TmdbClient} from '../../src';
+import { TmdbClient } from '../../src';
 
 dotenv.config(); // loads .env
 
@@ -26,7 +26,7 @@ describe('TmdbClient - Configuration (real API)', () => {
 
         // Spot-check a few well-known ones (stable data)
         expect(res.images).toBeDefined();
-        expect(res.images.base_url).toBe('http://image.tmdb.org/t/p/')
+        expect(res.images.base_url).toBe('http://image.tmdb.org/t/p/');
 
         console.log(`Fetched ${JSON.stringify(res)}`);
     }, 10000);
@@ -59,7 +59,7 @@ describe('TmdbClient - Configuration (real API)', () => {
         expect(res.length).toBeGreaterThan(1);
 
         // Spot-check a few well-known ones (stable data)
-        const entry = res.find(r => r.department === 'Production')
+        const entry = res.find(r => r.department === 'Production');
         expect(entry).toBeDefined();
 
         console.log(`Fetched ${res.length} jobs`);

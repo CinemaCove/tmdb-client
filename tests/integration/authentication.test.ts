@@ -1,6 +1,6 @@
-import {beforeAll, describe, expect, it} from "vitest";
-import {TmdbClient} from "../../src";
-import dotenv from "dotenv";
+import { beforeAll, describe, expect, it } from 'vitest';
+import { TmdbClient } from '../../src';
+import dotenv from 'dotenv';
 
 dotenv.config(); // loads .env
 describe('TmdbClient - Authentication (real API)', () => {
@@ -24,7 +24,7 @@ describe('TmdbClient - Authentication (real API)', () => {
         expect(typeof res === 'object').toBe(true);
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.success).toBe(true)
+        expect(res.success).toBe(true);
 
         console.log(`Fetched ${JSON.stringify(res)}`);
     }, 10000);
@@ -35,8 +35,8 @@ describe('TmdbClient - Authentication (real API)', () => {
         expect(typeof res === 'object').toBe(true);
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.success).toBe(true)
+        expect(res.success).toBe(true);
 
         console.log(`Fetched ${JSON.stringify(res)}`);
     }, 10000);
-})
+});

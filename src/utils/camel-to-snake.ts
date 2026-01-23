@@ -4,7 +4,7 @@
  *      includeAdult    → include_adult
  */
 export function camelToSnake(camelValue: string) {
-  return camelValue
-    .replace(/([A-Z])/g, match => `_${match.toLowerCase()}`)
-    .replace(/^_/, ''); // remove leading _ if any
+    return camelValue
+        .replace(/([A-Z])/g, match => `_${match.toLowerCase()}`)
+        .replace(/^_/, ''); // remove leading _ if any
 }
