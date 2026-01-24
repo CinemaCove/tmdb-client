@@ -22,7 +22,7 @@ export type AccountResult = {
     readonly status_code: number;
     readonly status_message: string;
 };
-export type AccountFavoriteMovieEntry = {
+export type AccountFavoriteMovieItem = {
     readonly adult: boolean;
     readonly backdrop_path: string;
     readonly genre_ids: number[];
@@ -38,7 +38,7 @@ export type AccountFavoriteMovieEntry = {
     readonly vote_average: number;
     readonly vote_count: number;
 };
-export type AccountFavoriteTVShowEntry = {
+export type AccountFavoriteTVShowItem = {
     readonly adult: boolean;
     readonly backdrop_path: string;
     readonly genre_ids: number[];
@@ -53,7 +53,7 @@ export type AccountFavoriteTVShowEntry = {
     readonly vote_average: number;
     readonly vote_count: number;
 };
-export type AccountCustomListEntry = {
+export type AccountCustomListItem = {
     readonly description: string;
     readonly favorite_count: number;
     readonly id: number;
@@ -63,7 +63,7 @@ export type AccountCustomListEntry = {
     readonly name: string;
     readonly poster_path: string;
 };
-export type AccountRatedMovieEntry = {
+export type AccountRatedMovieItem = {
     readonly adult: boolean;
     readonly backdrop_path: string;
     readonly genre_ids: number[];
@@ -80,7 +80,7 @@ export type AccountRatedMovieEntry = {
     readonly vote_count: number;
     readonly rating: number;
 };
-export type AccountRatedTVShowEntry = {
+export type AccountRatedTVShowItem = {
     readonly adult: boolean;
     readonly backdrop_path: string;
     readonly genre_ids: number[];
@@ -97,7 +97,7 @@ export type AccountRatedTVShowEntry = {
     readonly vote_count: number;
     readonly rating: number;
 };
-export type AccountRatedTVEpisodeEntry = {
+export type AccountRatedTVEpisodeItem = {
     readonly air_date: string;
     readonly episode_number: number;
     readonly id: number;
@@ -112,7 +112,7 @@ export type AccountRatedTVEpisodeEntry = {
     readonly vote_count: number;
     readonly rating: number;
 };
-export type AccountWatchlistMovieEntry = {
+export type AccountWatchlistMovieItem = {
     readonly adult: boolean;
     readonly backdrop_path: string;
     readonly genre_ids: number[];
@@ -128,7 +128,7 @@ export type AccountWatchlistMovieEntry = {
     readonly vote_average: number;
     readonly vote_count: number;
 };
-export type AccountWatchlistTVShowEntry = {
+export type AccountWatchlistTVShowItem = {
     readonly adult: boolean;
     readonly backdrop_path: string;
     readonly genre_ids: number[];

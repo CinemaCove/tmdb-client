@@ -1,6 +1,6 @@
 import { HttpClient } from '../../http-client.interface';
 import { PaginatedResult } from '../../shared';
-import { ChangesEntry } from './changes.types';
+import { ChangesItem } from './changes.types';
 
 export class ChangesEndpoint {
     public constructor(private client: HttpClient) {}
@@ -10,7 +10,7 @@ export class ChangesEndpoint {
         readonly page?: number;
         readonly start_date?: string;
         readonly end_date?: string;
-    }): Promise<PaginatedResult<ChangesEntry>> {
+    }): Promise<PaginatedResult<ChangesItem>> {
         return this.client.get('/movie/changes', options);
     }
 
@@ -19,7 +19,7 @@ export class ChangesEndpoint {
         readonly page?: number;
         readonly start_date?: string;
         readonly end_date?: string;
-    }): Promise<PaginatedResult<ChangesEntry>> {
+    }): Promise<PaginatedResult<ChangesItem>> {
         return this.client.get('/person/changes', options);
     }
 
@@ -28,7 +28,7 @@ export class ChangesEndpoint {
         readonly page?: number;
         readonly start_date?: string;
         readonly end_date?: string;
-    }): Promise<PaginatedResult<ChangesEntry>> {
+    }): Promise<PaginatedResult<ChangesItem>> {
         return this.client.get('/tv/changes', options);
     }
 }

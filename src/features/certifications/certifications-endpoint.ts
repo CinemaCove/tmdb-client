@@ -1,9 +1,9 @@
 import {HttpClient} from "../../http-client.interface";
 import {
     CertificationsMovieCountry,
-    CertificationsMovieEntry,
+    CertificationsMovieItem,
     CertificationsTVCountry,
-    CertificationsTVEntry,
+    CertificationsTVItem,
 } from './certifications.types';
 
 export class CertificationsEndpoint {
@@ -12,7 +12,7 @@ export class CertificationsEndpoint {
     // Get an up to date list of the officially supported movie certifications on TMDB
     public async getMovieCertifications(): Promise<{
         readonly certifications: {
-            readonly [key in CertificationsMovieCountry]: CertificationsMovieEntry[];
+            readonly [key in CertificationsMovieCountry]: CertificationsMovieItem[];
         };
     }> {
         return await this.client.get(`/certification/movie/list`);
@@ -21,7 +21,7 @@ export class CertificationsEndpoint {
     // Get an up to date list of the officially supported TV certifications on TMDB
     public async getTVCertifications(): Promise<{
         readonly certifications: {
-            readonly [key in CertificationsTVCountry]: CertificationsTVEntry[];
+            readonly [key in CertificationsTVCountry]: CertificationsTVItem[];
         };
     }> {
         return await this.client.get(`/certification/tv/list`);

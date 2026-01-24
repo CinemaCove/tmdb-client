@@ -51,7 +51,7 @@ export type CertificationsMovieCountry =
     | 'RO'
     | 'PL'
     | 'BE';
-export type CertificationsMovieEntry = {
+export type CertificationsMovieItem = {
     readonly certification: string;
     readonly meaning: string;
     readonly order: number;
@@ -107,7 +107,7 @@ export type CertificationsTVCountry =
     | 'LU'
     | 'BE';
 
-export type CertificationsTVEntry = {
+export type CertificationsTVItem = {
     readonly certification: string;
     readonly meaning: string;
     readonly order: number;

@@ -8,11 +8,14 @@ import {
 } from './features';
 import { HttpClient } from './http-client.interface';
 
+import { CollectionsEndpoint } from './features/collections/collections-endpoint';
+
 export class TmdbClient {
     public readonly account: AccountEndpoint;
     public readonly authentication: AuthenticationEndpoint;
     public readonly certification: CertificationsEndpoint;
     public readonly changes: ChangesEndpoint;
+    public readonly collections: CollectionsEndpoint;
 
     public readonly configuration: ConfigurationEndpoint;
 
@@ -23,6 +26,7 @@ export class TmdbClient {
         this.authentication = new AuthenticationEndpoint(this.httpClient);
         this.certification = new CertificationsEndpoint(this.httpClient);
         this.changes = new ChangesEndpoint(this.httpClient);
+        this.collections = new CollectionsEndpoint(this.httpClient);
         this.configuration = new ConfigurationEndpoint(this.httpClient);
         // this.movies = new MoviesEndpoint(this.httpClient);
     }
