@@ -318,7 +318,7 @@ export type MovieWatchProviderItem = {
     provider_name: string;
     display_priority: number;
 };
-type MovieWatchProviderResultItem = {
+export type MovieWatchProviderResultItem = {
     link: string;
     flatrate: MovieWatchProviderItem[];
     rent: MovieWatchProviderItem[];
@@ -350,25 +350,6 @@ export type MovieListItem = {
     readonly vote_average: number;
     readonly vote_count: number;
 };
-
-import {
-    MovieAlternativeTitlesResult,
-    MovieAppendToResponse,
-    MovieCreditsResult,
-    MovieExternalIdsResult,
-    MovieGenreItem,
-    MovieImageItem,
-    MovieKeywordsResult,
-    MovieProductionCompanyItem,
-    MovieProductionCountryItem,
-    MovieReleaseDatesResult,
-    MovieReviewItem,
-    MovieSpokenLanguageItem,
-    MovieTranslationsResult,
-    MovieVideosResult,
-    MovieWatchProvidersResult,
-} from './movie.types';
-import { PaginatedResult } from '../../shared';
 
 export type MovieDetail = {
     readonly adult: boolean;
