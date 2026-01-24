@@ -8,4 +8,6 @@ export * from './collections';
 export * from './companies';
 export * from './configuration';
 export * from './credits';
+export * from './discover';
+export * from './find';
 export * from './movies';

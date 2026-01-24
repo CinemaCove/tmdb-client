@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const currentDir = process.cwd();
+const currentDir = process.argv[2] || process.cwd();
 const indexPath = path.join(currentDir, 'index.ts');
 
 console.log(`Generating barrel → ${indexPath}`);

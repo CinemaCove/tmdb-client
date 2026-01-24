@@ -7,7 +7,7 @@ import {
     CompaniesEndpoint,
     ConfigurationEndpoint,
     CreditsEndpoint,
-    MoviesEndpoint,
+    DiscoverEndpoint,
 } from './features';
 import { HttpClient } from './http-client.interface';
 
@@ -20,7 +20,7 @@ export class TmdbClient {
     public readonly companies: CompaniesEndpoint;
     public readonly configuration: ConfigurationEndpoint;
     public readonly credits: CreditsEndpoint;
-
+    public readonly discover: DiscoverEndpoint;
     // public readonly movies: MoviesEndpoint;
 
     constructor(private httpClient: HttpClient) {
@@ -32,6 +32,8 @@ export class TmdbClient {
         this.companies = new CompaniesEndpoint(this.httpClient);
         this.configuration = new ConfigurationEndpoint(this.httpClient);
         this.credits = new CreditsEndpoint(this.httpClient);
+        this.discover = new DiscoverEndpoint(this.httpClient);
+
         // this.movies = new MoviesEndpoint(this.httpClient);
     }
 }
