@@ -15,3 +15,4 @@ export * from './guest-session';
 export * from './keyword';
 export * from './list';
 export * from './movie';
+export * from './network';

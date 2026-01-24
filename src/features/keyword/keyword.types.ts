@@ -1,4 +1,4 @@
-export type KeywordDetailsResult = {
-    readonly id: string;
-    readonly name: string;
-};
+export type KeywordDetailsResult = Readonly<{
+    id: string;
+    name: string;
+}>;

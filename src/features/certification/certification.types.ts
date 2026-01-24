@@ -51,11 +51,11 @@ export type CertificationMovieCountry =
     | 'RO'
     | 'PL'
     | 'BE';
-export type CertificationMovieItem = {
-    readonly certification: string;
-    readonly meaning: string;
-    readonly order: number;
-};
+export type CertificationMovieItem = Readonly<{
+    certification: string;
+    meaning: string;
+    order: number;
+}>;
 export type CertificationTVCountry =
     | 'NL'
     | 'KR'
@@ -107,18 +107,18 @@ export type CertificationTVCountry =
     | 'LU'
     | 'BE';
 
-export type CertificationTVItem = {
-    readonly certification: string;
-    readonly meaning: string;
-    readonly order: number;
-};
-export type CertificationMovieCertificationsResult = {
-    readonly certifications: {
-        readonly [key in CertificationMovieCountry]: CertificationMovieItem[];
+export type CertificationTVItem = Readonly<{
+    certification: string;
+    meaning: string;
+    order: number;
+}>;
+export type CertificationMovieCertificationsResult = Readonly<{
+    certifications: {
+        [key in CertificationMovieCountry]: CertificationMovieItem[];
     };
-};
-export type CertificationTVCertificationsResult = {
-    readonly certifications: {
-        readonly [key in CertificationTVCountry]: CertificationTVItem[];
+}>;
+export type CertificationTVCertificationsResult = Readonly<{
+    certifications: {
+        [key in CertificationTVCountry]: CertificationTVItem[];
     };
-};
+}>;

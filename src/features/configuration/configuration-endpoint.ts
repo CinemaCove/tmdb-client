@@ -9,7 +9,7 @@ import {
 import { HttpClient } from '../../http-client.interface';
 
 export class ConfigurationEndpoint {
-    public constructor(private client: HttpClient) {}
+    public constructor(private readonly client: HttpClient) {}
 
     // Query the API configuration details.
     public async getDetails(): Promise<ConfigurationDetails> {
@@ -18,9 +18,9 @@ export class ConfigurationEndpoint {
 
     // Get the list of countries (ISO 3166-1 tags) used throughout TMDB.
     public async getCountries(
-        options: {
-            readonly language?: string;
-        } = {}
+        options?: Readonly<{
+            language?: string;
+        }>
     ): Promise<ConfigurationCountry[]> {
         return await this.client.get(`/configuration/countries`, options);
     }

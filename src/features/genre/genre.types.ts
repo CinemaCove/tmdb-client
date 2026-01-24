@@ -1,7 +1,7 @@
-type GenreItem = { id: number; name: string };
-export type GenreMovieGenresResult = {
-    readonly genres: GenreItem[];
-};
-export type GenreTVShowGenresResult = {
-    readonly genres: GenreItem[];
-};
+export type GenreItem = Readonly<{ id: number; name: string }>;
+export type GenreMovieGenresResult = Readonly<{
+    genres: GenreItem[];
+}>;
+export type GenreTVShowGenresResult = Readonly<{
+    genres: GenreItem[];
+}>;

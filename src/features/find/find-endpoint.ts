@@ -24,10 +24,10 @@ export class FindEndpoint {
      */
     public async byExternalId(
         externalId: string,
-        options: {
-            readonly externalSource: FindExternalSource;
-            readonly language?: string;
-        }
+        options: Readonly<{
+            externalSource: FindExternalSource;
+            language?: string;
+        }>
     ): Promise<FindExternalIdResult> {
         return await this.client.get(`/find/${externalId}`, options);
     }

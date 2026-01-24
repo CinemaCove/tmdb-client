@@ -12,11 +12,11 @@ export class GuestSessionEndpoint {
     // Get the rated movies for a guest session
     public async getRatedMovies(
         guestSessionId: string,
-        options: {
-            readonly page?: number;
-            readonly language?: string;
-            readonly sortBy?: 'created_at.asc' | 'created_at.desc';
-        } = {}
+        options?: Readonly<{
+            page?: number;
+            language?: string;
+            sortBy?: 'created_at.asc' | 'created_at.desc';
+        }>
     ): Promise<PaginatedResult<GuestSessionRatedMovieItem>> {
         return this.client.get(`/guest_session/${guestSessionId}/rated/movies`, options);
     }
@@ -24,11 +24,11 @@ export class GuestSessionEndpoint {
     // Get the rated TV shows for a guest session
     public async getRatedTVShows(
         guestSessionId: string,
-        options: {
-            readonly page?: number;
-            readonly language?: string;
-            readonly sortBy?: 'created_at.asc' | 'created_at.desc';
-        } = {}
+        options?: Readonly<{
+            page?: number;
+            language?: string;
+            sortBy?: 'created_at.asc' | 'created_at.desc';
+        }>
     ): Promise<PaginatedResult<GuestSessionRatedTVShowItem>> {
         return this.client.get(`/guest_session/${guestSessionId}/rated/tv`, options);
     }
@@ -36,11 +36,11 @@ export class GuestSessionEndpoint {
     // Get the rated TV Episodes for a guest session
     public async getRatedTVEpisodes(
         guestSessionId: string,
-        options: {
-            readonly page?: number;
-            readonly language?: string;
-            readonly sortBy?: 'created_at.asc' | 'created_at.desc';
-        } = {}
+        options?: Readonly<{
+            page?: number;
+            language?: string;
+            sortBy?: 'created_at.asc' | 'created_at.desc';
+        }>
     ): Promise<PaginatedResult<GuestSessionRatedTVEpisodeItem>> {
         return this.client.get(`/guest_session/${guestSessionId}/rated/tv/episodes`, options);
     }

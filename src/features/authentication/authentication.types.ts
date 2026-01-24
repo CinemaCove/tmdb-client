@@ -1,27 +1,27 @@
-export type AuthenticationValidationResult = {
-    readonly success: boolean;
-    readonly status_code?: number;
-    readonly status_message?: string;
-};
-export type AuthenticationGuestSessionResult = {
-    readonly success: boolean;
-    readonly guest_session_id: string;
-    readonly expires_at: string;
-};
-export type AuthenticationRequestTokenResult = {
-    readonly success: boolean;
-    readonly expires_at: string;
-    readonly request_token: string;
-};
-export type AuthenticationCreateSessionResult = {
-    readonly success: boolean;
-    readonly session_id: string;
-};
-export type AuthenticationValidateSesssionWithLoginResult = {
-    readonly success: boolean;
-    readonly expires_at: string;
-    readonly request_token: string;
-};
-export type AuthenticationDeleteSessionResult = {
-    readonly success: boolean;
-};
+export type AuthenticationValidationResult = Readonly<{
+    success: boolean;
+    status_code?: number;
+    status_message?: string;
+}>;
+export type AuthenticationGuestSessionResult = Readonly<{
+    success: boolean;
+    guest_session_id: string;
+    expires_at: string;
+}>;
+export type AuthenticationRequestTokenResult = Readonly<{
+    success: boolean;
+    expires_at: string;
+    request_token: string;
+}>;
+export type AuthenticationCreateSessionResult = Readonly<{
+    success: boolean;
+    session_id: string;
+}>;
+export type AuthenticationValidateSessionWithLoginResult = Readonly<{
+    success: boolean;
+    expires_at: string;
+    request_token: string;
+}>;
+export type AuthenticationDeleteSessionResult = Readonly<{
+    success: boolean;
+}>;

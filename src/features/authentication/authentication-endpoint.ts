@@ -3,13 +3,13 @@ import {
     AuthenticationDeleteSessionResult,
     AuthenticationGuestSessionResult,
     AuthenticationRequestTokenResult,
-    AuthenticationValidateSesssionWithLoginResult,
+    AuthenticationValidateSessionWithLoginResult,
     AuthenticationValidationResult,
 } from './authentication.types';
 import { HttpClient } from '../../http-client.interface';
 
 export class AuthenticationEndpoint {
-    public constructor(private client: HttpClient) {}
+    public constructor(private readonly client: HttpClient) {}
 
     public async getGuestSession(): Promise<AuthenticationGuestSessionResult> {
         return await this.client.get(`/authentication/guest_session/new`);
@@ -19,29 +19,37 @@ export class AuthenticationEndpoint {
         return await this.client.get(`/authentication/token/new`);
     }
 
-    public async createSession(body: {
-        readonly request_token: string;
-    }): Promise<AuthenticationCreateSessionResult> {
+    public async createSession(
+        body: Readonly<{
+            request_token: string;
+        }>
+    ): Promise<AuthenticationCreateSessionResult> {
         return await this.client.post(`/authentication/session/new`, body);
     }
 
-    public async createSessionV4(body: {
-        readonly access_token: string;
-    }): Promise<AuthenticationCreateSessionResult> {
+    public async createSessionV4(
+        body: Readonly<{
+            access_token: string;
+        }>
+    ): Promise<AuthenticationCreateSessionResult> {
         return await this.client.post(`/authentication/session/convert/v4`, body);
     }
 
-    public async validateSessionWithLogin(body: {
-        readonly username: string;
-        readonly password: string;
-        readonly requestToken: string;
-    }): Promise<AuthenticationValidateSesssionWithLoginResult> {
+    public async validateSessionWithLogin(
+        body: Readonly<{
+            username: string;
+            password: string;
+            requestToken: string;
+        }>
+    ): Promise<AuthenticationValidateSessionWithLoginResult> {
         return await this.client.post(`/authentication/session/validate_with_login`, body);
     }
 
-    public async deleteSession(body: {
-        readonly sessionId: string;
-    }): Promise<AuthenticationDeleteSessionResult> {
+    public async deleteSession(
+        body: Readonly<{
+            sessionId: string;
+        }>
+    ): Promise<AuthenticationDeleteSessionResult> {
         return await this.client.delete(`/authentication/session/`);
     }
 

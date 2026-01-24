@@ -14,16 +14,14 @@ import { PaginatedResult } from '../../shared';
 import { HttpClient } from '../../http-client.interface';
 
 export class AccountEndpoint {
-    public constructor(private client: HttpClient) {}
+    public constructor(private readonly client: HttpClient) {}
 
     // Get the public details of an account on TMDB.
     public async getDetails(
         accountId: number | null,
-        options: {
-            readonly sessionId: string;
-        } = {
-            sessionId: '',
-        }
+        options: Readonly<{
+            sessionId: string;
+        }>
     ): Promise<AccountDetailsResult> {
         return await this.client.get(`/account/${accountId}`, options);
     }
@@ -31,14 +29,14 @@ export class AccountEndpoint {
     // Mark a movie or TV show as a favourite
     public async setFavourite(
         accountId: number | null,
-        body: {
-            readonly mediaType: string;
-            readonly mediaId: number;
-            readonly favorite: boolean;
-        },
-        options: {
-            readonly sessionId: string;
-        }
+        body: Readonly<{
+            mediaType: string;
+            mediaId: number;
+            favorite: boolean;
+        }>,
+        options: Readonly<{
+            sessionId: string;
+        }>
     ): Promise<AccountResult> {
         return await this.client.post(`/account/${accountId}/favorite`, body, options);
     }
@@ -46,14 +44,14 @@ export class AccountEndpoint {
     // Add a movie or TV show to your watchlist
     public async setWatchlist(
         accountId: number | null,
-        body: {
-            readonly mediaType: string;
-            readonly mediaId: number;
-            readonly watchlist: boolean;
-        },
-        options: {
-            readonly sessionId: string;
-        }
+        body: Readonly<{
+            mediaType: string;
+            mediaId: number;
+            watchlist: boolean;
+        }>,
+        options: Readonly<{
+            sessionId: string;
+        }>
     ): Promise<AccountResult> {
         return await this.client.post(`/account/${accountId}/watchlist`, body, options);
     }
@@ -61,12 +59,12 @@ export class AccountEndpoint {
     // Get a users list of favourite movies
     public async getFavoriteMovies(
         accountId: number | null,
-        options: {
-            readonly sessionId: string;
-            readonly language?: string;
-            readonly page?: number;
-            readonly sortBy?: 'created_at.asc' | 'created_at.desc';
-        }
+        options: Readonly<{
+            sessionId: string;
+            language?: string;
+            page?: number;
+            sortBy?: 'created_at.asc' | 'created_at.desc';
+        }>
     ): Promise<PaginatedResult<AccountFavoriteMovieItem>> {
         return await this.client.get(`/account/${accountId}/favorite/movies`, options);
     }
@@ -74,12 +72,12 @@ export class AccountEndpoint {
     // Get a users list of favourite TV shows
     public async getFavoriteTVShows(
         accountId: number | null,
-        options: {
-            readonly sessionId: string;
-            readonly language?: string;
-            readonly page?: number;
-            readonly sortBy?: 'created_at.asc' | 'created_at.desc';
-        }
+        options: Readonly<{
+            sessionId: string;
+            language?: string;
+            page?: number;
+            sortBy?: 'created_at.asc' | 'created_at.desc';
+        }>
     ): Promise<PaginatedResult<AccountFavoriteTVShowItem>> {
         return await this.client.get(`/account/${accountId}/favorite/tv`, options);
     }
@@ -87,10 +85,10 @@ export class AccountEndpoint {
     // Get a users list of custom lists
     public async getCustomLists(
         accountId: number | null,
-        options: {
-            readonly sessionId: string;
-            readonly page?: number;
-        }
+        options: Readonly<{
+            sessionId: string;
+            page?: number;
+        }>
     ): Promise<PaginatedResult<AccountCustomListItem>> {
         return await this.client.get(`/account/${accountId}/lists`, options);
     }
@@ -98,12 +96,12 @@ export class AccountEndpoint {
     // Get a users list of rated movies
     public async getRatedMovies(
         accountId: number | null,
-        options: {
-            readonly sessionId: string;
-            readonly page?: number;
-            readonly language?: string;
-            readonly sortBy?: 'created_at.asc' | 'created_at.desc';
-        }
+        options: Readonly<{
+            sessionId: string;
+            page?: number;
+            language?: string;
+            sortBy?: 'created_at.asc' | 'created_at.desc';
+        }>
     ): Promise<PaginatedResult<AccountRatedMovieItem>> {
         return await this.client.get(`/account/${accountId}/rated/movies`, options);
     }
@@ -111,12 +109,12 @@ export class AccountEndpoint {
     // Get a users list of rated TV shows
     public async getRatedTVShows(
         accountId: number | null,
-        options: {
-            readonly sessionId: string;
-            readonly page?: number;
-            readonly language?: string;
-            readonly sortBy?: 'created_at.asc' | 'created_at.desc';
-        }
+        options: Readonly<{
+            sessionId: string;
+            page?: number;
+            language?: string;
+            sortBy?: 'created_at.asc' | 'created_at.desc';
+        }>
     ): Promise<PaginatedResult<AccountRatedTVShowItem>> {
         return await this.client.get(`/account/${accountId}/rated/tv`, options);
     }
@@ -124,12 +122,12 @@ export class AccountEndpoint {
     // Get a users list of rated TV Episodes
     public async getRatedTVEpisodes(
         accountId: number | null,
-        options: {
-            readonly sessionId: string;
-            readonly page?: number;
-            readonly language?: string;
-            readonly sortBy?: 'created_at.asc' | 'created_at.desc';
-        }
+        options: Readonly<{
+            sessionId: string;
+            page?: number;
+            language?: string;
+            sortBy?: 'created_at.asc' | 'created_at.desc';
+        }>
     ): Promise<PaginatedResult<AccountRatedTVEpisodeItem>> {
         return await this.client.get(`/account/${accountId}/rated/tv/episodes`, options);
     }
@@ -137,12 +135,12 @@ export class AccountEndpoint {
     // Get a list of movies added to a users watchlist
     public async getWatchlistMovies(
         accountId: number | null,
-        options: {
-            readonly sessionId: string;
-            readonly page?: number;
-            readonly language?: string;
-            readonly sortBy?: 'created_at.asc' | 'created_at.desc';
-        }
+        options: Readonly<{
+            sessionId: string;
+            page?: number;
+            language?: string;
+            sortBy?: 'created_at.asc' | 'created_at.desc';
+        }>
     ): Promise<PaginatedResult<AccountWatchlistMovieItem>> {
         return await this.client.get(`/account/${accountId}/watchlist/movies`, options);
     }
@@ -150,12 +148,12 @@ export class AccountEndpoint {
     // Get a list of TV shows added to a users watchlist
     public async getWatchlistTVShows(
         accountId: number | null,
-        options: {
-            readonly sessionId: string;
-            readonly page?: number;
-            readonly language?: string;
-            readonly sortBy?: 'created_at.asc' | 'created_at.desc';
-        }
+        options: Readonly<{
+            sessionId: string;
+            page?: number;
+            language?: string;
+            sortBy?: 'created_at.asc' | 'created_at.desc';
+        }>
     ): Promise<PaginatedResult<AccountWatchlistTVShowItem>> {
         return await this.client.get(`/account/${accountId}/watchlist/tv`, options);
     }

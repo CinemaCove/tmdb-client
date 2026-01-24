@@ -6,14 +6,14 @@ export class GenreEndpoint {
 
     // Get the list of official genres for movies
     public async getMovieGenres(
-        options: { readonly language?: string } = {}
+        options?: Readonly<{ language?: string }>
     ): Promise<GenreMovieGenresResult> {
         return this.client.get('/genre/movie/list', options);
     }
 
     // Get the list of official genres for TV shows
     public async getTVShowGenres(
-        options: { readonly language?: string } = {}
+        options?: Readonly<{ language?: string }>
     ): Promise<GenreTVShowGenresResult> {
         return this.client.get('/genre/tv/list', options);
     }

@@ -1,32 +1,32 @@
-export type CompanyDetailsResult = {
-    readonly description: string;
-    readonly headquarters: string;
-    readonly homepage: string;
-    readonly id: number;
-    readonly logo_path: string;
-    readonly name: string;
-    readonly origin_country: string;
-    readonly parent_company: string;
-};
-type CompanyImageItem = {
-    readonly aspect_ratio: number;
-    readonly file_path: string;
-    readonly height: number;
-    readonly id: string;
-    readonly file_type: '.svg' | '.png';
-    readonly vote_average: number;
-    readonly vote_count: number;
-    readonly width: number;
-};
-export type CompanyImagesResult = {
-    readonly id: number;
-    readonly logos: CompanyImageItem[];
-};
-type CompanyAlternativeNameItem = {
-    readonly name: string;
-    readonly type: string;
-};
-export type CompanyAlternativeNamesResult = {
-    readonly id: number;
-    readonly results: CompanyAlternativeNameItem[];
-};
+export type CompanyDetailsResult = Readonly<{
+    description: string;
+    headquarters: string;
+    homepage: string;
+    id: number;
+    logo_path: string;
+    name: string;
+    origin_country: string;
+    parent_company: string;
+}>;
+export type CompanyImageItem = Readonly<{
+    aspect_ratio: number;
+    file_path: string;
+    height: number;
+    id: string;
+    file_type: '.svg' | '.png';
+    vote_average: number;
+    vote_count: number;
+    width: number;
+}>;
+export type CompanyImagesResult = Readonly<{
+    id: number;
+    logos: CompanyImageItem[];
+}>;
+export type CompanyAlternativeNameItem = Readonly<{
+    name: string;
+    type: string;
+}>;
+export type CompanyAlternativeNamesResult = Readonly<{
+    id: number;
+    results: CompanyAlternativeNameItem[];
+}>;

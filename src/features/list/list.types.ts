@@ -1,54 +1,54 @@
-export type ListAddMovieResult = {
+export type ListAddMovieResult = Readonly<{
     status_code: number;
     status_message: string;
-};
-export type ListItemStatusResult = {
+}>;
+export type ListItemStatusResult = Readonly<{
     id: number;
     item_present: boolean;
-};
-export type ListClearResult = {
+}>;
+export type ListClearResult = Readonly<{
     status_code: number;
     status_message: string;
-};
-export type ListCreateResult = {
-    readonly status_message: string;
-    readonly success: boolean;
-    readonly status_code: number;
-    readonly list_id: number;
-};
-export type ListDeleteResult = {
-    readonly status_code: number;
-    readonly status_message: string;
-};
-type ListDetailsItem = {
-    readonly adult: boolean;
-    readonly backdrop_path: string;
-    readonly genre_ids: number[];
-    readonly id: number;
-    readonly media_type: string;
-    readonly original_language: string;
-    readonly original_title: string;
-    readonly overview: string;
-    readonly popularity: number;
-    readonly poster_path: string;
-    readonly release_date: string;
-    readonly title: string;
-    readonly video: boolean;
-    readonly vote_average: number;
-    readonly vote_count: number;
-};
-export type ListDetailsResult = {
-    readonly created_by: string;
-    readonly description: string;
-    readonly favorite_count: number;
-    readonly id: string;
-    readonly items: ListDetailsItem[];
-    readonly item_count: number;
-    readonly iso_639_1: string;
-    readonly name: string;
-    readonly poster_path: string;
-};
-export type ListRemoveMovieResult = {
-    readonly status_code: number;
-    readonly status_message: string;
-};
+}>;
+export type ListCreateResult = Readonly<{
+    status_message: string;
+    success: boolean;
+    status_code: number;
+    list_id: number;
+}>;
+export type ListDeleteResult = Readonly<{
+    status_code: number;
+    status_message: string;
+}>;
+export type ListDetailsItem = Readonly<{
+    adult: boolean;
+    backdrop_path: string;
+    genre_ids: number[];
+    id: number;
+    media_type: string;
+    original_language: string;
+    original_title: string;
+    overview: string;
+    popularity: number;
+    poster_path: string;
+    release_date: string;
+    title: string;
+    video: boolean;
+    vote_average: number;
+    vote_count: number;
+}>;
+export type ListDetailsResult = Readonly<{
+    created_by: string;
+    description: string;
+    favorite_count: number;
+    id: string;
+    items: ListDetailsItem[];
+    item_count: number;
+    iso_639_1: string;
+    name: string;
+    poster_path: string;
+}>;
+export type ListRemoveMovieResult = Readonly<{
+    status_code: number;
+    status_message: string;
+}>;

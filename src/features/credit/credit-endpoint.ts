@@ -7,7 +7,7 @@ export class CreditEndpoint {
     // Get a movie or TV credit details by ID
     public async getDetails(
         creditId: string,
-        options?: { readonly language?: string }
+        options?: Readonly<{ language?: string }>
     ): Promise<CreditDetailsResult> {
         return await this.client.get(`/credit/${creditId}`, options);
     }

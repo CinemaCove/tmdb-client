@@ -6,7 +6,7 @@ import {
 } from './company.types';
 
 export class CompanyEndpoint {
-    public constructor(private client: HttpClient) {}
+    public constructor(private readonly client: HttpClient) {}
 
     // Get the company details by ID
     public async getDetails(companyId: number): Promise<CompanyDetailsResult> {

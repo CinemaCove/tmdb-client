@@ -1,4 +1,4 @@
-export type ChangesItem = {
-    readonly id: number;
-    readonly adult: boolean;
-};
+export type ChangesItem = Readonly<{
+    id: number;
+    adult: boolean;
+}>;

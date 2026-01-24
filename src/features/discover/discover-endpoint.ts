@@ -11,83 +11,87 @@ export class DiscoverEndpoint {
     public constructor(private readonly client: HttpClient) {}
 
     // Find movies using over 30 filters and sort options.
-    public async searchMovies(options?: {
-        readonly certification?: string; // use in conjunction with region
-        readonly 'certification.gte'?: string; // use in conjunction with region
-        readonly 'certification.lte'?: string; // use in conjunction with region
-        readonly certificationCountry?: string; // use in conjunction with the certification, certification.gte and certification.lte filters
-        readonly includeAdult?: boolean;
-        readonly includeVideo?: boolean;
-        readonly language?: string;
-        readonly page?: number;
-        readonly primaryReleaseDate?: string;
-        readonly 'primaryReleaseDate.gte'?: string;
-        readonly 'primaryReleaseDate.lte'?: string;
-        readonly region?: string;
-        readonly 'releaseDate.gte'?: string;
-        readonly 'releaseDate.lte'?: string;
-        readonly sortBy?: DiscoverMoviesSortBy;
-        readonly 'voteAverage.gte'?: number;
-        readonly 'voteAverage.lte'?: number;
-        readonly 'voteCount.gte'?: number;
-        readonly 'voteCount.lte'?: number;
-        readonly watchRegion?: string; // use in conjunction with with_watch_monetization_types or with_watch_providers
-        readonly withCast?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withCompanies?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withCrew?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withGenres?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withOriginCountry?: string;
-        readonly withPeople?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withReleaseType?: '1' | '2' | '3' | '4' | '5' | '6'; // can be a comma (AND) or pipe (OR) separated query. Can be used in conjunction with region
-        readonly 'withRuntime.gte'?: number;
-        readonly 'withRuntime.lte'?: number;
-        readonly withWatchMonetizationTypes?: 'flatrate' | 'free' | 'ads' | 'rent' | 'buy'; // can be a comma (AND) or pipe (OR) separated query
-        readonly withWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query. Use in conjunction with region
-        readonly withoutCompanies?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withoutGenres?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withoutKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withoutWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly year?: number;
-    }): Promise<PaginatedResult<DiscoverMovieItem>> {
+    public async searchMovies(
+        options?: Readonly<{
+            certification?: string; // use in conjunction with region
+            'certification.gte'?: string; // use in conjunction with region
+            'certification.lte'?: string; // use in conjunction with region
+            certificationCountry?: string; // use in conjunction with the certification, certification.gte and certification.lte filters
+            includeAdult?: boolean;
+            includeVideo?: boolean;
+            language?: string;
+            page?: number;
+            primaryReleaseDate?: string;
+            'primaryReleaseDate.gte'?: string;
+            'primaryReleaseDate.lte'?: string;
+            region?: string;
+            'releaseDate.gte'?: string;
+            'releaseDate.lte'?: string;
+            sortBy?: DiscoverMoviesSortBy;
+            'voteAverage.gte'?: number;
+            'voteAverage.lte'?: number;
+            'voteCount.gte'?: number;
+            'voteCount.lte'?: number;
+            watchRegion?: string; // use in conjunction with with_watch_monetization_types or with_watch_providers
+            withCast?: string; // can be a comma (AND) or pipe (OR) separated query
+            withCompanies?: string; // can be a comma (AND) or pipe (OR) separated query
+            withCrew?: string; // can be a comma (AND) or pipe (OR) separated query
+            withGenres?: string; // can be a comma (AND) or pipe (OR) separated query
+            withKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
+            withOriginCountry?: string;
+            withPeople?: string; // can be a comma (AND) or pipe (OR) separated query
+            withReleaseType?: '1' | '2' | '3' | '4' | '5' | '6'; // can be a comma (AND) or pipe (OR) separated query. Can be used in conjunction with region
+            'withRuntime.gte'?: number;
+            'withRuntime.lte'?: number;
+            withWatchMonetizationTypes?: 'flatrate' | 'free' | 'ads' | 'rent' | 'buy'; // can be a comma (AND) or pipe (OR) separated query
+            withWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query. Use in conjunction with region
+            withoutCompanies?: string; // can be a comma (AND) or pipe (OR) separated query
+            withoutGenres?: string; // can be a comma (AND) or pipe (OR) separated query
+            withoutKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
+            withoutWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query
+            year?: number;
+        }>
+    ): Promise<PaginatedResult<DiscoverMovieItem>> {
         return await this.client.get(`/discover/movie`, options);
     }
 
     // Find TV shows using over 30 filters and sort options.
-    public async searchTVShows(options?: {
-        readonly 'airDate.gte'?: string;
-        readonly 'airDate.lte'?: string;
-        readonly firstAirDateYear?: number;
-        readonly 'firstAirDate.gte'?: string;
-        readonly 'firstAirDate.lte'?: string;
-        readonly includeAdult?: boolean;
-        readonly includeNullFirstAirDates?: boolean;
-        readonly language?: string;
-        readonly page?: number;
-        readonly screenTheatrically?: boolean;
-        readonly sortBy?: DiscoverTVShowsSortBy;
-        readonly timezone?: string;
-        readonly 'voteAverage.gte'?: number;
-        readonly 'voteAverage.lte'?: number;
-        readonly 'voteCount.gte'?: number;
-        readonly 'voteCount.lte'?: number;
-        readonly watchRegion?: string; // use in conjunction with with_watch_monetization_types or with_watch_providers
-        readonly withCompanies?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withGenres?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withNetworks?: number; // can be a comma (AND) or pipe (OR) separated query
-        readonly withOriginCountry?: string;
-        readonly 'withRuntime.gte'?: number;
-        readonly 'withRuntime.lte'?: number;
-        readonly withStatus?: '0' | '1' | '2' | '3' | '4' | '5'; // can be a comma (AND) or pipe (OR) separated query
-        readonly withWatchMonetizationTypes?: 'flatrate' | 'free' | 'ads' | 'rent' | 'buy'; // can be a comma (AND) or pipe (OR) separated query
-        readonly withWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query. Use in conjunction with region
-        readonly withoutCompanies?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withoutGenres?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withoutKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withoutWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query
-        readonly withType?: '1' | '2' | '3' | '4' | '5' | '6'; // can be a comma (AND) or pipe (OR) separated query. Can be used in conjunction with region
-    }): Promise<PaginatedResult<DiscoverTVShowItem>> {
+    public async searchTVShows(
+        options?: Readonly<{
+            'airDate.gte'?: string;
+            'airDate.lte'?: string;
+            firstAirDateYear?: number;
+            'firstAirDate.gte'?: string;
+            'firstAirDate.lte'?: string;
+            includeAdult?: boolean;
+            includeNullFirstAirDates?: boolean;
+            language?: string;
+            page?: number;
+            screenTheatrically?: boolean;
+            sortBy?: DiscoverTVShowsSortBy;
+            timezone?: string;
+            'voteAverage.gte'?: number;
+            'voteAverage.lte'?: number;
+            'voteCount.gte'?: number;
+            'voteCount.lte'?: number;
+            watchRegion?: string; // use in conjunction with with_watch_monetization_types or with_watch_providers
+            withCompanies?: string; // can be a comma (AND) or pipe (OR) separated query
+            withGenres?: string; // can be a comma (AND) or pipe (OR) separated query
+            withKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
+            withNetworks?: number; // can be a comma (AND) or pipe (OR) separated query
+            withOriginCountry?: string;
+            'withRuntime.gte'?: number;
+            'withRuntime.lte'?: number;
+            withStatus?: '0' | '1' | '2' | '3' | '4' | '5'; // can be a comma (AND) or pipe (OR) separated query
+            withWatchMonetizationTypes?: 'flatrate' | 'free' | 'ads' | 'rent' | 'buy'; // can be a comma (AND) or pipe (OR) separated query
+            withWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query. Use in conjunction with region
+            withoutCompanies?: string; // can be a comma (AND) or pipe (OR) separated query
+            withoutGenres?: string; // can be a comma (AND) or pipe (OR) separated query
+            withoutKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
+            withoutWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query
+            withType?: '1' | '2' | '3' | '4' | '5' | '6'; // can be a comma (AND) or pipe (OR) separated query. Can be used in conjunction with region
+        }>
+    ): Promise<PaginatedResult<DiscoverTVShowItem>> {
         return await this.client.get(`/discover/tv`, options);
     }
 }

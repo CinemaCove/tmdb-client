@@ -10,6 +10,7 @@ import {
     MovieDetail,
     MovieDetailsWithAppends,
     MovieExternalIdsResult,
+    MovieImagesResult,
     MovieKeywordsResult,
     MovieListItem,
     MovieListPaginatedResult,
@@ -27,44 +28,44 @@ export class MovieEndpoint {
     // region Lists
     // Get a list of movies that are currently in theatres
     public async getNowPlayingList(
-        options: {
-            readonly language?: string;
-            readonly page?: number;
-            readonly region?: string;
-        } = {}
+        options?: Readonly<{
+            language?: string;
+            page?: number;
+            region?: string;
+        }>
     ): Promise<MovieNowPlayingPaginatedResult> {
         return this.client.get('/movie/now_playing', options);
     }
 
     // Get a list of movies ordered by popularity
     public async getPopularList(
-        options: {
-            readonly language?: string;
-            readonly page?: number;
-            readonly region?: string;
-        } = {}
+        options?: Readonly<{
+            language?: string;
+            page?: number;
+            region?: string;
+        }>
     ): Promise<PaginatedResult<MovieListItem>> {
         return this.client.get('/movie/popular', options);
     }
 
     // Get a list of movies ordered by rating
     public async getTopRatedList(
-        options: {
-            readonly language?: string;
-            readonly page?: number;
-            readonly region?: string;
-        } = {}
+        options?: Readonly<{
+            language?: string;
+            page?: number;
+            region?: string;
+        }>
     ): Promise<PaginatedResult<MovieListItem>> {
         return this.client.get('/movie/top_rated', options);
     }
 
     // Get a list of movies that are being released soon
     public async getUpcomingList(
-        options: {
-            readonly language?: string;
-            readonly page?: number;
-            readonly region?: string;
-        } = {}
+        options?: Readonly<{
+            language?: string;
+            page?: number;
+            region?: string;
+        }>
     ): Promise<PaginatedResult<MovieListItem>> {
         return this.client.get('/movie/upcoming', options);
     }
@@ -77,10 +78,10 @@ export class MovieEndpoint {
      */
     public async getDetails(
         movieId: number,
-        options: {
-            readonly appendToResponse?: MovieAppendToResponse[]; // comma separated list of endpoints within this namespace, 20 items max
-            readonly language?: string;
-        } = {}
+        options?: Readonly<{
+            appendToResponse?: MovieAppendToResponse[]; // comma separated list of endpoints within this namespace, 20 items max
+            language?: string;
+        }>
     ): Promise<MovieDetailsWithAppends<typeof options.appendToResponse>> {
         return await this.client.get(`/movie/${movieId}`, {
             ...options,
@@ -91,9 +92,9 @@ export class MovieEndpoint {
     // Get the alternative titles for a movie
     public async getAlternativeTitles(
         movieId: number,
-        options: {
-            readonly country?: string; // specify a ISO-3166-1 value to filter the results
-        } = {}
+        options?: Readonly<{
+            country?: string; // specify a ISO-3166-1 value to filter the results
+        }>
     ): Promise<MovieAlternativeTitlesResult> {
         return await this.client.get(`/movie/${movieId}/alternative_titles`, options);
     }
@@ -101,10 +102,10 @@ export class MovieEndpoint {
     // Get the rating, watchlist and favourite status of an account
     public async getAccountStates(
         movieId: number,
-        options: {
-            readonly sessionId?: string;
-            readonly guestSessionId?: string;
-        }
+        options: Readonly<{
+            sessionId?: string;
+            guestSessionId?: string;
+        }>
     ): Promise<MovieAccountStatesResult> {
         return await this.client.get(`/movie/${movieId}/account_states`, options);
     }
@@ -112,11 +113,11 @@ export class MovieEndpoint {
     // Get the recent changes for a movie
     public async getChanges(
         movieId: number,
-        options: {
-            readonly page?: number;
-            readonly startDate?: string;
-            readonly endDate?: string;
-        } = {}
+        options?: Readonly<{
+            page?: number;
+            startDate?: string;
+            endDate?: string;
+        }>
     ): Promise<MovieChangesResult> {
         return await this.client.get(`/movie/${movieId}/changes`, options);
     }
@@ -124,9 +125,9 @@ export class MovieEndpoint {
     // get the credits of a movie
     public async getCredits(
         movieId: number,
-        options: {
-            readonly language?: string;
-        } = {}
+        options?: Readonly<{
+            language?: string;
+        }>
     ): Promise<MovieCreditsResult> {
         return await this.client.get(`/movie/${movieId}/credits`, options);
     }
@@ -139,10 +140,10 @@ export class MovieEndpoint {
     // Get the images that belong to a movie
     public async getImages(
         movieId: number,
-        options: {
-            readonly includeImageLanguage?: string; // specify a comma separated list of ISO-639-1 values to query, for example: en-US,null
-            readonly language?: string;
-        } = {}
+        options?: Readonly<{
+            includeImageLanguage?: string; // specify a comma separated list of ISO-639-1 values to query, for example: en-US,null
+            language?: string;
+        }>
     ): Promise<MovieImagesResult> {
         return await this.client.get(`/movie/${movieId}/images`, options);
     }
@@ -160,20 +161,20 @@ export class MovieEndpoint {
     // Get the lists that a movie has been added to
     public async getLists(
         movieId: number,
-        options: {
-            readonly language?: string;
-            readonly page?: number;
-        } = {}
+        options?: Readonly<{
+            language?: string;
+            page?: number;
+        }>
     ): Promise<MovieListPaginatedResult> {
         return await this.client.get(`/movie/${movieId}/lists`, options);
     }
 
     public async getRecommendations(
         movieId: number,
-        options: {
-            readonly language?: string;
-            readonly page?: number;
-        } = {}
+        options?: Readonly<{
+            language?: string;
+            page?: number;
+        }>
     ): Promise<PaginatedResult<MovieDetail>> {
         return await this.client.get(`/movie/${movieId}/recommendations`, options);
     }
@@ -186,10 +187,10 @@ export class MovieEndpoint {
     // Get the user reviews for a movie
     public async getReviews(
         movieId: number,
-        options: {
-            readonly language?: string;
-            readonly page?: number;
-        } = {}
+        options?: Readonly<{
+            language?: string;
+            page?: number;
+        }>
     ): Promise<MovieReviewsPaginatedResult> {
         return await this.client.get(`/movie/${movieId}/reviews`, options);
     }
@@ -200,10 +201,10 @@ export class MovieEndpoint {
      */
     public async getSimilar(
         movieId: number,
-        options: {
-            readonly language?: string;
-            readonly page?: number;
-        } = {}
+        options?: Readonly<{
+            language?: string;
+            page?: number;
+        }>
     ): Promise<PaginatedResult<MovieDetail>> {
         return await this.client.get(`/movie/${movieId}/similar`, options);
     }
@@ -216,11 +217,11 @@ export class MovieEndpoint {
     // Get the videos of a movie
     public async getVideos(
         movieId: number,
-        options: {
-            readonly language?: string;
-        } = {}
+        options?: Readonly<{
+            language?: string;
+        }>
     ): Promise<MovieVideosResult> {
-        return await this.client.get(`/movie/${movieId}/videos`);
+        return await this.client.get(`/movie/${movieId}/videos`, options);
     }
 
     /** Get the list of streaming providers we have for a movie
@@ -236,13 +237,13 @@ export class MovieEndpoint {
      */
     public async addRating(
         movieId: number,
-        body: {
+        body: Readonly<{
             value: number;
-        },
-        options: {
-            readonly guestSessionId?: string;
-            readonly sessionId?: string;
-        }
+        }>,
+        options: Readonly<{
+            guestSessionId?: string;
+            sessionId?: string;
+        }>
     ): Promise<void> {
         return await this.client.post(`/movie/${movieId}/rating`, body, options);
     }
@@ -252,10 +253,10 @@ export class MovieEndpoint {
      */
     public async deleteRating(
         movieId: number,
-        options: {
-            readonly guestSessionId?: string;
-            readonly sessionId?: string;
-        }
+        options: Readonly<{
+            guestSessionId?: string;
+            sessionId?: string;
+        }>
     ): Promise<MovieDeleteRatingResult> {
         return await this.client.delete(`/movie/${movieId}/rating`, options);
     }

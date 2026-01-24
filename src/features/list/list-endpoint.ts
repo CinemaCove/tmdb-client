@@ -15,12 +15,12 @@ export class ListEndpoint {
     // Add a movie to a list
     public async addMovie(
         listId: number,
-        body: {
+        body: Readonly<{
             mediaId: number;
-        },
-        options: {
-            readonly sessionId: string;
-        }
+        }>,
+        options: Readonly<{
+            sessionId: string;
+        }>
     ): Promise<ListAddMovieResult> {
         return await this.client.post(`/list/${listId}/add_item`, body, options);
     }
@@ -28,10 +28,10 @@ export class ListEndpoint {
     // Use this method to check if an item has already been added to the list
     public async checkItemStatus(
         listId: number,
-        options: {
-            readonly mediaId: number;
-            readonly language: string;
-        }
+        options: Readonly<{
+            mediaId: number;
+            language: string;
+        }>
     ): Promise<ListItemStatusResult> {
         return await this.client.get(`/list/${listId}/item_status`, options);
     }
@@ -39,26 +39,26 @@ export class ListEndpoint {
     // Clear all items from a list
     public async clear(
         listId: number,
-        body: {
+        body: Readonly<{
             mediaId: number;
-        },
-        options: {
-            readonly sessionId: string;
-            readonly confirm: boolean;
-        }
+        }>,
+        options: Readonly<{
+            sessionId: string;
+            confirm: boolean;
+        }>
     ): Promise<ListClearResult> {
         return await this.client.post(`/list/${listId}/add_item`, body, options);
     }
 
     public async create(
-        body: {
-            readonly name: string;
-            readonly description: string;
-            readonly language: string;
-        },
-        options: {
-            readonly sessionId: string;
-        }
+        body: Readonly<{
+            name: string;
+            description: string;
+            language: string;
+        }>,
+        options: Readonly<{
+            sessionId: string;
+        }>
     ): Promise<ListCreateResult> {
         return await this.client.post(`/list`, body, options);
     }
@@ -66,19 +66,19 @@ export class ListEndpoint {
     // Delete a list
     public async delete(
         listId: number,
-        options: {
-            readonly sessionId: string;
-        }
+        options: Readonly<{
+            sessionId: string;
+        }>
     ): Promise<ListDeleteResult> {
         return await this.client.delete(`/list/${listId}`, undefined, options);
     }
 
     public async details(
         listId: number,
-        options: {
-            readonly page?: number;
-            readonly language?: string;
-        } = {}
+        options?: Readonly<{
+            page?: number;
+            language?: string;
+        }>
     ): Promise<ListDetailsResult> {
         return await this.client.post(`/list/${listId}`, options);
     }
@@ -86,13 +86,13 @@ export class ListEndpoint {
     // Remove a movie from a list
     public async removeMovie(
         listId: number,
-        body: {
+        body: Readonly<{
             mediaId: number;
-        },
+        }>,
         options: {
-            readonly sessionId: string;
+            sessionId: string;
         }
     ): Promise<ListRemoveMovieResult> {
-        return await this.client.delete(`/list/${listId}/remove_item`, undefined, options);
+        return await this.client.delete(`/list/${listId}/remove_item`, body, options);
     }
 }
