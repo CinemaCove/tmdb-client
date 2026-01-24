@@ -3,7 +3,7 @@ import { DefaultHttpClient, TmdbClient } from '../../src';
 import dotenv from 'dotenv';
 
 dotenv.config(); // loads .env
-describe('TmdbClient - Authentication (real API)', () => {
+describe('TmdbClient - Account (real API)', () => {
     let tmdb: TmdbClient;
     let sessionId: string | undefined;
 
