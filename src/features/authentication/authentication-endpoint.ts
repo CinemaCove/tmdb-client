@@ -1,9 +1,8 @@
-import { TmdbClient } from '../../tmdb-client';
 import {
     AuthenticationGuestSessionResult,
     AuthenticationValidationResult,
 } from './authentication.types';
-import { buildBody } from '../../utils/build-body';
+import { HttpClient } from '../../http-client.interface';
 
 type AuthenticationRequestTokenResult = {
     readonly success: boolean;
@@ -26,34 +25,26 @@ type AuthenticationDeleteSessionResult = {
 };
 
 export class AuthenticationEndpoint {
-    public constructor(private client: TmdbClient) {}
+    public constructor(private client: HttpClient) {}
 
     public async getGuestSession(): Promise<AuthenticationGuestSessionResult> {
-        const res = await this.client.getHttp().get(`/authentication/guest_session/new`);
-        return res.data;
+        return await this.client.get(`/authentication/guest_session/new`);
     }
 
     public async getRequestToken(): Promise<AuthenticationRequestTokenResult> {
-        const res = await this.client.getHttp().get(`/authentication/token/new`);
-        return res.data;
+        return await this.client.get(`/authentication/token/new`);
     }
 
     public async createSession(body: {
         readonly request_token: string;
     }): Promise<AuthenticationCreateSessionResult> {
-        const genBody = buildBody(body);
-
-        const res = await this.client.getHttp().post(`/authentication/session/new`, genBody);
-        return res.data;
+        return await this.client.post(`/authentication/session/new`, body);
     }
 
     public async createSessionV4(body: {
         readonly access_token: string;
     }): Promise<AuthenticationCreateSessionResult> {
-        const genBody = buildBody(body);
-
-        const res = await this.client.getHttp().post(`/authentication/session/convert/v4`, genBody);
-        return res.data;
+        return await this.client.post(`/authentication/session/convert/v4`, body);
     }
 
     public async validateSessionWithLogin(body: {
@@ -61,25 +52,17 @@ export class AuthenticationEndpoint {
         readonly password: string;
         readonly requestToken: string;
     }): Promise<AuthenticationValidateSesssionWithLoginResult> {
-        const genBody = buildBody(body);
-
-        const res = await this.client
-            .getHttp()
-            .post(`/authentication/session/validate_with_login`, genBody);
-        return res.data;
+        return await this.client.post(`/authentication/session/validate_with_login`, body);
     }
 
     public async deleteSession(body: {
         readonly sessionId: string;
     }): Promise<AuthenticationDeleteSessionResult> {
-        const genBody = buildBody(body);
-        const res = await this.client.getHttp().delete(`/authentication/session`, genBody);
-        return res.data;
+        return await this.client.delete(`/authentication/session/`);
     }
 
     // Test your API Key to see if it's valid.
     public async validateApiKey(): Promise<AuthenticationValidationResult> {
-        const res = await this.client.getHttp().get(`/authentication`);
-        return res.data;
+        return await this.client.get(`/authentication`);
     }
 }

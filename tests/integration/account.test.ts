@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import { TmdbClient } from '../../src';
+import { DefaultHttpClient, TmdbClient } from '../../src';
 import dotenv from 'dotenv';
 
 dotenv.config(); // loads .env
@@ -25,7 +25,7 @@ describe('TmdbClient - Authentication (real API)', () => {
         // 3 - Copy the token and POST it at https://api.themoviedb.org/3/authentication/session/new with body {"request_token": "<request_token>"}
         // 4 - Copy the session_id and set it in the .env file as TMDB_SESSION_ID
         sessionId = process.env.TMDB_SESSION_ID;
-        tmdb = new TmdbClient({ accessToken: token });
+        tmdb = new TmdbClient(new DefaultHttpClient({ accessToken: token }));
     });
 
     it('gets the default account details', async () => {

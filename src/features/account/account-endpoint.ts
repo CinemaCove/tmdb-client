@@ -1,4 +1,3 @@
-import { TmdbClient } from '../../tmdb-client';
 import {
     AccountCustomListEntry,
     AccountDetails,
@@ -12,11 +11,10 @@ import {
     AccountWatchlistTVShowEntry,
 } from './account.types';
 import { PaginatedResult } from '../../shared';
-import { buildQueryParams } from '../../utils/build-query-params';
-import { buildBody } from '../../utils/build-body';
+import { HttpClient } from '../../http-client.interface';
 
 export class AccountEndpoint {
-    public constructor(private client: TmdbClient) {}
+    public constructor(private client: HttpClient) {}
 
     // Get the public details of an account on TMDB.
     public async getDetails(
@@ -27,13 +25,7 @@ export class AccountEndpoint {
             sessionId: '',
         }
     ): Promise<AccountDetails> {
-        const params = buildQueryParams(options);
-
-        const res = await this.client.getHttp().get(`/account/${accountId}`, {
-            params,
-        });
-
-        return res.data;
+        return await this.client.get(`/account/${accountId}`, options);
     }
 
     // Mark a movie or TV show as a favourite
@@ -48,14 +40,7 @@ export class AccountEndpoint {
             readonly sessionId: string;
         }
     ): Promise<AccountResult> {
-        const params = buildQueryParams(options);
-        const reqBody = buildBody(body);
-
-        const res = await this.client.getHttp().post(`/account/${accountId}/favorite`, reqBody, {
-            params,
-        });
-
-        return res.data;
+        return await this.client.post(`/account/${accountId}/favorite`, body, options);
     }
 
     // Add a movie or TV show to your watchlist
@@ -70,14 +55,7 @@ export class AccountEndpoint {
             readonly sessionId: string;
         }
     ): Promise<AccountResult> {
-        const params = buildQueryParams(options);
-        const reqBody = buildBody(body);
-
-        const res = await this.client.getHttp().post(`/account/${accountId}/watchlist`, reqBody, {
-            params,
-        });
-
-        return res.data;
+        return await this.client.post(`/account/${accountId}/watchlist`, body, options);
     }
 
     // Get a users list of favourite movies
@@ -90,12 +68,7 @@ export class AccountEndpoint {
             readonly sortBy?: 'created_at.asc' | 'created_at.desc';
         }
     ): Promise<PaginatedResult<AccountFavoriteMovieEntry>> {
-        const params = buildQueryParams(options);
-        const res = await this.client.getHttp().get(`/account/${accountId}/favorite/movies`, {
-            params,
-        });
-
-        return res.data;
+        return await this.client.get(`/account/${accountId}/favorite/movies`, options);
     }
 
     // Get a users list of favourite TV shows
@@ -108,12 +81,7 @@ export class AccountEndpoint {
             readonly sortBy?: 'created_at.asc' | 'created_at.desc';
         }
     ): Promise<PaginatedResult<AccountFavoriteTVShowEntry>> {
-        const params = buildQueryParams(options);
-        const res = await this.client.getHttp().get(`/account/${accountId}/favorite/tv`, {
-            params,
-        });
-
-        return res.data;
+        return await this.client.get(`/account/${accountId}/favorite/tv`, options);
     }
 
     // Get a users list of custom lists
@@ -124,12 +92,7 @@ export class AccountEndpoint {
             readonly page?: number;
         }
     ): Promise<PaginatedResult<AccountCustomListEntry>> {
-        const params = buildQueryParams(options);
-        const res = await this.client.getHttp().get(`/account/${accountId}/lists`, {
-            params,
-        });
-
-        return res.data;
+        return await this.client.get(`/account/${accountId}/lists`, options);
     }
 
     // Get a users list of rated movies
@@ -142,12 +105,7 @@ export class AccountEndpoint {
             readonly sortBy?: 'created_at.asc' | 'created_at.desc';
         }
     ): Promise<PaginatedResult<AccountRatedMovieEntry>> {
-        const params = buildQueryParams(options);
-        const res = await this.client.getHttp().get(`/account/${accountId}/rated/movies`, {
-            params,
-        });
-
-        return res.data;
+        return await this.client.get(`/account/${accountId}/rated/movies`, options);
     }
 
     // Get a users list of rated TV shows
@@ -160,12 +118,7 @@ export class AccountEndpoint {
             readonly sortBy?: 'created_at.asc' | 'created_at.desc';
         }
     ): Promise<PaginatedResult<AccountRatedTVShowEntry>> {
-        const params = buildQueryParams(options);
-        const res = await this.client.getHttp().get(`/account/${accountId}/rated/tv`, {
-            params,
-        });
-
-        return res.data;
+        return await this.client.get(`/account/${accountId}/rated/tv`, options);
     }
 
     // Get a users list of rated TV Episodes
@@ -178,12 +131,7 @@ export class AccountEndpoint {
             readonly sortBy?: 'created_at.asc' | 'created_at.desc';
         }
     ): Promise<PaginatedResult<AccountRatedTVEpisodeEntry>> {
-        const params = buildQueryParams(options);
-        const res = await this.client.getHttp().get(`/account/${accountId}/rated/tv/episodes`, {
-            params,
-        });
-
-        return res.data;
+        return await this.client.get(`/account/${accountId}/rated/tv/episodes`, options);
     }
 
     // Get a list of movies added to a users watchlist
@@ -196,12 +144,7 @@ export class AccountEndpoint {
             readonly sortBy?: 'created_at.asc' | 'created_at.desc';
         }
     ): Promise<PaginatedResult<AccountWatchlistMovieEntry>> {
-        const params = buildQueryParams(options);
-        const res = await this.client.getHttp().get(`/account/${accountId}/watchlist/movies`, {
-            params,
-        });
-
-        return res.data;
+        return await this.client.get(`/account/${accountId}/watchlist/movies`, options);
     }
 
     // Get a list of TV shows added to a users watchlist
@@ -214,11 +157,6 @@ export class AccountEndpoint {
             readonly sortBy?: 'created_at.asc' | 'created_at.desc';
         }
     ): Promise<PaginatedResult<AccountWatchlistTVShowEntry>> {
-        const params = buildQueryParams(options);
-        const res = await this.client.getHttp().get(`/account/${accountId}/watchlist/tv`, {
-            params,
-        });
-
-        return res.data;
+        return await this.client.get(`/account/${accountId}/watchlist/tv`, options);
     }
 }

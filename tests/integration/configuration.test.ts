@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import dotenv from 'dotenv';
-import { TmdbClient } from '../../src';
+import { DefaultHttpClient, TmdbClient } from '../../src';
 
 dotenv.config(); // loads .env
 
@@ -16,7 +16,7 @@ describe('TmdbClient - Configuration (real API)', () => {
             );
         }
 
-        tmdb = new TmdbClient(apiKey);
+        tmdb = new TmdbClient(new DefaultHttpClient(apiKey));
     });
 
     it('fetches configuration details from /configuration', async () => {

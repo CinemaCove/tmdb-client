@@ -1,7 +1,7 @@
 import { camelToSnake } from './camel-to-snake';
 
 export function buildQueryParams<T extends Record<string, any>>(
-    options: T | undefined
+    options?: T
 ): Record<string, string | number | boolean> {
     const params: Record<string, any> = {};
 

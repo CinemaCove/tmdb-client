@@ -5,44 +5,22 @@ import {
     ConfigurationEndpoint,
     MoviesEndpoint,
 } from './features';
+import { buildQueryParams } from './utils/build-query-params';
+import { buildBody } from './utils/build-body';
+import { HttpClient } from './http-client.interface';
 
 export class TmdbClient {
-    private readonly http: AxiosInstance;
-
-    public readonly movies: MoviesEndpoint;
-    public readonly configuration: ConfigurationEndpoint;
-    public readonly authentication: AuthenticationEndpoint;
     public readonly account: AccountEndpoint;
+    public readonly authentication: AuthenticationEndpoint;
 
-    constructor(
-        apiKey: string | { accessToken: string },
-        baseUrl = 'https://api.themoviedb.org/3'
-    ) {
-        const isApiKey = typeof apiKey !== 'object';
-        this.http = axios.create({
-            baseURL: baseUrl,
-            params: isApiKey ? { api_key: apiKey } : undefined, // TMDB v3 classic way
-            headers: {
-                Accept: 'application/json',
-                Authorization: !isApiKey ? `Bearer ${apiKey.accessToken}` : undefined,
-            },
-        });
+    public readonly configuration: ConfigurationEndpoint;
+    public readonly movies: MoviesEndpoint;
 
-        this.http.interceptors.response.use(
-            res => res,
-            err => {
-                // normalize TMDB errors, log, etc.
-                return Promise.reject(err);
-            }
-        );
+    constructor(private httpClient: HttpClient) {
+        this.account = new AccountEndpoint(this.httpClient);
+        this.authentication = new AuthenticationEndpoint(this.httpClient);
 
-        this.account = new AccountEndpoint(this);
-        this.authentication = new AuthenticationEndpoint(this);
-        this.movies = new MoviesEndpoint(this);
-        this.configuration = new ConfigurationEndpoint(this);
-    }
-
-    public getHttp() {
-        return this.http;
+        this.configuration = new ConfigurationEndpoint(this.httpClient);
+        this.movies = new MoviesEndpoint(this.httpClient);
     }
 }
