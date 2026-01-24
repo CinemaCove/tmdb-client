@@ -1,46 +1,52 @@
 import {
     AccountEndpoint,
     AuthenticationEndpoint,
-    CertificationsEndpoint,
+    CertificationEndpoint,
     ChangesEndpoint,
-    CollectionsEndpoint,
-    CompaniesEndpoint,
+    CollectionEndpoint,
+    CompanyEndpoint,
     ConfigurationEndpoint,
-    CreditsEndpoint,
+    CreditEndpoint,
     DiscoverEndpoint,
     FindEndpoint,
-    GenresEndpoint,
+    GenreEndpoint,
     GuestSessionEndpoint,
+    KeywordEndpoint,
+    ListEndpoint,
 } from './features';
 import { HttpClient } from './http-client.interface';
 
 export class TmdbClient {
     public readonly account: AccountEndpoint;
     public readonly authentication: AuthenticationEndpoint;
-    public readonly certification: CertificationsEndpoint;
+    public readonly certification: CertificationEndpoint;
     public readonly changes: ChangesEndpoint;
-    public readonly collections: CollectionsEndpoint;
-    public readonly companies: CompaniesEndpoint;
+    public readonly collection: CollectionEndpoint;
+    public readonly company: CompanyEndpoint;
     public readonly configuration: ConfigurationEndpoint;
-    public readonly credits: CreditsEndpoint;
+    public readonly credit: CreditEndpoint;
     public readonly discover: DiscoverEndpoint;
     public readonly find: FindEndpoint;
-    public readonly genres: GenresEndpoint;
+    public readonly genre: GenreEndpoint;
     public readonly guestSession: GuestSessionEndpoint;
+    public readonly keyword: KeywordEndpoint;
+    public readonly list: ListEndpoint;
 
     constructor(private httpClient: HttpClient) {
         this.account = new AccountEndpoint(this.httpClient);
         this.authentication = new AuthenticationEndpoint(this.httpClient);
-        this.certification = new CertificationsEndpoint(this.httpClient);
+        this.certification = new CertificationEndpoint(this.httpClient);
         this.changes = new ChangesEndpoint(this.httpClient);
-        this.collections = new CollectionsEndpoint(this.httpClient);
-        this.companies = new CompaniesEndpoint(this.httpClient);
+        this.collection = new CollectionEndpoint(this.httpClient);
+        this.company = new CompanyEndpoint(this.httpClient);
         this.configuration = new ConfigurationEndpoint(this.httpClient);
-        this.credits = new CreditsEndpoint(this.httpClient);
+        this.credit = new CreditEndpoint(this.httpClient);
         this.discover = new DiscoverEndpoint(this.httpClient);
         this.find = new FindEndpoint(this.httpClient);
-        this.genres = new GenresEndpoint(this.httpClient);
+        this.genre = new GenreEndpoint(this.httpClient);
         this.guestSession = new GuestSessionEndpoint(this.httpClient);
+        this.keyword = new KeywordEndpoint(this.httpClient);
+        this.list = new ListEndpoint(this.httpClient);
         // this.movies = new MoviesEndpoint(this.httpClient);
     }
 }

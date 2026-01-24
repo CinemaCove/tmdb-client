@@ -98,7 +98,7 @@ describe('TmdbClient - Account (real API)', () => {
         console.log(`Fetched ${JSON.stringify(res)}`);
     }, 10000);
 
-    it('gets a list of custom user lists', async () => {
+    it('gets a list of custom user list', async () => {
         const details = await tmdb.account.getDetails(null, { sessionId: sessionId || '' });
         const res = await tmdb.account.getCustomLists(details.id, {
             sessionId: sessionId || '',

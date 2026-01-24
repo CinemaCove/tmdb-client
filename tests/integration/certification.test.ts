@@ -19,7 +19,7 @@ describe('TmdbClient - Certification (real API)', () => {
         tmdb = new TmdbClient(new DefaultHttpClient(apiKey));
     });
 
-    it('fetches a list of movie certifications for all available countries', async () => {
+    it('fetches a list of movie certification for all available countries', async () => {
         const res = await tmdb.certification.getMovieCertifications();
 
         // Spot-check a few well-known ones (stable data)
@@ -29,7 +29,7 @@ describe('TmdbClient - Certification (real API)', () => {
         console.log(`Fetched ${Object.keys(res.certifications).length} certification lists`);
     }, 10000);
 
-    it('fetches a list of tv certifications for all available countries', async () => {
+    it('fetches a list of tv certification for all available countries', async () => {
         const res = await tmdb.certification.getTVCertifications();
 
         // Spot-check a few well-known ones (stable data)

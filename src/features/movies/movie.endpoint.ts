@@ -15,7 +15,7 @@ export class MoviesEndpoint {
         movieId: number,
         options: {
             language?: string;              // e.g. 'pt-PT', 'en-US' (default: en-US)
-            appendToResponse?: string[];    // e.g. ['credits', 'videos', 'images', 'recommendations']
+            appendToResponse?: string[];    // e.g. ['credit', 'videos', 'images', 'recommendations']
         } = {}
     ): Promise<MovieDetail> {
         const params: Record<string, any> = {};

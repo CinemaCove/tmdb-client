@@ -16,7 +16,7 @@ export function buildBody<T extends Record<string, any>>(
         // Convert camelCase → snake_case
         const snakeKey = camelToSnake(camelKey);
 
-        // Handle arrays (e.g. append_to_response: ['credits', 'videos'] → 'credits,videos')
+        // Handle arrays (e.g. append_to_response: ['credit', 'videos'] → 'credit,videos')
         if (Array.isArray(value)) {
             body[snakeKey] = value.join(',');
             continue;

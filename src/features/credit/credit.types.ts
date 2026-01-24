@@ -1,0 +1,50 @@
+type CreditDetailsSeasonItem = {
+    readonly id: number;
+    readonly air_date: string;
+    readonly episode_count: number;
+    readonly name: string;
+    readonly overview: string;
+    readonly poster_path: string;
+    readonly season_number: number;
+    readonly show_id: number;
+};
+type CreditDetailsMedia = {
+    readonly adult: boolean;
+    readonly backdrop_path: string;
+    readonly id: number;
+    readonly name: string;
+    readonly original_language: string;
+    readonly original_name: string;
+    readonly overview: string;
+    readonly poster_path: string;
+    readonly media_type: 'tv' | 'movie';
+    readonly genre_ids: number[];
+    readonly popularity: number;
+    readonly first_air_date: string;
+    readonly vote_average: number;
+    readonly vote_count: number;
+    readonly origin_country: string[];
+    readonly character: string;
+    readonly episodes: any[];
+    readonly seasons: CreditDetailsSeasonItem[];
+};
+type CreditDetailsPerson = {
+    readonly adult: boolean;
+    readonly id: number;
+    readonly name: string;
+    readonly original_name: string;
+    readonly media_type: string;
+    readonly popularity: number;
+    readonly gender: number;
+    readonly known_for_department: string;
+    readonly profile_path: string;
+};
+export type CreditDetailsResult = {
+    readonly credit_type: string;
+    readonly department: string;
+    readonly job: string;
+    readonly media: CreditDetailsMedia;
+    readonly media_type: 'tv' | 'movie';
+    readonly id: string;
+    readonly person: CreditDetailsPerson;
+};
