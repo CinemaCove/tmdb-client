@@ -7,4 +7,5 @@ export * from './changes';
 export * from './collections';
 export * from './companies';
 export * from './configuration';
+export * from './credits';
 export * from './movies';
