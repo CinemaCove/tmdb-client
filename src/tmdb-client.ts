@@ -13,6 +13,7 @@ import {
     GuestSessionEndpoint,
     KeywordEndpoint,
     ListEndpoint,
+    MovieEndpoint,
 } from './features';
 import { HttpClient } from './http-client.interface';
 
@@ -31,6 +32,7 @@ export class TmdbClient {
     public readonly guestSession: GuestSessionEndpoint;
     public readonly keyword: KeywordEndpoint;
     public readonly list: ListEndpoint;
+    public readonly movie: MovieEndpoint;
 
     constructor(private httpClient: HttpClient) {
         this.account = new AccountEndpoint(this.httpClient);
@@ -47,6 +49,6 @@ export class TmdbClient {
         this.guestSession = new GuestSessionEndpoint(this.httpClient);
         this.keyword = new KeywordEndpoint(this.httpClient);
         this.list = new ListEndpoint(this.httpClient);
-        // this.movies = new MoviesEndpoint(this.httpClient);
+        this.movie = new MovieEndpoint(this.httpClient);
     }
 }

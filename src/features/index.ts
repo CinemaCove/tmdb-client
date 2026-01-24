@@ -14,4 +14,4 @@ export * from './genre';
 export * from './guest-session';
 export * from './keyword';
 export * from './list';
-export * from './movies';
+export * from './movie';
