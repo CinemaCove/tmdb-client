@@ -9,7 +9,7 @@ export class CollectionsEndpoint {
     public constructor(private client: HttpClient) {}
 
     // Get collection details by ID.
-    public async getCollectionDetails(
+    public async getDetails(
         collectionId: number,
         options: {
             readonly language?: string;
@@ -19,7 +19,7 @@ export class CollectionsEndpoint {
     }
 
     // Get the images that belong to a collection
-    public async getCollectionImages(
+    public async getImages(
         collectionId: number,
         options: {
             readonly includeImageLanguage?: boolean;
@@ -30,7 +30,7 @@ export class CollectionsEndpoint {
     }
 
     // get the available translations for a collection
-    public async getCollectionTranslations(
+    public async getTranslations(
         collectionId: number
     ): Promise<CollectionsTranslationsResult> {
         return this.client.get(`/collection/${collectionId}/translations`);

@@ -4,7 +4,7 @@ import { DefaultHttpClient, TmdbClient } from '../../src';
 
 dotenv.config(); // loads .env
 
-describe('TmdbClient - Collections (real API)', () => {
+describe('TmdbClient - Companies (real API)', () => {
     let tmdb: TmdbClient;
 
     beforeAll(() => {
@@ -19,30 +19,30 @@ describe('TmdbClient - Collections (real API)', () => {
         tmdb = new TmdbClient(new DefaultHttpClient(apiKey));
     });
 
-    it('fetches the collection of Harry Potter movies', async () => {
-        const res = await tmdb.collections.getDetails(1241);
+    it('fetches the details of Walt Disney', async () => {
+        const res = await tmdb.companies.getDetails(3166);
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.original_name).toBe('Harry Potter Collection');
+        expect(res.name).toBe('Walt Disney Productions');
 
         console.log(`Fetched ${JSON.stringify(res)}`);
     }, 10000);
 
-    it('fetches the images for the collection of Harry Potter movies', async () => {
-        const res = await tmdb.collections.getImages(1241);
+    it('fetches the alternative names of Walt Disney', async () => {
+        const res = await tmdb.companies.getAlternativeNames(3166);
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.backdrops.length).toBeGreaterThan(1);
+        expect(res.results.length).toBeGreaterThanOrEqual(1);
 
-        console.log(`Fetched ${res.backdrops.length} backdrops`);
+        console.log(`Fetched ${JSON.stringify(res)}`);
     }, 10000);
 
-    it('fetches the translations for the collection of Harry Potter movies', async () => {
-        const res = await tmdb.collections.getTranslations(1241);
+    it('fetches the logos of Walt Disney', async () => {
+        const res = await tmdb.companies.getImages(3166);
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.translations.length).toBeGreaterThan(1);
+        expect(res.logos.length).toBeGreaterThanOrEqual(1);
 
-        console.log(`Fetched ${res.translations.length} translations`);
+        console.log(`Fetched ${JSON.stringify(res)}`);
     }, 10000);
 });

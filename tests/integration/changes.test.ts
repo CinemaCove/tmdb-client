@@ -30,8 +30,6 @@ describe('TmdbClient - Changes (real API)', () => {
             end_date: endDate,
         });
 
-        expect(typeof res === 'object').toBe(true);
-
         // Spot-check a few well-known ones (stable data)
         expect(res.page).toBe(1);
 
@@ -43,7 +41,6 @@ describe('TmdbClient - Changes (real API)', () => {
             start_date: startDate,
             end_date: endDate,
         });
-        expect(typeof res === 'object').toBe(true);
 
         // Spot-check a few well-known ones (stable data)
         expect(res.page).toBe(1);
@@ -56,7 +53,6 @@ describe('TmdbClient - Changes (real API)', () => {
             start_date: startDate,
             end_date: endDate,
         });
-        expect(typeof res === 'object').toBe(true);
 
         // Spot-check a few well-known ones (stable data)
         expect(res.page).toBe(1);

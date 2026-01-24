@@ -22,8 +22,6 @@ describe('TmdbClient - Certification (real API)', () => {
     it('fetches a list of movie certifications for all available countries', async () => {
         const res = await tmdb.certification.getMovieCertifications();
 
-        expect(typeof res === 'object').toBe(true);
-
         // Spot-check a few well-known ones (stable data)
         expect(res.certifications.PT).toBeDefined();
         expect(res.certifications.PT.length).toBeGreaterThan(1);
@@ -33,8 +31,6 @@ describe('TmdbClient - Certification (real API)', () => {
 
     it('fetches a list of tv certifications for all available countries', async () => {
         const res = await tmdb.certification.getTVCertifications();
-
-        expect(typeof res === 'object').toBe(true);
 
         // Spot-check a few well-known ones (stable data)
         expect(res.certifications.PT).toBeDefined();

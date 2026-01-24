@@ -8,7 +8,7 @@ type AccountAvatar = {
     readonly gravatar: AccountGravatar;
     readonly tmdb: AccountTmdb;
 };
-export type AccountDetails = {
+export type AccountDetailsResult = {
     readonly avatar: AccountAvatar;
     readonly id: number;
     readonly iso_639_1: string;

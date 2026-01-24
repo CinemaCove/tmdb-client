@@ -112,3 +112,13 @@ export type CertificationsTVItem = {
     readonly meaning: string;
     readonly order: number;
 };
+export type CertificationsMovieCertificationsResult = {
+    readonly certifications: {
+        readonly [key in CertificationsMovieCountry]: CertificationsMovieItem[];
+    };
+};
+export type CertificationsTVCertificationsResult = {
+    readonly certifications: {
+        readonly [key in CertificationsTVCountry]: CertificationsTVItem[];
+    };
+};

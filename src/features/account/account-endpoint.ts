@@ -1,6 +1,6 @@
 import {
     AccountCustomListItem,
-    AccountDetails,
+    AccountDetailsResult,
     AccountFavoriteMovieItem,
     AccountFavoriteTVShowItem,
     AccountRatedMovieItem,
@@ -24,7 +24,7 @@ export class AccountEndpoint {
         } = {
             sessionId: '',
         }
-    ): Promise<AccountDetails> {
+    ): Promise<AccountDetailsResult> {
         return await this.client.get(`/account/${accountId}`, options);
     }
 

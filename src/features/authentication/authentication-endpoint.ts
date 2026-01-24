@@ -1,28 +1,12 @@
 import {
+    AuthenticationCreateSessionResult,
+    AuthenticationDeleteSessionResult,
     AuthenticationGuestSessionResult,
+    AuthenticationRequestTokenResult,
+    AuthenticationValidateSesssionWithLoginResult,
     AuthenticationValidationResult,
 } from './authentication.types';
 import { HttpClient } from '../../http-client.interface';
-
-type AuthenticationRequestTokenResult = {
-    readonly success: boolean;
-    readonly expires_at: string;
-    readonly request_token: string;
-};
-
-type AuthenticationCreateSessionResult = {
-    readonly success: boolean;
-    readonly session_id: string;
-};
-
-type AuthenticationValidateSesssionWithLoginResult = {
-    readonly success: boolean;
-    readonly expires_at: string;
-    readonly request_token: string;
-};
-type AuthenticationDeleteSessionResult = {
-    readonly success: boolean;
-};
 
 export class AuthenticationEndpoint {
     public constructor(private client: HttpClient) {}

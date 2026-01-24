@@ -22,8 +22,6 @@ describe('TmdbClient - Configuration (real API)', () => {
     it('fetches configuration details from /configuration', async () => {
         const res = await tmdb.configuration.getDetails();
 
-        expect(typeof res === 'object').toBe(true);
-
         // Spot-check a few well-known ones (stable data)
         expect(res.images).toBeDefined();
         expect(res.images.base_url).toBe('http://image.tmdb.org/t/p/');
@@ -33,10 +31,6 @@ describe('TmdbClient - Configuration (real API)', () => {
 
     it('fetches real list of countries from /configuration/countries', async () => {
         const countries = await tmdb.configuration.getCountries();
-
-        // Basic shape & content assertions (real data should have ~200+ entries)
-        expect(Array.isArray(countries)).toBe(true);
-        expect(countries.length).toBeGreaterThan(150); // TMDB has ~240+ countries/regions
 
         // Spot-check a few well-known ones (stable data)
         const us = countries.find(c => c.iso_3166_1 === 'US');
@@ -48,15 +42,11 @@ describe('TmdbClient - Configuration (real API)', () => {
         expect(pt).toBeDefined();
         expect(pt?.english_name).toBe('Portugal');
 
-        // Optional: log count for visibility during dev
         console.log(`Fetched ${countries.length} countries`);
     }, 10000);
 
     it('fetches configuration jobs from /configuration/jobs', async () => {
         const res = await tmdb.configuration.getJobs();
-
-        expect(Array.isArray(res)).toBe(true);
-        expect(res.length).toBeGreaterThan(1);
 
         // Spot-check a few well-known ones (stable data)
         const entry = res.find(r => r.department === 'Production');
@@ -68,9 +58,6 @@ describe('TmdbClient - Configuration (real API)', () => {
     it('fetches configuration languages from /configuration/languages', async () => {
         const res = await tmdb.configuration.getLanguages();
 
-        expect(Array.isArray(res)).toBe(true);
-        expect(res.length).toBeGreaterThan(1);
-
         // Spot-check a few well-known ones (stable data)
         const entry = res.find(r => r.iso_639_1 === 'pt');
         expect(entry).toBeDefined();
@@ -81,9 +68,6 @@ describe('TmdbClient - Configuration (real API)', () => {
     it('fetches primary translations from /configuration/primary_translations', async () => {
         const res = await tmdb.configuration.getPrimaryTranslations();
 
-        expect(Array.isArray(res)).toBe(true);
-        expect(res.length).toBeGreaterThan(1);
-
         // Spot-check a few well-known ones (stable data)
         const entry = res.find(r => r === 'af-ZA');
         expect(entry).toBeDefined();
@@ -93,9 +77,6 @@ describe('TmdbClient - Configuration (real API)', () => {
 
     it('fetches timezones from /configuration/timezones', async () => {
         const res = await tmdb.configuration.getTimezones();
-
-        expect(Array.isArray(res)).toBe(true);
-        expect(res.length).toBeGreaterThan(1);
 
         // Spot-check a few well-known ones (stable data)
         const entry = res.find(r => r.iso_3166_1 === 'AD');

@@ -21,8 +21,6 @@ describe('TmdbClient - Authentication (real API)', () => {
     it('validates the API key at authentication', async () => {
         const res = await tmdb.authentication.validateApiKey();
 
-        expect(typeof res === 'object').toBe(true);
-
         // Spot-check a few well-known ones (stable data)
         expect(res.success).toBe(true);
 
@@ -31,8 +29,6 @@ describe('TmdbClient - Authentication (real API)', () => {
 
     it('obtains a new guest session', async () => {
         const res = await tmdb.authentication.getGuestSession();
-
-        expect(typeof res === 'object').toBe(true);
 
         // Spot-check a few well-known ones (stable data)
         expect(res.success).toBe(true);

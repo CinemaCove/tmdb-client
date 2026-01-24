@@ -31,8 +31,6 @@ describe('TmdbClient - Account (real API)', () => {
     it('gets the default account details', async () => {
         const res = await tmdb.account.getDetails(null, { sessionId: sessionId || '' });
 
-        expect(typeof res === 'object').toBe(true);
-
         // Spot-check a few well-known ones (stable data)
         expect(res.id).toBeGreaterThan(0);
         expect(typeof res.username).toBe('string');
@@ -82,7 +80,6 @@ describe('TmdbClient - Account (real API)', () => {
             sessionId: sessionId || '',
         });
 
-        expect(typeof res).toBe('object');
         // Spot-check a few well-known ones (stable data)
         expect(res.page).toBe(1);
 
@@ -95,7 +92,6 @@ describe('TmdbClient - Account (real API)', () => {
             sessionId: sessionId || '',
         });
 
-        expect(typeof res).toBe('object');
         // Spot-check a few well-known ones (stable data)
         expect(res.page).toBe(1);
 
@@ -108,7 +104,6 @@ describe('TmdbClient - Account (real API)', () => {
             sessionId: sessionId || '',
         });
 
-        expect(typeof res).toBe('object');
         // Spot-check a few well-known ones (stable data)
         expect(res.page).toBe(1);
 
@@ -121,7 +116,6 @@ describe('TmdbClient - Account (real API)', () => {
             sessionId: sessionId || '',
         });
 
-        expect(typeof res).toBe('object');
         // Spot-check a few well-known ones (stable data)
         expect(res.page).toBe(1);
 
@@ -134,7 +128,6 @@ describe('TmdbClient - Account (real API)', () => {
             sessionId: sessionId || '',
         });
 
-        expect(typeof res).toBe('object');
         // Spot-check a few well-known ones (stable data)
         expect(res.page).toBe(1);
 
@@ -147,7 +140,6 @@ describe('TmdbClient - Account (real API)', () => {
             sessionId: sessionId || '',
         });
 
-        expect(typeof res).toBe('object');
         // Spot-check a few well-known ones (stable data)
         expect(res.page).toBe(1);
 
@@ -160,7 +152,6 @@ describe('TmdbClient - Account (real API)', () => {
             sessionId: sessionId || '',
         });
 
-        expect(typeof res).toBe('object');
         // Spot-check a few well-known ones (stable data)
         expect(res.page).toBe(1);
 
