@@ -1,0 +1,4 @@
+// Auto-generated barrel file – do not edit manually
+
+export * from './certifications-endpoint';
+export * from './certifications.types';

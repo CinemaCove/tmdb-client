@@ -1,4 +1,4 @@
-export type CertificationMovieCountry =
+export type CertificationsMovieCountry =
     | 'AU'
     | 'BG'
     | 'BR'
@@ -51,12 +51,12 @@ export type CertificationMovieCountry =
     | 'RO'
     | 'PL'
     | 'BE';
-export type CertificationMovieEntry = {
+export type CertificationsMovieEntry = {
     readonly certification: string;
     readonly meaning: string;
     readonly order: number;
 };
-export type CertificationTVCountry =
+export type CertificationsTVCountry =
     | 'NL'
     | 'KR'
     | 'RU'
@@ -107,7 +107,7 @@ export type CertificationTVCountry =
     | 'LU'
     | 'BE';
 
-export type CertificationTVEntry = {
+export type CertificationsTVEntry = {
     readonly certification: string;
     readonly meaning: string;
     readonly order: number;

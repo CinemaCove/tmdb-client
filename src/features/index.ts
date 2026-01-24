@@ -2,6 +2,7 @@
 
 export * from './account';
 export * from './authentication';
-export * from './certification';
+export * from './certifications';
+export * from './changes';
 export * from './configuration';
 export * from './movies';
