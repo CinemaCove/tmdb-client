@@ -10,6 +10,7 @@ import {
     DiscoverEndpoint,
     FindEndpoint,
     GenresEndpoint,
+    GuestSessionEndpoint,
 } from './features';
 import { HttpClient } from './http-client.interface';
 
@@ -25,6 +26,7 @@ export class TmdbClient {
     public readonly discover: DiscoverEndpoint;
     public readonly find: FindEndpoint;
     public readonly genres: GenresEndpoint;
+    public readonly guestSession: GuestSessionEndpoint;
 
     constructor(private httpClient: HttpClient) {
         this.account = new AccountEndpoint(this.httpClient);
@@ -38,6 +40,7 @@ export class TmdbClient {
         this.discover = new DiscoverEndpoint(this.httpClient);
         this.find = new FindEndpoint(this.httpClient);
         this.genres = new GenresEndpoint(this.httpClient);
+        this.guestSession = new GuestSessionEndpoint(this.httpClient);
         // this.movies = new MoviesEndpoint(this.httpClient);
     }
 }

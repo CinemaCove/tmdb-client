@@ -1,7 +1,7 @@
 type GenresGenre = { id: number; name: string };
 export type GenresMovieGenresResult = {
-    genres: GenresGenre[];
+    readonly genres: GenresGenre[];
 };
 export type GenresTVShowGenresResult = {
-    genres: GenresGenre[];
+    readonly genres: GenresGenre[];
 };
