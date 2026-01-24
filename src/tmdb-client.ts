@@ -14,6 +14,7 @@ import {
     KeywordEndpoint,
     ListEndpoint,
     MovieEndpoint,
+    NetworkEndpoint,
 } from './features';
 import { HttpClient } from './http-client.interface';
 
@@ -33,6 +34,7 @@ export class TmdbClient {
     public readonly keyword: KeywordEndpoint;
     public readonly list: ListEndpoint;
     public readonly movie: MovieEndpoint;
+    public readonly network: NetworkEndpoint;
 
     constructor(private httpClient: HttpClient) {
         this.account = new AccountEndpoint(this.httpClient);
@@ -50,5 +52,6 @@ export class TmdbClient {
         this.keyword = new KeywordEndpoint(this.httpClient);
         this.list = new ListEndpoint(this.httpClient);
         this.movie = new MovieEndpoint(this.httpClient);
+        this.network = new NetworkEndpoint(this.httpClient);
     }
 }

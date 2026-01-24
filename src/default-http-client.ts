@@ -4,10 +4,10 @@ import { buildBody } from './utils/build-body';
 import { HttpClient } from './http-client.interface';
 
 export class DefaultHttpClient implements HttpClient {
-    private http: AxiosInstance;
+    private readonly http: AxiosInstance;
 
     public constructor(
-        apiKey: string | { accessToken: string },
+        readonly apiKey: string | { accessToken: string },
         baseUrl = 'https://api.themoviedb.org/3'
     ) {
         const isApiKey = typeof apiKey !== 'object';

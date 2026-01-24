@@ -1,6 +1,6 @@
-export type PaginatedResult<T> = {
-    readonly page: number;
-    readonly total_pages: number;
-    readonly total_results: number;
-    readonly results: T[];
-};
+export type PaginatedResult<T> = Readonly<{
+    page: number;
+    total_pages: number;
+    total_results: number;
+    results: T[];
+}>;

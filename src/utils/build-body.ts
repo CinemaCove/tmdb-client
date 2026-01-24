@@ -1,7 +1,7 @@
 import { camelToSnake } from './camel-to-snake';
 
 export function buildBody<T extends Record<string, any>>(
-    options: T | undefined
+    options: Readonly<T | undefined>
 ): Record<string, string | number | boolean> {
     const body: Record<string, any> = {};
 
