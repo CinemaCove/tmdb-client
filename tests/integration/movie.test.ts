@@ -1,7 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import dotenv from 'dotenv';
 import { DefaultHttpClient, TmdbClient } from '../../src';
-import { options } from 'axios';
 
 dotenv.config(); // loads .env
 
@@ -24,36 +23,36 @@ describe('TmdbClient - Movie (real API)', () => {
         const res = await tmdb.movie.getNowPlayingList();
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.total_results).toBeGreaterThan(0);
+        expect(res.totalResults).toBeGreaterThan(0);
 
-        console.log(`Fetched ${res.total_results} results`);
+        console.log(`Fetched ${res.totalResults} results`);
     }, 10000);
 
     it('fetches popular movies', async () => {
         const res = await tmdb.movie.getPopularList();
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.total_results).toBeGreaterThan(0);
+        expect(res.totalResults).toBeGreaterThan(0);
 
-        console.log(`Fetched ${res.total_results} results`);
+        console.log(`Fetched ${res.totalResults} results`);
     }, 10000);
 
     it('fetches top rated movies', async () => {
         const res = await tmdb.movie.getTopRatedList();
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.total_results).toBeGreaterThan(0);
+        expect(res.totalResults).toBeGreaterThan(0);
 
-        console.log(`Fetched ${res.total_results} results`);
+        console.log(`Fetched ${res.totalResults} results`);
     }, 10000);
 
     it('fetches upcoming movies', async () => {
         const res = await tmdb.movie.getUpcomingList();
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.total_results).toBeGreaterThan(0);
+        expect(res.totalResults).toBeGreaterThan(0);
 
-        console.log(`Fetched ${res.total_results} results`);
+        console.log(`Fetched ${res.totalResults} results`);
     }, 10000);
 
     it('fetches fight club details with all additional responses', async () => {
@@ -71,13 +70,13 @@ describe('TmdbClient - Movie (real API)', () => {
         expect(res.similar).toBeDefined();
         expect(res.reviews).toBeDefined();
         expect(res.keywords).toBeDefined();
-        expect(res.release_dates).toBeDefined();
-        expect(res.alternative_titles).toBeDefined();
+        expect(res.releaseDates).toBeDefined();
+        expect(res.alternativeTitles).toBeDefined();
         expect(res.translations).toBeDefined();
-        expect(res.external_ids).toBeDefined();
+        expect(res.externalIds).toBeDefined();
         expect(res['watch/providers']).toBeDefined();
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.external_ids.imdb_id).toBe('tt0137523');
+        expect(res.externalIds!.imdbId).toBe('tt0137523');
     }, 10000);
 });

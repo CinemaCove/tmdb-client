@@ -1,56 +1,56 @@
 import { MediaType } from '../../shared';
 
 export type ListAddMovieResult = Readonly<{
-    status_code: number;
-    status_message: string;
+    statusCode: number;
+    statusMessage: string;
 }>;
 export type ListItemStatusResult = Readonly<{
     id: number;
-    item_present: boolean;
+    itemPresent: boolean;
 }>;
 export type ListClearResult = Readonly<{
-    status_code: number;
-    status_message: string;
+    statusCode: number;
+    statusMessage: string;
 }>;
 export type ListCreateResult = Readonly<{
-    status_message: string;
+    statusMessage: string;
     success: boolean;
-    status_code: number;
-    list_id: number;
+    statusCode: number;
+    listId: number;
 }>;
 export type ListDeleteResult = Readonly<{
-    status_code: number;
-    status_message: string;
+    statusCode: number;
+    statusMessage: string;
 }>;
 export type ListDetailsItem = Readonly<{
     adult: boolean;
-    backdrop_path: string;
-    genre_ids: Readonly<number[]>;
+    backdropPath: string;
+    genreIds: Readonly<number[]>;
     id: number;
-    media_type: MediaType;
-    original_language: string;
-    original_title: string;
+    mediaType: MediaType;
+    originalLanguage: string;
+    originalTitle: string;
     overview: string;
     popularity: number;
-    poster_path: string;
-    release_date: string;
+    posterPath: string;
+    releaseDate: string;
     title: string;
     video: boolean;
-    vote_average: number;
-    vote_count: number;
+    voteAverage: number;
+    voteCount: number;
 }>;
 export type ListDetailsResult = Readonly<{
-    created_by: string;
+    createdBy: string;
     description: string;
-    favorite_count: number;
+    favoriteCount: number;
     id: string;
     items: Readonly<ListDetailsItem[]>;
-    item_count: number;
-    iso_639_1: string;
+    itemCount: number;
+    iso639_1: string;
     name: string;
-    poster_path: string;
+    posterPath: string;
 }>;
 export type ListRemoveMovieResult = Readonly<{
-    status_code: number;
-    status_message: string;
+    statusCode: number;
+    statusMessage: string;
 }>;

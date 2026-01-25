@@ -21,7 +21,7 @@ describe('TmdbClient - Guest Session Ratings (real API)', () => {
         // Create fresh guest session once for all tests in this describe block
         const session = await tmdb.authentication.getGuestSession();
         expect(session.success).toBe(true);
-        guestSessionId = session.guest_session_id;
+        guestSessionId = session.guestSessionId;
 
         console.log(`Using guest session: ${guestSessionId}`);
     }, 15000);

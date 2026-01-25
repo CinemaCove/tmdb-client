@@ -26,8 +26,8 @@ describe('TmdbClient - Changes (real API)', () => {
 
     it('fetches all movie change ids from the last 24 hours', async () => {
         const res = await tmdb.changes.getMovieChanges({
-            start_date: startDate,
-            end_date: endDate,
+            startDate: startDate,
+            endDate: endDate,
         });
 
         // Spot-check a few well-known ones (stable data)
@@ -38,8 +38,8 @@ describe('TmdbClient - Changes (real API)', () => {
 
     it('fetches all tv show change ids from the last 24 hours', async () => {
         const res = await tmdb.changes.getTVChanges({
-            start_date: startDate,
-            end_date: endDate,
+            startDate: startDate,
+            endDate: endDate,
         });
 
         // Spot-check a few well-known ones (stable data)
@@ -50,8 +50,8 @@ describe('TmdbClient - Changes (real API)', () => {
 
     it('fetches all people change ids from the last 24 hours', async () => {
         const res = await tmdb.changes.getPeopleChanges({
-            start_date: startDate,
-            end_date: endDate,
+            startDate: startDate,
+            endDate: endDate,
         });
 
         // Spot-check a few well-known ones (stable data)

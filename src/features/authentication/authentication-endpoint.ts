@@ -21,7 +21,7 @@ export class AuthenticationEndpoint {
 
     public async createSession(
         body: Readonly<{
-            request_token: string;
+            requestToken: string;
         }>
     ): Promise<AuthenticationCreateSessionResult> {
         return await this.client.post(`/authentication/session/new`, body);
@@ -29,7 +29,7 @@ export class AuthenticationEndpoint {
 
     public async createSessionV4(
         body: Readonly<{
-            access_token: string;
+            accessToken: string;
         }>
     ): Promise<AuthenticationCreateSessionResult> {
         return await this.client.post(`/authentication/session/convert/v4`, body);

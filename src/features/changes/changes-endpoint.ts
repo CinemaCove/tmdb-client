@@ -11,8 +11,8 @@ export class ChangesEndpoint {
     public async getMovieChanges(
         options?: Readonly<{
             page?: number;
-            start_date?: string;
-            end_date?: string;
+            startDate?: string;
+            endDate?: string;
         }>
     ): Promise<PaginatedResult<ChangesItem>> {
         return this.client.get('/movie/changes', options);
@@ -24,8 +24,8 @@ export class ChangesEndpoint {
     public async getPeopleChanges(
         options?: Readonly<{
             page?: number;
-            start_date?: string;
-            end_date?: string;
+            startDate?: string;
+            endDate?: string;
         }>
     ): Promise<PaginatedResult<ChangesItem>> {
         return this.client.get('/person/changes', options);
@@ -37,8 +37,8 @@ export class ChangesEndpoint {
     public async getTVChanges(
         options?: Readonly<{
             page?: number;
-            start_date?: string;
-            end_date?: string;
+            startDate?: string;
+            endDate?: string;
         }>
     ): Promise<PaginatedResult<ChangesItem>> {
         return this.client.get('/tv/changes', options);

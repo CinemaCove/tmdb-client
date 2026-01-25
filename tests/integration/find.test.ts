@@ -37,7 +37,7 @@ describe('TmdbClient - Find (real API)', () => {
             });
 
             // Spot-check a few well-known ones (stable data)
-            const sinners = res.movie_results.find(m => m.id === 1233413);
+            const sinners = res.movieResults.find(m => m.id === 1233413);
             expect(sinners).toBeDefined();
         }
     }, 10000);

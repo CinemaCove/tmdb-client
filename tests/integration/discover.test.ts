@@ -28,7 +28,7 @@ describe('TmdbClient - Discover (real API)', () => {
         });
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.results.find(r => r.original_title === 'Basket Case')).toBeDefined();
+        expect(res.results.find(r => r.originalTitle === 'Basket Case')).toBeDefined();
 
         console.log(res);
     }, 10000);
@@ -43,7 +43,7 @@ describe('TmdbClient - Discover (real API)', () => {
 
         // Spot-check a few well-known ones (stable data)
         expect(res.results
-            .find(r => r.original_title === 'Big Trouble in Little China'))
+            .find(r => r.originalTitle === 'Big Trouble in Little China'))
             .toBeDefined();
 
         console.log(res);

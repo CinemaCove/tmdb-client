@@ -24,7 +24,7 @@ describe('TmdbClient - Configuration (real API)', () => {
 
         // Spot-check a few well-known ones (stable data)
         expect(res.images).toBeDefined();
-        expect(res.images.base_url).toBe('http://image.tmdb.org/t/p/');
+        expect(res.images.baseUrl).toBe('http://image.tmdb.org/t/p/');
 
         console.log(`Fetched ${JSON.stringify(res)}`);
     }, 10000);
@@ -33,14 +33,14 @@ describe('TmdbClient - Configuration (real API)', () => {
         const countries = await tmdb.configuration.getCountries();
 
         // Spot-check a few well-known ones (stable data)
-        const us = countries.find(c => c.iso_3166_1 === 'US');
+        const us = countries.find(c => c.iso3166_1 === 'US');
         expect(us).toBeDefined();
-        expect(us?.english_name).toBe('United States of America');
-        expect(us?.native_name).toBe('United States');
+        expect(us?.englishName).toBe('United States of America');
+        expect(us?.nativeName).toBe('United States');
 
-        const pt = countries.find(c => c.iso_3166_1 === 'PT');
+        const pt = countries.find(c => c.iso3166_1 === 'PT');
         expect(pt).toBeDefined();
-        expect(pt?.english_name).toBe('Portugal');
+        expect(pt?.englishName).toBe('Portugal');
 
         console.log(`Fetched ${countries.length} countries`);
     }, 10000);
@@ -59,7 +59,7 @@ describe('TmdbClient - Configuration (real API)', () => {
         const res = await tmdb.configuration.getLanguages();
 
         // Spot-check a few well-known ones (stable data)
-        const entry = res.find(r => r.iso_639_1 === 'pt');
+        const entry = res.find(r => r.iso639_1 === 'pt');
         expect(entry).toBeDefined();
 
         console.log(`Fetched ${res.length} languages`);
@@ -79,7 +79,7 @@ describe('TmdbClient - Configuration (real API)', () => {
         const res = await tmdb.configuration.getTimezones();
 
         // Spot-check a few well-known ones (stable data)
-        const entry = res.find(r => r.iso_3166_1 === 'AD');
+        const entry = res.find(r => r.iso3166_1 === 'AD');
         expect(entry).toBeDefined();
 
         console.log(`Fetched ${res.length} timezones`);

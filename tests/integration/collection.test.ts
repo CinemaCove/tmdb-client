@@ -23,7 +23,7 @@ describe('TmdbClient - Collection (real API)', () => {
         const res = await tmdb.collection.getDetails(1241);
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.original_name).toBe('Harry Potter Collection');
+        expect(res.originalName).toBe('Harry Potter Collection');
 
         console.log(`Fetched ${JSON.stringify(res)}`);
     }, 10000);

@@ -4,9 +4,9 @@ export type NetworkDetailsResult = Readonly<{
     headquarters: string;
     homepage: string;
     id: number;
-    logo_path: string;
+    logoPath: string;
     name: string;
-    origin_country: string;
+    originCountry: string;
 }>;
 export type NetworkAlternativeNamesResultItem = Readonly<{
     name: string;
@@ -18,11 +18,11 @@ export type NetworkAlternativeNamesResult = Readonly<{
 }>;
 export type NetworkImageItem = Readonly<{
     id: string;
-    aspect_ratio: number;
-    file_path: string;
+    aspectRatio: number;
+    filePath: string;
     height: number;
-    file_type: FileType;
-    vote_average: number;
-    vote_count: number;
+    fileType: FileType;
+    voteAverage: number;
+    voteCount: number;
     width: number;
 }>;

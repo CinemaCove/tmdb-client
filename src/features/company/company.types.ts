@@ -5,19 +5,19 @@ export type CompanyDetailsResult = Readonly<{
     headquarters: string;
     homepage: string;
     id: number;
-    logo_path: string;
+    logoPath: string;
     name: string;
-    origin_country: string;
-    parent_company: string;
+    originCountry: string;
+    parentCompany: string;
 }>;
 export type CompanyImageItem = Readonly<{
-    aspect_ratio: number;
-    file_path: string;
+    aspectRatio: number;
+    filePath: string;
     height: number;
     id: string;
-    file_type: FileType;
-    vote_average: number;
-    vote_count: number;
+    fileType: FileType;
+    voteAverage: number;
+    voteCount: number;
     width: number;
 }>;
 export type CompanyImagesResult = Readonly<{

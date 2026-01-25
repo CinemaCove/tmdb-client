@@ -120,7 +120,7 @@ export type MovieAppendToResponse =
     | 'external_ids'
     | 'watch/providers';
 export type MovieTitleItem = Readonly<{
-    iso_3166_1: string;
+    iso3166_1: string;
     title: string;
     type: string;
 }>;
@@ -135,17 +135,17 @@ export type MovieGenreItem = Readonly<{
 }>;
 export type MovieProductionCompanyItem = Readonly<{
     id: number;
-    logo_path: string;
+    logoPath: string;
     name: string;
-    origin_country: string;
+    originCountry: string;
 }>;
 export type MovieProductionCountryItem = Readonly<{
-    iso_3166_1: string;
+    iso3166_1: string;
     name: string;
 }>;
 export type MovieSpokenLanguageItem = Readonly<{
-    english_name: string;
-    iso_639_1: string;
+    englishName: string;
+    iso639_1: string;
     name: string;
 }>;
 export type MovieAccountStateRate = Readonly<{
@@ -158,7 +158,7 @@ export type MovieAccountStatesResult = Readonly<{
     watchlist: boolean;
 }>;
 export type MovieChangesPoster = Readonly<{
-    file_path: string;
+    filePath: string;
 }>;
 export type MovieChangesValue = Readonly<{
     poster: MovieChangesPoster;
@@ -167,8 +167,8 @@ export type MovieChangesChangeItem = Readonly<{
     id: string;
     action: string;
     time: string;
-    iso_639_1: string;
-    iso_3166_1: string;
+    iso639_1: string;
+    iso3166_1: string;
     value: MovieChangesValue;
 }>;
 export type MovieChangesItem = Readonly<{
@@ -182,12 +182,12 @@ export type MovieCreditsCrewItem = Readonly<{
     adult: boolean;
     gender: GenderType;
     id: number;
-    known_for_department: string;
+    knownForDepartment: string;
     name: string;
-    original_name: string;
+    originalName: string;
     popularity: number;
-    profile_path: string;
-    credit_id: string;
+    profilePath: string;
+    creditId: string;
     department: string;
     job: string;
 }>;
@@ -195,14 +195,14 @@ export type MovieCreditsCastItem = Readonly<{
     adult: boolean;
     gender: GenderType;
     id: number;
-    known_for_department: string;
+    knownForDepartment: string;
     name: string;
-    original_name: string;
+    originalName: string;
     popularity: number;
-    profile_path: string;
-    cast_id: number;
+    profilePath: string;
+    castId: number;
     character: string;
-    credit_id: string;
+    creditId: string;
     order: number;
 }>;
 export type MovieCreditsResult = Readonly<{
@@ -212,19 +212,19 @@ export type MovieCreditsResult = Readonly<{
 }>;
 export type MovieExternalIdsResult = Readonly<{
     id: number;
-    imdb_id: string;
-    wikidata_id: string;
-    facebook_id: string;
-    instagram_id: string;
-    twitter_id: string;
+    imdbId: string;
+    wikidataId: string;
+    facebookId: string;
+    instagramId: string;
+    twitterId: string;
 }>;
 export type MovieImageItem = Readonly<{
-    aspect_ratio: number;
+    aspectRatio: number;
     height: number;
-    iso_639_1: string;
-    file_path: string;
-    vote_average: number;
-    vote_count: number;
+    iso639_1: string;
+    filePath: string;
+    voteAverage: number;
+    voteCount: number;
     width: number;
 }>;
 export type MovieKeywordItem = Readonly<{
@@ -237,26 +237,26 @@ export type MovieKeywordsResult = Readonly<{
 }>;
 export type MovieListDetail = Readonly<{
     description: string;
-    favorite_count: number;
+    favoriteCount: number;
     id: number;
-    item_count: number;
-    iso_631_1: string;
-    list_type: string;
+    itemCount: number;
+    iso631_1: string;
+    listType: string;
     name: string;
-    poster_path: string;
+    posterPath: string;
 }>;
 export type MovieListPaginatedResult = Readonly<PaginatedResult<MovieListDetail> & { id: number }>;
 export type MovieReleaseDateItem = Readonly<{
     certification: string;
     descriptors: Readonly<any[]>;
-    iso_639_1: string;
+    iso639_1: string;
     note: string;
-    release_date: string;
+    releaseDate: string;
     type: number;
 }>;
 export type MovieReleaseDateResultItem = Readonly<{
-    iso_631_1: string;
-    release_dates: Readonly<MovieReleaseDateItem[]>;
+    iso631_1: string;
+    releaseDates: Readonly<MovieReleaseDateItem[]>;
 }>;
 export type MovieReleaseDatesResult = Readonly<{
     id: number;
@@ -265,16 +265,16 @@ export type MovieReleaseDatesResult = Readonly<{
 export type MovieReviewAuthorDetails = Readonly<{
     name: string;
     username: string;
-    avatar_path: string;
+    avatarPath: string;
     rating: number;
 }>;
 export type MovieReviewItem = Readonly<{
     author: string;
-    author_details: MovieReviewAuthorDetails;
+    authorDetails: MovieReviewAuthorDetails;
     content: string;
-    created_at: string;
+    createdAt: string;
     id: string;
-    updated_at: string;
+    updatedAt: string;
     url: string;
 }>;
 export type MovieReviewsPaginatedResult = Readonly<PaginatedResult<MovieReviewItem> & { id: number }>;
@@ -286,10 +286,10 @@ export type MovieTranslationData = Readonly<{
     title: string;
 }>;
 export type MovieTranslationItem = Readonly<{
-    iso_3166_1: string;
-    iso_639_1: string;
+    iso3166_1: string;
+    iso639_1: string;
     name: string;
-    english_name: string;
+    englishName: string;
     data: MovieTranslationData;
 }>;
 export type MovieTranslationsResult = Readonly<{
@@ -297,15 +297,15 @@ export type MovieTranslationsResult = Readonly<{
     translations: Readonly<MovieTranslationItem[]>;
 }>;
 export type MovieVideoItem = Readonly<{
-    iso_639_1: string;
-    iso_3166_1: string;
+    iso639_1: string;
+    iso3166_1: string;
     name: string;
     key: string;
     site: string;
     size: number;
     type: string;
     official: boolean;
-    published_at: string;
+    publishedAt: string;
     id: string;
 }>;
 export type MovieVideosResult = Readonly<{
@@ -313,10 +313,10 @@ export type MovieVideosResult = Readonly<{
     results: Readonly<MovieVideoItem[]>;
 }>;
 export type MovieWatchProviderItem = Readonly<{
-    logo_path: string;
-    provider_id: number;
-    provider_name: string;
-    display_priority: number;
+    logoPath: string;
+    providerId: number;
+    providerName: string;
+    displayPriority: number;
 }>;
 export type MovieWatchProviderResultItem = Readonly<{
     link: string;
@@ -331,52 +331,52 @@ export type MovieWatchProvidersResult = Readonly<{
     };
 }>;
 export type MovieDeleteRatingResult = Readonly<{
-    status_code: number;
-    status_message: string;
+    statusCode: number;
+    statusMessage: string;
 }>;
 export type MovieListItem = Readonly<{
     adult: boolean;
-    backdrop_path: string;
-    genre_ids: Readonly<number[]>;
+    backdropPath: string;
+    genreIds: Readonly<number[]>;
     id: number;
-    original_language: string;
-    original_title: string;
+    originalLanguage: string;
+    originalTitle: string;
     overview: string;
     popularity: number;
-    poster_path: string;
-    release_date: string;
+    posterPath: string;
+    releaseDate: string;
     title: string;
     video: boolean;
-    vote_average: number;
-    vote_count: number;
+    voteAverage: number;
+    voteCount: number;
 }>;
 
 export type MovieDetail = Readonly<{
     adult: boolean;
-    backdrop_path: string;
-    belongs_to_collection?: any;
+    backdropPath: string;
+    belongsToCollection?: any;
     budget: number;
     genres: Readonly<MovieGenreItem[]>;
     homepage: string;
     id: number;
-    imdb_id: string;
-    original_language: string;
-    original_title: string;
+    imdbId: string;
+    originalLanguage: string;
+    originalTitle: string;
     overview: string;
     popularity: number;
-    poster_path: string;
-    production_companies: Readonly<MovieProductionCompanyItem[]>;
-    production_countries: Readonly<MovieProductionCountryItem[]>;
-    release_date: string;
+    posterPath: string;
+    productionCompanies: Readonly<MovieProductionCompanyItem[]>;
+    productionCountries: Readonly<MovieProductionCountryItem[]>;
+    releaseDate: string;
     revenue: number;
     runtime: number;
-    spoken_languages: Readonly<MovieSpokenLanguageItem[]>;
+    spokenLanguages: Readonly<MovieSpokenLanguageItem[]>;
     status: string;
     tagline: string;
     title: string;
     video: boolean;
-    vote_average: number;
-    vote_count: number;
+    voteAverage: number;
+    voteCount: number;
 }>;
 
 export type MovieDetailsWithAppends = Readonly<
@@ -388,10 +388,10 @@ export type MovieDetailsWithAppends = Readonly<
         similar?: PaginatedResult<MovieDetail>;
         reviews?: PaginatedResult<MovieReviewItem>;
         keywords?: Omit<MovieKeywordsResult, 'id'>;
-        release_dates?: Omit<MovieReleaseDatesResult, 'id'>;
-        alternative_titles?: Omit<MovieAlternativeTitlesResult, 'id'>;
+        releaseDates?: Omit<MovieReleaseDatesResult, 'id'>;
+        alternativeTitles?: Omit<MovieAlternativeTitlesResult, 'id'>;
         translations?: Omit<MovieTranslationsResult, 'id'>;
-        external_ids?: Omit<MovieExternalIdsResult, 'id'>;
+        externalIds?: Omit<MovieExternalIdsResult, 'id'>;
         'watch/providers'?: Omit<MovieWatchProvidersResult, 'id'>;
     }
 >;

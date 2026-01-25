@@ -1,13 +1,13 @@
 import { MediaType } from '../../shared';
 
 export type CollectionImageItem = Readonly<{
-    aspect_ratio: number;
+    aspectRatio: number;
     height: number;
-    iso_3166_1: string;
-    iso_639_1: string;
-    file_path: string;
-    vote_average: number;
-    vote_count: number;
+    iso3166_1: string;
+    iso639_1: string;
+    filePath: string;
+    voteAverage: number;
+    voteCount: number;
     width: number;
 }>;
 export type CollectionTranslationData = Readonly<{
@@ -16,10 +16,10 @@ export type CollectionTranslationData = Readonly<{
     homepage: string;
 }>;
 export type CollectionTranslationItem = Readonly<{
-    iso_3166_1: string;
-    iso_639_1: string;
+    iso3166_1: string;
+    iso639_1: string;
     name: string;
-    english_name: string;
+    englishName: string;
     data: CollectionTranslationData;
 }>;
 export type CollectionTranslationsResult = Readonly<{
@@ -33,28 +33,28 @@ export type CollectionImagesResult = Readonly<{
 }>;
 export type CollectionDetailsPart = Readonly<{
     adult: boolean;
-    backdrop_path: string;
+    backdropPath: string;
     id: number;
     name: string;
-    original_name: string;
+    originalName: string;
     overview: string;
-    poster_path: string;
-    media_type: MediaType;
-    original_language: string;
-    genre_ids: Readonly<number[]>;
+    posterPath: string;
+    mediaType: MediaType;
+    originalLanguage: string;
+    genreIds: Readonly<number[]>;
     popularity: number;
-    release_date: string;
+    releaseDate: string;
     video: boolean;
-    vote_average: number;
-    vote_count: number;
+    voteAverage: number;
+    voteCount: number;
 }>;
 export type CollectionDetailsResult = Readonly<{
     id: number;
     name: string;
-    original_language: string;
-    original_name: string;
+    originalLanguage: string;
+    originalName: string;
     overview: string;
-    poster_path: string;
-    backdrop_path: string;
+    posterPath: string;
+    backdropPath: string;
     parts: CollectionDetailsPart[];
 }>;
