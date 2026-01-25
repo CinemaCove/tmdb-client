@@ -1,5 +1,5 @@
 import { HttpClient } from '../../http-client.interface';
-import { PaginatedResult } from '../../shared';
+import { MediaType, PaginatedResult } from '../../shared';
 
 import {
     AccountCustomListItem,
@@ -35,7 +35,7 @@ export class AccountEndpoint {
     public async setFavourite(
         accountId: number | null,
         body: Readonly<{
-            mediaType: string;
+            mediaType: MediaType;
             mediaId: number;
             favorite: boolean;
         }>,

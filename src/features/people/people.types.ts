@@ -27,6 +27,7 @@ export type PeoplePopularItem = {
     profilePath: string;
 };
 export type PeopleAppendToResponse =
+    | 'changes'
     | 'combined_credits'
     | 'external_ids'
     | 'images'
@@ -211,9 +212,10 @@ export type PeopleTranslationsResult = Readonly<{
 }>;
 export type PeopleDetailsWithAppends = Readonly<
     PeopleDetail & {
+        changes?: Omit<PeopleChangesResult, 'id'>;
         combinedCredits?: Omit<PeopleCombinedCreditsResult, 'id'>;
         externalIds?: Omit<PeopleExternalIdsResult, 'id'>;
-        image?: Omit<PeopleImagesResult, 'id'>;
+        images?: Omit<PeopleImagesResult, 'id'>;
         movieCredits?: Omit<PeopleMovieCreditsResult, 'id'>;
         tvCredits?: Omit<PeopleTVCreditsResult, 'id'>;
         translations?: Omit<PeopleTranslationsResult, 'id'>;

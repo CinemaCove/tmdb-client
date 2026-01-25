@@ -3,6 +3,7 @@ import { PaginatedResult } from '../../shared';
 
 import {
     MovieAccountStatesResult,
+    MovieAddRatingResult,
     MovieAlternativeTitlesResult,
     MovieAppendToResponse,
     MovieChangesResult,
@@ -93,10 +94,7 @@ export class MovieEndpoint {
             language?: string;
         }>
     ): Promise<MovieDetailsWithAppends> {
-        return await this.client.get(`/movie/${movieId}`, {
-            ...options,
-            appendToResponse: (options?.appendToResponse ?? []).join(','),
-        });
+        return await this.client.get(`/movie/${movieId}`, options);
     }
 
     /**
@@ -282,7 +280,7 @@ export class MovieEndpoint {
             guestSessionId?: string;
             sessionId?: string;
         }>
-    ): Promise<void> {
+    ): Promise<MovieAddRatingResult> {
         return await this.client.post(`/movie/${movieId}/rating`, body, options);
     }
 

@@ -1,118 +1,151 @@
-// // @todo: Add integration tests for guest session endpoints
-
-import { describe, it, expect, beforeAll } from 'vitest';
-import dotenv from 'dotenv';
+import { beforeAll, describe, expect, it } from 'vitest';
 import { DefaultHttpClient, TmdbClient } from '../../src';
-
+import dotenv from 'dotenv';
+import { MOVIE } from './consts/consts';
+import { sleep } from './helpers/utils';
 dotenv.config();
-//
-describe('TmdbClient - Guest Session Ratings (real API)', () => {
+
+describe('TmdbClient - Guest Session Ratings (real API integration)', () => {
     let tmdb: TmdbClient;
-    let guestSessionId: string;
+    let guestSessionId: string | undefined;
 
     beforeAll(async () => {
-        const apiKey = process.env.TMDB_API_KEY;
+        const apiKey: string | undefined = process.env.TMDB_API_KEY;
         if (!apiKey) {
-            throw new Error('TMDB_API_KEY is not set in .env');
+            throw new Error('TMDB_API_KEY is not set in .env — cannot run real API tests.');
         }
 
         tmdb = new TmdbClient(new DefaultHttpClient(apiKey));
 
-        // Create fresh guest session once for all tests in this describe block
-        const session = await tmdb.authentication.getGuestSession();
-        expect(session.success).toBe(true);
-        guestSessionId = session.guestSessionId;
+        // Create a fresh guest session once per describe block
+        const guestRes = await tmdb.authentication.getGuestSession();
+        if (guestRes.success && guestRes.guestSessionId) {
+            guestSessionId = guestRes.guestSessionId;
+        } else {
+            throw new Error('Failed to obtain guest session ID for testing');
+        }
+    }, 10000);
 
-        console.log(`Using guest session: ${guestSessionId}`);
+    it('fetches rated movies for guest session (usually empty unless rated before)', async () => {
+        if (!guestSessionId) throw new Error('No guest session ID available');
+
+        // 1st) Let's rate an awesome movie
+        const ratingRes = await tmdb.movie.addRating(
+            MOVIE.FIGHT_CLUB.ID,
+            {
+                value: 10,
+            },
+            {
+                guestSessionId,
+            }
+        );
+
+        expect(ratingRes.success).toBe(true);
+        await sleep(5 * 1000);
+
+        // @todo keeps throwing 404 even in TMDB API page. Well, we'll see if it works because it worked at least once
+        const res = await tmdb.guestSession.getRatedMovies(guestSessionId, {
+            page: 1,
+            // language: 'en-US',           // optional
+            // sortBy: 'created_at.desc',   // optional
+        });
+
+        // Basic shape validation
+        expect(Array.isArray(res.results)).toBe(true);
+        expect(typeof res.page).toBe('number');
+        expect(typeof res.totalPages).toBe('number');
+        expect(typeof res.totalResults).toBe('number');
+
+        // Most fresh guest sessions have 0 ratings → expect empty
+        // If you manually rate something with this session beforehand, totalResults > 0
+        if (res.totalResults > 0) {
+            const first = res.results[0];
+            expect(first).toMatchObject({
+                id: expect.any(Number),
+                title: expect.any(String),
+                rating: expect.any(Number), // ← guest rating (0.5–10.0)
+            });
+            expect(typeof first.voteAverage).toBe('number');
+        }
+    }, 12000);
+
+    it.skip('fetches rated TV shows for guest session', async () => {
+        if (!guestSessionId) throw new Error('No guest session ID available');
+        try {
+            //const rateRes = await tmdb.tv.
+
+            const res = await tmdb.guestSession.getRatedTVShows(guestSessionId);
+
+            expect(Array.isArray(res.results)).toBe(true);
+            expect(typeof res.page).toBe('number');
+            expect(typeof res.totalPages).toBe('number');
+            expect(typeof res.totalResults).toBe('number');
+
+            if (res.totalResults > 0) {
+                const first = res.results[0];
+                expect(first).toMatchObject({
+                    id: expect.any(Number),
+                    name: expect.any(String),
+                    rating: expect.any(Number),
+                });
+            }
+        } finally {
+        }
+    }, 10000);
+
+    it.skip('fetches rated TV episodes for guest session', async () => {
+        if (!guestSessionId) throw new Error('No guest session ID available');
+
+        const res = await tmdb.guestSession.getRatedTVEpisodes(guestSessionId, {
+            page: 1,
+            sortBy: 'created_at.desc',
+        });
+
+        expect(Array.isArray(res.results)).toBe(true);
+        expect(typeof res.page).toBe('number');
+        expect(typeof res.totalPages).toBe('number');
+        expect(typeof res.totalResults).toBe('number');
+
+        if (res.totalResults > 0) {
+            const first = res.results[0];
+            expect(first).toMatchObject({
+                id: expect.any(Number),
+                name: expect.any(String),
+                episodeNumber: expect.any(Number),
+                seasonNumber: expect.any(Number),
+                showId: expect.any(Number),
+                rating: expect.any(Number),
+            });
+        }
+    }, 10000);
+
+    it('handles invalid guest session ID gracefully (expect error)', async () => {
+        const fakeId = 'this-is-not-a-valid-guest-session-id-9999999999';
+
+        await expect(tmdb.guestSession.getRatedMovies(fakeId)).rejects.toThrow(
+            /401/i
+        );
+
+        // Alternative if your client normalizes TMDB error responses:
+        // .rejects.toMatchObject({ success: false, statusCode: 404 });
+    }, 10000);
+
+    // Optional: pagination test (only meaningful if you have >20 ratings)
+    it.skip('supports pagination on rated movies', async () => {
+        if (!guestSessionId) throw new Error('No guest session ID');
+
+        const page1 = await tmdb.guestSession.getRatedMovies(guestSessionId, { page: 1 });
+        const page2 = await tmdb.guestSession.getRatedMovies(guestSessionId, { page: 2 });
+
+        expect(page1.page).toBe(1);
+        expect(page2.page).toBe(2);
+
+        // If enough results exist:
+        if (page1.totalResults > 20) {
+            expect(page2.results.length).toBeGreaterThan(0);
+            // Check no overlap (very rough)
+            const idsPage1 = page1.results.map(m => m.id);
+            expect(page2.results.some(m => idsPage1.includes(m.id))).toBe(false);
+        }
     }, 15000);
-
-    //
-    it('can rate a movie via movie.setRating and retrieve it via guestSession.getRatedMovies', async () => {
-        //         const movieId = 27205; // Inception — very safe, popular choice
-        //
-        //         // Rate the movie (7.5/10)
-        //         const rateResult = await tmdb.movie.setRating(movieId, 7.5, {
-        //             guest_session_id: guestSessionId,
-        //         });
-        //         expect(rateResult.success).toBe(true);
-        //
-        //         // Give TMDB a moment to process (eventual consistency)
-        //         await new Promise(r => setTimeout(r, 2000));
-        //
-        //         // Fetch rated movies for this guest
-        //         const rated = await tmdb.guestSession.getRatedMovies(guestSessionId, {
-        //             sortBy: 'created_at.desc',
-        //             page: 1,
-        //         });
-        //
-        //         expect(rated.results.length).toBeGreaterThan(0);
-        //         expect(rated.total_results).toBeGreaterThan(0);
-        //
-        //         // Verify our rated movie is present
-        //         const ratedMovie = rated.results.find(m => m.id === movieId);
-        //         expect(ratedMovie).toBeDefined();
-        //         expect(ratedMovie?.rating).toBe(7.5);
-        //
-        //         console.log(`Found rated movie: ${ratedMovie?.title} (rating: ${ratedMovie?.rating})`);
-    }, 20000);
-    //
-    //     it('can rate a TV show via tv.setRating and retrieve it via guestSession.getRatedTVShows', async () => {
-    //         const tvId = 1399; // Game of Thrones — very popular, reliable
-    //
-    //         // Rate the TV show (8/10)
-    //         const rateResult = await tmdb.tv.setRating(tvId, 8, {
-    //             guest_session_id: guestSessionId,
-    //         });
-    //         expect(rateResult.success).toBe(true);
-    //
-    //         await new Promise(r => setTimeout(r, 2000));
-    //
-    //         const rated = await tmdb.guestSession.getRatedTVShows(guestSessionId, {
-    //             sortBy: 'created_at.desc',
-    //             page: 1,
-    //         });
-    //
-    //         expect(rated.results.length).toBeGreaterThan(0);
-    //
-    //         const ratedTv = rated.results.find(s => s.id === tvId);
-    //         expect(ratedTv).toBeDefined();
-    //         expect(ratedTv?.rating).toBe(8);
-    //
-    //         console.log(`Found rated TV show: ${ratedTv?.name} (rating: ${ratedTv?.rating})`);
-    //     }, 20000);
-    //
-    //     it('can rate a TV episode via tv.setRating and retrieve it via guestSession.getRatedTVEpisodes', async () => {
-    //         const tvId = 1399; // Game of Thrones
-    //         const season = 1;
-    //         const episode = 1;
-    //
-    //         // Rate S01E01 (9/10)
-    //         const rateResult = await tmdb.tv.setRating(tvId, 9, {
-    //             guest_session_id: guestSessionId,
-    //             season_number: season,
-    //             episode_number: episode,
-    //         });
-    //         expect(rateResult.success).toBe(true);
-    //
-    //         await new Promise(r => setTimeout(r, 2000));
-    //
-    //         const rated = await tmdb.guestSession.getRatedTVEpisodes(guestSessionId, {
-    //             sortBy: 'created_at.desc',
-    //             page: 1,
-    //         });
-    //
-    //         expect(rated.results.length).toBeGreaterThan(0);
-    //
-    //         const ratedEpisode = rated.results.find(
-    //             e => e.show_id === tvId && e.season_number === season && e.episode_number === episode
-    //         );
-    //
-    //         expect(ratedEpisode).toBeDefined();
-    //         expect(ratedEpisode?.rating).toBe(9);
-    //
-    //         console.log(
-    //             `Found rated episode: ${ratedEpisode?.name} ` +
-    //                 `(S${ratedEpisode?.season_number}E${ratedEpisode?.episode_number}, rating: ${ratedEpisode?.rating})`
-    //         );
-    //     }, 20000);
 });

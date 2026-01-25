@@ -43,7 +43,7 @@ export class AuthenticationEndpoint {
             requestToken: string;
         }>
     ): Promise<AuthenticationValidateSessionWithLoginResult> {
-        return await this.client.post(`/authentication/session/validate_with_login`, body);
+        return await this.client.post(`/authentication/token/validate_with_login`, body);
     }
 
     public async deleteSession(
@@ -51,7 +51,7 @@ export class AuthenticationEndpoint {
             sessionId: string;
         }>
     ): Promise<AuthenticationDeleteSessionResult> {
-        return await this.client.delete(`/authentication/session/`, body);
+        return await this.client.delete(`/authentication/session`, body);
     }
 
     /**

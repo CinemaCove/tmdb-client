@@ -408,3 +408,7 @@ export type MovieImagesResult = Readonly<{
     logos: Readonly<MovieImageItem[]>;
     posters: Readonly<MovieImageItem[]>;
 }>;
+export type MovieAddRatingResult = Readonly<{
+    success: boolean;
+    statusMessage: string;
+}>;

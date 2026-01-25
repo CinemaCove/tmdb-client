@@ -2,6 +2,7 @@ import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 
 
 import { HttpClient } from './http-client.interface';
 import { camelToSnakeCase, snakeToCamelCase } from './utils';
+import qs from 'qs';
 
 const customProcessing: Record<string, (key: string) => string> = {
     iso3166_1: _ => 'iso_3166_1',
@@ -94,6 +95,11 @@ export class DefaultHttpClient implements HttpClient {
                 Accept: 'application/json',
                 Authorization: !isApiKey ? `Bearer ${apiKey.accessToken}` : undefined,
             },
+            paramsSerializer: params =>
+                qs.stringify(params, {
+                    arrayFormat: 'comma',
+                    allowDots: true,
+                })
         });
 
         this.http.interceptors.request.use(requestFormatterInterceptor);

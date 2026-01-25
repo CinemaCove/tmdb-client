@@ -29,8 +29,6 @@ describe('TmdbClient - Discover (real API)', () => {
 
         // Spot-check a few well-known ones (stable data)
         expect(res.results.find(r => r.originalTitle === 'Basket Case')).toBeDefined();
-
-        console.log(res);
     }, 10000);
 
     it('find all movies released in 1986 by John Carpenter sorted by release date descending', async () => {
@@ -45,8 +43,6 @@ describe('TmdbClient - Discover (real API)', () => {
         expect(
             res.results.find(r => r.originalTitle === 'Big Trouble in Little China')
         ).toBeDefined();
-
-        console.log(res);
     }, 10000);
 
     it('find all tv shows related to survival horror sorted by first aired date descending', async () => {
@@ -57,7 +53,5 @@ describe('TmdbClient - Discover (real API)', () => {
 
         // Spot-check a few well-known ones (stable data)
         expect(res.results.find(r => r.name === 'Dead Set')).toBeDefined();
-
-        console.log(res);
     }, 10000);
 });

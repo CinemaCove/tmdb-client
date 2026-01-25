@@ -68,7 +68,7 @@ export class PeopleEndpoint {
             language?: string;
         }
     ): Promise<PeopleCombinedCreditsResult> {
-        return await this.client.get(`/person/${personId}/combinedCredits`, options);
+        return await this.client.get(`/person/${personId}/combined_credits`, options);
     }
 
     /**

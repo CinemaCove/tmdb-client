@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import dotenv from 'dotenv';
 import { DefaultHttpClient, TmdbClient } from '../../src';
+import { MOVIE } from './consts/consts';
 
 dotenv.config(); // loads .env
 
@@ -56,7 +57,7 @@ describe('TmdbClient - Movie (real API)', () => {
     }, 10000);
 
     it('fetches fight club details with all additional responses', async () => {
-        const res = await tmdb.movie.getDetails(550, {
+        const res = await tmdb.movie.getDetails(MOVIE.FIGHT_CLUB.ID, {
             appendToResponse: [
                 'credits',
                 'images',
@@ -88,6 +89,6 @@ describe('TmdbClient - Movie (real API)', () => {
         expect(res['watch/providers']).toBeDefined();
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.externalIds!.imdbId).toBe('tt0137523');
+        expect(res.externalIds!.imdbId).toBe(MOVIE.FIGHT_CLUB.IMDB_ID);
     }, 10000);
 });
