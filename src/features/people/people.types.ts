@@ -92,12 +92,12 @@ export type PeopleExternalIdsResult = Readonly<{
     instagramId: string;
     tiktokId: number;
     twitterId: string;
-    youtubeId: any;
+    youtubeId: unknown;
 }>;
 export type PeopleImagesProfileItem = Readonly<{
     aspectRatio: number;
     height: number;
-    iso639_1: any;
+    iso639_1: unknown;
     filePath: string;
     voteAverage: number;
     voteCount: number;

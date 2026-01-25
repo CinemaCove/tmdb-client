@@ -24,7 +24,7 @@ describe('TmdbClient - Discover (real API)', () => {
             'releaseDate.gte': '1986-01-01',
             'releaseDate.lte': '1986-12-31',
             withGenres: '35,27',
-            sortBy: 'original_title.asc'
+            sortBy: 'original_title.asc',
         });
 
         // Spot-check a few well-known ones (stable data)
@@ -38,13 +38,13 @@ describe('TmdbClient - Discover (real API)', () => {
             'releaseDate.gte': '1986-01-01',
             'releaseDate.lte': '1986-12-31',
             sortBy: 'primary_release_date.desc',
-            withPeople: '11770'
+            withPeople: '11770',
         });
 
         // Spot-check a few well-known ones (stable data)
-        expect(res.results
-            .find(r => r.originalTitle === 'Big Trouble in Little China'))
-            .toBeDefined();
+        expect(
+            res.results.find(r => r.originalTitle === 'Big Trouble in Little China')
+        ).toBeDefined();
 
         console.log(res);
     }, 10000);
@@ -56,9 +56,7 @@ describe('TmdbClient - Discover (real API)', () => {
         });
 
         // Spot-check a few well-known ones (stable data)
-        expect(
-            res.results.find(r => r.name === 'Dead Set')
-        ).toBeDefined();
+        expect(res.results.find(r => r.name === 'Dead Set')).toBeDefined();
 
         console.log(res);
     }, 10000);

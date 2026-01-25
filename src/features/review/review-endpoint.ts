@@ -1,4 +1,5 @@
 import { HttpClient } from '../../http-client.interface';
+
 import { ReviewDetailsResult } from './review.types';
 
 export class ReviewEndpoint {

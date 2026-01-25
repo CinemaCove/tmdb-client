@@ -56,11 +56,22 @@ describe('TmdbClient - Movie (real API)', () => {
     }, 10000);
 
     it('fetches fight club details with all additional responses', async () => {
-        const res = await tmdb.movie.getDetails(
-            550,
-            {
-                appendToResponse: ['credits', 'images', 'videos', 'recommendations', 'similar', 'reviews', 'keywords', 'release_dates', 'alternative_titles', 'translations', 'external_ids', 'watch/providers']
-            });
+        const res = await tmdb.movie.getDetails(550, {
+            appendToResponse: [
+                'credits',
+                'images',
+                'videos',
+                'recommendations',
+                'similar',
+                'reviews',
+                'keywords',
+                'release_dates',
+                'alternative_titles',
+                'translations',
+                'external_ids',
+                'watch/providers',
+            ],
+        });
 
         // Make sure the structure is correct
         expect(res.credits).toBeDefined();

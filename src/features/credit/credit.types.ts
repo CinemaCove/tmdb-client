@@ -27,7 +27,7 @@ export type CreditDetailsMedia = Readonly<{
     voteCount: number;
     originCountry: Readonly<string[]>;
     character: string;
-    episodes: Readonly<any[]>;
+    episodes: Readonly<unknown[]>;
     seasons: Readonly<CreditDetailsSeasonItem[]>;
 }>;
 export type CreditDetailsPerson = Readonly<{

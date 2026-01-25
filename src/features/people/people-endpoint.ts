@@ -1,5 +1,6 @@
 import { HttpClient } from '../../http-client.interface';
 import { PaginatedResult } from '../../shared';
+
 import {
     PeopleAppendToResponse,
     PeopleChangesResult,
@@ -118,9 +119,7 @@ export class PeopleEndpoint {
     /**
      * Get the translations that belong to a person
      */
-    public async getTranslations(
-        personId: number
-    ): Promise<PeopleTranslationsResult> {
+    public async getTranslations(personId: number): Promise<PeopleTranslationsResult> {
         return await this.client.get(`/person/${personId}/translations`);
     }
 }

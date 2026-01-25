@@ -1,5 +1,6 @@
 import { HttpClient } from '../../http-client.interface';
 import { PaginatedResult } from '../../shared';
+
 import {
     MovieAccountStatesResult,
     MovieAlternativeTitlesResult,

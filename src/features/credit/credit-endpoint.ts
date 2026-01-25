@@ -1,4 +1,5 @@
 import { HttpClient } from '../../http-client.interface';
+
 import { CreditDetailsResult } from './credit.types';
 
 export class CreditEndpoint {

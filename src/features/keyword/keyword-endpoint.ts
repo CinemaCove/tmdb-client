@@ -1,4 +1,5 @@
 import { HttpClient } from '../../http-client.interface';
+
 import { KeywordDetailsResult } from './keyword.types';
 
 export class KeywordEndpoint {

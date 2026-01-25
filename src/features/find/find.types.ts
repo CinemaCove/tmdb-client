@@ -28,8 +28,8 @@ export type FindMovieResultItem = Readonly<{
 }>;
 export type FindExternalIdResult = Readonly<{
     movieResults: Readonly<FindMovieResultItem[]>;
-    personResults: Readonly<any[]>;
-    tvResults: Readonly<any[]>;
-    tvEpisodeResults: Readonly<any[]>;
-    tvSeasonResults: Readonly<any[]>;
+    personResults: Readonly<unknown[]>;
+    tvResults: Readonly<unknown[]>;
+    tvEpisodeResults: Readonly<unknown[]>;
+    tvSeasonResults: Readonly<unknown[]>;
 }>;

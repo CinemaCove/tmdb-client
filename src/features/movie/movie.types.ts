@@ -100,9 +100,13 @@ export type MovieNowPlayingDates = Readonly<{
     maximum: string;
     minimum: string;
 }>;
-export type MovieNowPlayingPaginatedResult = Readonly<PaginatedResult<MovieListItem> & {
-    dates: MovieNowPlayingDates;
-}>;
+
+export type MovieNowPlayingPaginatedResult = Readonly<
+    PaginatedResult<MovieListItem> & {
+        dates: MovieNowPlayingDates;
+    }
+>;
+
 /**
  * All possible append_to_response values for a movie
  */
@@ -248,7 +252,7 @@ export type MovieListDetail = Readonly<{
 export type MovieListPaginatedResult = Readonly<PaginatedResult<MovieListDetail> & { id: number }>;
 export type MovieReleaseDateItem = Readonly<{
     certification: string;
-    descriptors: Readonly<any[]>;
+    descriptors: Readonly<unknown[]>;
     iso639_1: string;
     note: string;
     releaseDate: string;
@@ -277,7 +281,9 @@ export type MovieReviewItem = Readonly<{
     updatedAt: string;
     url: string;
 }>;
-export type MovieReviewsPaginatedResult = Readonly<PaginatedResult<MovieReviewItem> & { id: number }>;
+export type MovieReviewsPaginatedResult = Readonly<
+    PaginatedResult<MovieReviewItem> & { id: number }
+>;
 export type MovieTranslationData = Readonly<{
     homepage: string;
     overview: string;
@@ -354,7 +360,7 @@ export type MovieListItem = Readonly<{
 export type MovieDetail = Readonly<{
     adult: boolean;
     backdropPath: string;
-    belongsToCollection?: any;
+    belongsToCollection?: unknown;
     budget: number;
     genres: Readonly<MovieGenreItem[]>;
     homepage: string;

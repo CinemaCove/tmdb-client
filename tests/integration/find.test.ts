@@ -20,7 +20,7 @@ describe('TmdbClient - Find (real API)', () => {
     });
 
     it('fetches data about the sinners given the id of each available source', async () => {
-        const sources: { source: FindExternalSource, id: string }[] = [
+        const sources: { source: FindExternalSource; id: string }[] = [
             { source: 'imdb_id', id: 'tt31193180' },
             // { source: 'facebook_id', id: '???' },
             { source: 'instagram_id', id: 'sinnersmovie' },

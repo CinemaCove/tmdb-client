@@ -1,3 +1,5 @@
+import { HttpClient } from '../../http-client.interface';
+
 import {
     AuthenticationCreateSessionResult,
     AuthenticationDeleteSessionResult,
@@ -6,7 +8,6 @@ import {
     AuthenticationValidateSessionWithLoginResult,
     AuthenticationValidationResult,
 } from './authentication.types';
-import { HttpClient } from '../../http-client.interface';
 
 export class AuthenticationEndpoint {
     public constructor(private readonly client: HttpClient) {}
@@ -50,7 +51,7 @@ export class AuthenticationEndpoint {
             sessionId: string;
         }>
     ): Promise<AuthenticationDeleteSessionResult> {
-        return await this.client.delete(`/authentication/session/`);
+        return await this.client.delete(`/authentication/session/`, body);
     }
 
     /**

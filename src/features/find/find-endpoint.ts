@@ -1,4 +1,5 @@
 import { HttpClient } from '../../http-client.interface';
+
 import { FindExternalIdResult, FindExternalSource } from './find.types';
 
 export class FindEndpoint {

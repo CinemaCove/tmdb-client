@@ -17,6 +17,7 @@ import {
     NetworkEndpoint,
     PeopleEndpoint,
     ReviewEndpoint,
+    SearchEndpoint,
 } from './features';
 import { HttpClient } from './http-client.interface';
 
@@ -39,6 +40,7 @@ export class TmdbClient {
     public readonly network: NetworkEndpoint;
     public readonly people: PeopleEndpoint;
     public readonly review: ReviewEndpoint;
+    public readonly search: SearchEndpoint;
 
     constructor(private httpClient: HttpClient) {
         this.account = new AccountEndpoint(this.httpClient);
@@ -59,5 +61,6 @@ export class TmdbClient {
         this.network = new NetworkEndpoint(this.httpClient);
         this.people = new PeopleEndpoint(this.httpClient);
         this.review = new ReviewEndpoint(this.httpClient);
+        this.search = new SearchEndpoint(this.httpClient);
     }
 }

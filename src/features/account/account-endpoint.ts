@@ -1,3 +1,6 @@
+import { HttpClient } from '../../http-client.interface';
+import { PaginatedResult } from '../../shared';
+
 import {
     AccountCustomListItem,
     AccountDetailsResult,
@@ -10,8 +13,6 @@ import {
     AccountWatchlistMovieItem,
     AccountWatchlistTVShowItem,
 } from './account.types';
-import { PaginatedResult } from '../../shared';
-import { HttpClient } from '../../http-client.interface';
 
 export class AccountEndpoint {
     public constructor(private readonly client: HttpClient) {}

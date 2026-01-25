@@ -1,4 +1,5 @@
 import { HttpClient } from '../../http-client.interface';
+
 import { GenreMovieGenresResult, GenreTVShowGenresResult } from './genre.types';
 
 export class GenreEndpoint {

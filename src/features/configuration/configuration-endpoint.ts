@@ -1,3 +1,5 @@
+import { HttpClient } from '../../http-client.interface';
+
 import {
     ConfigurationCountry,
     ConfigurationDetails,
@@ -5,8 +7,6 @@ import {
     ConfigurationLanguage,
     ConfigurationTimezone,
 } from './configuration.types';
-
-import { HttpClient } from '../../http-client.interface';
 
 export class ConfigurationEndpoint {
     public constructor(private readonly client: HttpClient) {}
