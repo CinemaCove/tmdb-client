@@ -10,7 +10,9 @@ import {
 export class DiscoverEndpoint {
     public constructor(private readonly client: HttpClient) {}
 
-    // Find movies using over 30 filters and sort options.
+    /**
+     * Find movies using over 30 filters and sort options.
+     */
     public async searchMovies(
         options?: Readonly<{
             certification?: string; // use in conjunction with region
@@ -55,7 +57,9 @@ export class DiscoverEndpoint {
         return await this.client.get(`/discover/movie`, options);
     }
 
-    // Find TV shows using over 30 filters and sort options.
+    /**
+     * Find TV shows using over 30 filters and sort options.
+     */
     public async searchTVShows(
         options?: Readonly<{
             'airDate.gte'?: string;

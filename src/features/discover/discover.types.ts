@@ -29,7 +29,7 @@ export type DiscoverTVShowsSortBy =
 export type DiscoverMovieItem = Readonly<{
     adult: boolean;
     backdrop_path: string;
-    genre_ids: number[];
+    genre_ids: Readonly<number[]>;
     id: number;
     original_language: string;
     original_title: string;
@@ -45,10 +45,10 @@ export type DiscoverMovieItem = Readonly<{
 export type DiscoverTVShowItem = Readonly<{
     backdrop_path: string;
     first_air_date: string;
-    genre_ids: number[];
+    genre_ids: Readonly<number[]>;
     id: number;
     name: string;
-    origin_country: string[];
+    origin_country: Readonly<string[]>;
     original_language: string;
     original_name: string;
     overview: string;

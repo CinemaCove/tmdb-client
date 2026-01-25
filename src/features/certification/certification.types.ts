@@ -114,11 +114,11 @@ export type CertificationTVItem = Readonly<{
 }>;
 export type CertificationMovieCertificationsResult = Readonly<{
     certifications: {
-        [key in CertificationMovieCountry]: CertificationMovieItem[];
+        [key in CertificationMovieCountry]: Readonly<CertificationMovieItem[]>;
     };
 }>;
 export type CertificationTVCertificationsResult = Readonly<{
     certifications: {
-        [key in CertificationTVCountry]: CertificationTVItem[];
+        [key in CertificationTVCountry]: Readonly<CertificationTVItem[]>;
     };
 }>;

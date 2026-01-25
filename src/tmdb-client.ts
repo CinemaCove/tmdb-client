@@ -15,6 +15,8 @@ import {
     ListEndpoint,
     MovieEndpoint,
     NetworkEndpoint,
+    PeopleEndpoint,
+    ReviewEndpoint,
 } from './features';
 import { HttpClient } from './http-client.interface';
 
@@ -35,6 +37,8 @@ export class TmdbClient {
     public readonly list: ListEndpoint;
     public readonly movie: MovieEndpoint;
     public readonly network: NetworkEndpoint;
+    public readonly people: PeopleEndpoint;
+    public readonly review: ReviewEndpoint;
 
     constructor(private httpClient: HttpClient) {
         this.account = new AccountEndpoint(this.httpClient);
@@ -53,5 +57,7 @@ export class TmdbClient {
         this.list = new ListEndpoint(this.httpClient);
         this.movie = new MovieEndpoint(this.httpClient);
         this.network = new NetworkEndpoint(this.httpClient);
+        this.people = new PeopleEndpoint(this.httpClient);
+        this.review = new ReviewEndpoint(this.httpClient);
     }
 }

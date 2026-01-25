@@ -12,7 +12,9 @@ import {
 export class ListEndpoint {
     public constructor(private readonly client: HttpClient) {}
 
-    // Add a movie to a list
+    /**
+     * Add a movie to a list
+     */
     public async addMovie(
         listId: number,
         body: Readonly<{
@@ -25,7 +27,9 @@ export class ListEndpoint {
         return await this.client.post(`/list/${listId}/add_item`, body, options);
     }
 
-    // Use this method to check if an item has already been added to the list
+    /**
+     * Use this method to check if an item has already been added to the list
+     */
     public async checkItemStatus(
         listId: number,
         options: Readonly<{
@@ -36,7 +40,9 @@ export class ListEndpoint {
         return await this.client.get(`/list/${listId}/item_status`, options);
     }
 
-    // Clear all items from a list
+    /**
+     * Clear all items from a list
+     */
     public async clear(
         listId: number,
         body: Readonly<{
@@ -63,7 +69,9 @@ export class ListEndpoint {
         return await this.client.post(`/list`, body, options);
     }
 
-    // Delete a list
+    /**
+     * Delete a list
+     */
     public async delete(
         listId: number,
         options: Readonly<{
@@ -83,7 +91,9 @@ export class ListEndpoint {
         return await this.client.post(`/list/${listId}`, options);
     }
 
-    // Remove a movie from a list
+    /**
+     *  Remove a movie from a list
+     */
     public async removeMovie(
         listId: number,
         body: Readonly<{

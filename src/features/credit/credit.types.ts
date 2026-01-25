@@ -1,3 +1,5 @@
+import { GenderType, MediaType } from '../../shared';
+
 export type CreditDetailsSeasonItem = Readonly<{
     id: number;
     air_date: string;
@@ -17,25 +19,25 @@ export type CreditDetailsMedia = Readonly<{
     original_name: string;
     overview: string;
     poster_path: string;
-    media_type: 'tv' | 'movie';
-    genre_ids: number[];
+    media_type: MediaType;
+    genre_ids: Readonly<number[]>;
     popularity: number;
     first_air_date: string;
     vote_average: number;
     vote_count: number;
-    origin_country: string[];
+    origin_country: Readonly<string[]>;
     character: string;
-    episodes: any[];
-    seasons: CreditDetailsSeasonItem[];
+    episodes: Readonly<any[]>;
+    seasons: Readonly<CreditDetailsSeasonItem[]>;
 }>;
 export type CreditDetailsPerson = Readonly<{
     adult: boolean;
     id: number;
     name: string;
     original_name: string;
-    media_type: string;
+    media_type: MediaType;
     popularity: number;
-    gender: number;
+    gender: GenderType;
     known_for_department: string;
     profile_path: string;
 }>;
@@ -44,7 +46,7 @@ export type CreditDetailsResult = Readonly<{
     department: string;
     job: string;
     media: CreditDetailsMedia;
-    media_type: 'tv' | 'movie';
+    media_type: MediaType;
     id: string;
     person: CreditDetailsPerson;
 }>;

@@ -53,7 +53,9 @@ export class AuthenticationEndpoint {
         return await this.client.delete(`/authentication/session/`);
     }
 
-    // Test your API Key to see if it's valid.
+    /**
+     *  Test your API Key to see if it's valid.
+     */
     public async validateApiKey(): Promise<AuthenticationValidationResult> {
         return await this.client.get(`/authentication`);
     }

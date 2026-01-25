@@ -4,7 +4,9 @@ import { CreditDetailsResult } from './credit.types';
 export class CreditEndpoint {
     public constructor(private readonly client: HttpClient) {}
 
-    // Get a movie or TV credit details by ID
+    /**
+     * Get a movie or TV credit details by ID
+     */
     public async getDetails(
         creditId: string,
         options?: Readonly<{ language?: string }>

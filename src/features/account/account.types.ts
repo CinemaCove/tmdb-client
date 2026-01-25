@@ -25,7 +25,7 @@ export type AccountResult = Readonly<{
 export type AccountFavoriteMovieItem = Readonly<{
     adult: boolean;
     backdrop_path: string;
-    genre_ids: number[];
+    genre_ids: Readonly<number[]>;
     id: number;
     original_language: string;
     original_title: string;
@@ -42,9 +42,9 @@ export type AccountFavoriteMovieItem = Readonly<{
 export type AccountFavoriteTVShowItem = Readonly<{
     adult: boolean;
     backdrop_path: string;
-    genre_ids: number[];
+    genre_ids: Readonly<number[]>;
     id: number;
-    original_country: string[];
+    original_country: Readonly<string[]>;
     original_name: string;
     overview: string;
     popularity: number;
@@ -67,7 +67,7 @@ export type AccountCustomListItem = Readonly<{
 export type AccountRatedMovieItem = Readonly<{
     adult: boolean;
     backdrop_path: string;
-    genre_ids: number[];
+    genre_ids: Readonly<number[]>;
     id: number;
     original_language: string;
     original_title: string;
@@ -84,9 +84,9 @@ export type AccountRatedMovieItem = Readonly<{
 export type AccountRatedTVShowItem = Readonly<{
     adult: boolean;
     backdrop_path: string;
-    genre_ids: number[];
+    genre_ids: Readonly<number[]>;
     id: number;
-    origin_country: string[];
+    origin_country: Readonly<string[]>;
     original_language: string;
     original_name: string;
     overview: string;
@@ -116,7 +116,7 @@ export type AccountRatedTVEpisodeItem = Readonly<{
 export type AccountWatchlistMovieItem = Readonly<{
     adult: boolean;
     backdrop_path: string;
-    genre_ids: number[];
+    genre_ids: Readonly<number[]>;
     id: number;
     original_language: string;
     original_title: string;
@@ -132,9 +132,9 @@ export type AccountWatchlistMovieItem = Readonly<{
 export type AccountWatchlistTVShowItem = Readonly<{
     adult: boolean;
     backdrop_path: string;
-    genre_ids: number[];
+    genre_ids: Readonly<number[]>;
     id: number;
-    origin_country: string[];
+    origin_country: Readonly<string[]>;
     original_language: string;
     original_name: string;
     overview: string;

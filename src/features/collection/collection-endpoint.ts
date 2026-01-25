@@ -8,7 +8,9 @@ import {
 export class CollectionEndpoint {
     public constructor(private readonly client: HttpClient) {}
 
-    // Get collection details by ID.
+    /**
+     * Get collection details by ID.
+     */
     public async getDetails(
         collectionId: number,
         options?: Readonly<{
@@ -18,7 +20,9 @@ export class CollectionEndpoint {
         return this.client.get(`/collection/${collectionId}`, options);
     }
 
-    // Get the images that belong to a collection
+    /**
+     * Get the images that belong to a collection
+     */
     public async getImages(
         collectionId: number,
         options?: Readonly<{
@@ -29,7 +33,9 @@ export class CollectionEndpoint {
         return this.client.get(`/collection/${collectionId}/images`, options);
     }
 
-    // get the available translations for a collection
+    /**
+     * get the available translations for a collection
+     */
     public async getTranslations(collectionId: number): Promise<CollectionTranslationsResult> {
         return this.client.get(`/collection/${collectionId}/translations`);
     }

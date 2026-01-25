@@ -1,3 +1,5 @@
+import { MediaType } from '../../shared';
+
 export type CollectionImageItem = Readonly<{
     aspect_ratio: number;
     height: number;
@@ -22,12 +24,12 @@ export type CollectionTranslationItem = Readonly<{
 }>;
 export type CollectionTranslationsResult = Readonly<{
     id: number;
-    translations: CollectionTranslationItem[];
+    translations: Readonly<CollectionTranslationItem[]>;
 }>;
 export type CollectionImagesResult = Readonly<{
     id: number;
-    backdrops: CollectionImageItem[];
-    posters: CollectionImageItem[];
+    backdrops: Readonly<CollectionImageItem[]>;
+    posters: Readonly<CollectionImageItem[]>;
 }>;
 export type CollectionDetailsPart = Readonly<{
     adult: boolean;
@@ -37,9 +39,9 @@ export type CollectionDetailsPart = Readonly<{
     original_name: string;
     overview: string;
     poster_path: string;
-    media_type: string;
+    media_type: MediaType;
     original_language: string;
-    genre_ids: number[];
+    genre_ids: Readonly<number[]>;
     popularity: number;
     release_date: string;
     video: boolean;

@@ -56,7 +56,7 @@ export class DefaultHttpClient implements HttpClient {
         const params = buildQueryParams(options);
         const genBody = buildBody(body);
 
-        const res = await this.http.delete<TRes>(url, genBody, { params });
+        const res = await this.http.delete<TRes>(url, { params, data: genBody });
         return res.data;
     }
 }

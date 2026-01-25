@@ -1,3 +1,5 @@
+import { MediaType } from '../../shared';
+
 export type ListAddMovieResult = Readonly<{
     status_code: number;
     status_message: string;
@@ -23,9 +25,9 @@ export type ListDeleteResult = Readonly<{
 export type ListDetailsItem = Readonly<{
     adult: boolean;
     backdrop_path: string;
-    genre_ids: number[];
+    genre_ids: Readonly<number[]>;
     id: number;
-    media_type: string;
+    media_type: MediaType;
     original_language: string;
     original_title: string;
     overview: string;
@@ -42,7 +44,7 @@ export type ListDetailsResult = Readonly<{
     description: string;
     favorite_count: number;
     id: string;
-    items: ListDetailsItem[];
+    items: Readonly<ListDetailsItem[]>;
     item_count: number;
     iso_639_1: string;
     name: string;

@@ -16,3 +16,5 @@ export * from './keyword';
 export * from './list';
 export * from './movie';
 export * from './network';
+export * from './people';
+export * from './review';

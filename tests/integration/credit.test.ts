@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import dotenv from 'dotenv';
-import { DefaultHttpClient, TmdbClient } from '../../src';
+import { DefaultHttpClient, GenderType, TmdbClient } from '../../src';
 
 dotenv.config(); // loads .env
 
@@ -24,6 +24,7 @@ describe('TmdbClient - Credit (real API)', () => {
 
         // Spot-check a few well-known ones (stable data)
         expect(res.person.name).toBe('Pedro Pascal');
+        expect(res.person.gender).toBe(GenderType.Male);
 
         console.log(`Fetched ${JSON.stringify(res)}`);
     }, 10000);

@@ -26,7 +26,10 @@ export class MovieEndpoint {
     public constructor(private readonly client: HttpClient) {}
 
     // region Lists
-    // Get a list of movies that are currently in theatres
+
+    /**
+     * Get a list of movies that are currently in theatres
+     */
     public async getNowPlayingList(
         options?: Readonly<{
             language?: string;
@@ -37,7 +40,9 @@ export class MovieEndpoint {
         return this.client.get('/movie/now_playing', options);
     }
 
-    // Get a list of movies ordered by popularity
+    /**
+     * Get a list of movies ordered by popularity
+     */
     public async getPopularList(
         options?: Readonly<{
             language?: string;
@@ -48,7 +53,9 @@ export class MovieEndpoint {
         return this.client.get('/movie/popular', options);
     }
 
-    // Get a list of movies ordered by rating
+    /**
+     * Get a list of movies ordered by rating
+     */
     public async getTopRatedList(
         options?: Readonly<{
             language?: string;
@@ -59,7 +66,9 @@ export class MovieEndpoint {
         return this.client.get('/movie/top_rated', options);
     }
 
-    // Get a list of movies that are being released soon
+    /**
+     * Get a list of movies that are being released soon
+     */
     public async getUpcomingList(
         options?: Readonly<{
             language?: string;
@@ -79,17 +88,19 @@ export class MovieEndpoint {
     public async getDetails(
         movieId: number,
         options?: Readonly<{
-            appendToResponse?: MovieAppendToResponse[]; // comma separated list of endpoints within this namespace, 20 items max
+            appendToResponse?: MovieAppendToResponse[]; // 20 items max
             language?: string;
         }>
-    ): Promise<MovieDetailsWithAppends<typeof options.appendToResponse>> {
+    ): Promise<MovieDetailsWithAppends> {
         return await this.client.get(`/movie/${movieId}`, {
             ...options,
             appendToResponse: (options?.appendToResponse ?? []).join(','),
         });
     }
 
-    // Get the alternative titles for a movie
+    /**
+     * Get the alternative titles for a movie
+     */
     public async getAlternativeTitles(
         movieId: number,
         options?: Readonly<{
@@ -99,7 +110,9 @@ export class MovieEndpoint {
         return await this.client.get(`/movie/${movieId}/alternative_titles`, options);
     }
 
-    // Get the rating, watchlist and favourite status of an account
+    /**
+     * Get the rating, watchlist and favourite status of an account
+     */
     public async getAccountStates(
         movieId: number,
         options: Readonly<{
@@ -110,7 +123,9 @@ export class MovieEndpoint {
         return await this.client.get(`/movie/${movieId}/account_states`, options);
     }
 
-    // Get the recent changes for a movie
+    /**
+     * Get the recent changes for a movie
+     */
     public async getChanges(
         movieId: number,
         options?: Readonly<{
@@ -122,7 +137,9 @@ export class MovieEndpoint {
         return await this.client.get(`/movie/${movieId}/changes`, options);
     }
 
-    // get the credits of a movie
+    /**
+     * get the credits of a movie
+     */
     public async getCredits(
         movieId: number,
         options?: Readonly<{
@@ -132,12 +149,16 @@ export class MovieEndpoint {
         return await this.client.get(`/movie/${movieId}/credits`, options);
     }
 
-    // get the associated external IDs of a movie
+    /**
+     * get the associated external IDs of a movie
+     */
     public async getExternalIds(movieId: number): Promise<MovieExternalIdsResult> {
         return await this.client.get(`/movie/${movieId}/external_ids`);
     }
 
-    // Get the images that belong to a movie
+    /**
+     * Get the images that belong to a movie
+     */
     public async getImages(
         movieId: number,
         options?: Readonly<{
@@ -148,17 +169,23 @@ export class MovieEndpoint {
         return await this.client.get(`/movie/${movieId}/images`, options);
     }
 
-    // Get keywords associated to a movie
+    /**
+     * Get keywords associated to a movie
+     */
     public async getKeywords(movieId: number): Promise<MovieKeywordsResult> {
         return await this.client.get(`/movie/${movieId}/keywords`);
     }
 
-    // Get the latest movie
+    /**
+     * Get the latest movie
+     */
     public async getLatest(): Promise<MovieDetail> {
         return await this.client.get(`/movie/latest`);
     }
 
-    // Get the lists that a movie has been added to
+    /**
+     * Get the lists that a movie has been added to
+     */
     public async getLists(
         movieId: number,
         options?: Readonly<{
@@ -179,12 +206,16 @@ export class MovieEndpoint {
         return await this.client.get(`/movie/${movieId}/recommendations`, options);
     }
 
-    // Get the release dates and certifications for a movie
+    /**
+     * Get the release dates and certifications for a movie
+     */
     public async getReleaseDates(movieId: number): Promise<MovieReleaseDatesResult> {
         return await this.client.get(`/movie/${movieId}/release_dates`);
     }
 
-    // Get the user reviews for a movie
+    /**
+     * Get the user reviews for a movie
+     */
     public async getReviews(
         movieId: number,
         options?: Readonly<{
@@ -195,7 +226,8 @@ export class MovieEndpoint {
         return await this.client.get(`/movie/${movieId}/reviews`, options);
     }
 
-    /* Get the similar movies based on genres and keywords
+    /**
+     * Get the similar movies based on genres and keywords
      * Note
      * This method only looks for other items based on genres and plot keywords. As such, the results found here are not always going to be 100%. Use it with that in mind.
      */
@@ -209,12 +241,16 @@ export class MovieEndpoint {
         return await this.client.get(`/movie/${movieId}/similar`, options);
     }
 
-    // Get the translations for a movie
+    /**
+     * Get the translations for a movie
+     */
     public async getTranslations(movieId: number): Promise<MovieTranslationsResult> {
         return await this.client.get(`/movie/${movieId}/translations`);
     }
 
-    // Get the videos of a movie
+    /**
+     * Get the videos of a movie
+     */
     public async getVideos(
         movieId: number,
         options?: Readonly<{
@@ -224,7 +260,8 @@ export class MovieEndpoint {
         return await this.client.get(`/movie/${movieId}/videos`, options);
     }
 
-    /** Get the list of streaming providers we have for a movie
+    /**
+     * Get the list of streaming providers we have for a movie
      * JustWatch Attribution Required
      * In order to use this data you must attribute the source of the data as JustWatch. If TMDB finds any usage not complying with these terms they will revoke access to the API.
      */

@@ -1,7 +1,7 @@
 export type GuestSessionRatedMovieItem = Readonly<{
     adult: boolean;
     backdrop_path: string;
-    genre_ids: number[];
+    genre_ids: Readonly<number[]>;
     id: number;
     original_language: string;
     original_title: string;
@@ -18,9 +18,9 @@ export type GuestSessionRatedMovieItem = Readonly<{
 export type GuestSessionRatedTVShowItem = Readonly<{
     adult: boolean;
     backdrop_path: string;
-    genre_ids: number[];
+    genre_ids: Readonly<number[]>;
     id: number;
-    origin_country: string[];
+    origin_country: Readonly<string[]>;
     original_language: string;
     original_name: string;
     overview: string;

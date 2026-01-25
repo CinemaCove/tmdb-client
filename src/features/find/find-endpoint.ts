@@ -4,7 +4,7 @@ import { FindExternalIdResult, FindExternalSource } from './find.types';
 export class FindEndpoint {
     public constructor(private readonly client: HttpClient) {}
 
-    /*
+    /**
      * Find data by external ID's.
      * The supported external sources for each object are as follows:
      * Media type coverage by data source:

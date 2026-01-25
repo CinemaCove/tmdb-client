@@ -1,3 +1,5 @@
+import { MediaType } from '../../shared';
+
 export type FindExternalSource =
     | 'imdb_id'
     | 'facebook_id'
@@ -16,8 +18,8 @@ export type FindMovieResultItem = Readonly<{
     original_title: string;
     overview: string;
     poster_path: string;
-    media_type: string;
-    genre_ids: number[];
+    media_type: MediaType;
+    genre_ids: Readonly<number[]>;
     popularity: number;
     release_date: string;
     video: boolean;
@@ -25,9 +27,9 @@ export type FindMovieResultItem = Readonly<{
     vote_count: number;
 }>;
 export type FindExternalIdResult = Readonly<{
-    movie_results: FindMovieResultItem[];
-    person_results: any[];
-    tv_results: any[];
-    tv_episode_results: any[];
-    tv_season_results: any[];
+    movie_results: Readonly<FindMovieResultItem[]>;
+    person_results: Readonly<any[]>;
+    tv_results: Readonly<any[]>;
+    tv_episode_results: Readonly<any[]>;
+    tv_season_results: Readonly<any[]>;
 }>;

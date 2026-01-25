@@ -1,3 +1,5 @@
+import { FileType } from '../../shared';
+
 export type NetworkDetailsResult = Readonly<{
     headquarters: string;
     homepage: string;
@@ -12,14 +14,14 @@ export type NetworkAlternativeNamesResultItem = Readonly<{
 }>;
 export type NetworkAlternativeNamesResult = Readonly<{
     id: number;
-    results: NetworkAlternativeNamesResultItem[];
+    results: Readonly<NetworkAlternativeNamesResultItem[]>;
 }>;
 export type NetworkImageItem = Readonly<{
     id: string;
     aspect_ratio: number;
     file_path: string;
     height: number;
-    file_type: '.svg' | '.png';
+    file_type: FileType;
     vote_average: number;
     vote_count: number;
     width: number;

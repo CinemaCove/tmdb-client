@@ -1,4 +1,4 @@
-import { PaginatedResult } from '../../shared';
+import { GenderType, PaginatedResult } from '../../shared';
 
 export type MovieWatchProviderCountry =
     | 'AE'
@@ -126,7 +126,7 @@ export type MovieTitleItem = Readonly<{
 }>;
 export type MovieAlternativeTitlesResult = Readonly<{
     id: number;
-    titles: MovieTitleItem[];
+    titles: Readonly<MovieTitleItem[]>;
 }>;
 
 export type MovieGenreItem = Readonly<{
@@ -173,14 +173,14 @@ export type MovieChangesChangeItem = Readonly<{
 }>;
 export type MovieChangesItem = Readonly<{
     key: string;
-    items: MovieChangesChangeItem[];
+    items: Readonly<MovieChangesChangeItem[]>;
 }>;
 export type MovieChangesResult = Readonly<{
     changes: MovieChangesItem[];
 }>;
 export type MovieCreditsCrewItem = Readonly<{
     adult: boolean;
-    gender: number;
+    gender: GenderType;
     id: number;
     known_for_department: string;
     name: string;
@@ -193,7 +193,7 @@ export type MovieCreditsCrewItem = Readonly<{
 }>;
 export type MovieCreditsCastItem = Readonly<{
     adult: boolean;
-    gender: number;
+    gender: GenderType;
     id: number;
     known_for_department: string;
     name: string;
@@ -207,8 +207,8 @@ export type MovieCreditsCastItem = Readonly<{
 }>;
 export type MovieCreditsResult = Readonly<{
     id: number;
-    cast: MovieCreditsCastItem[];
-    crew: MovieCreditsCrewItem[];
+    cast: Readonly<MovieCreditsCastItem[]>;
+    crew: Readonly<MovieCreditsCrewItem[]>;
 }>;
 export type MovieExternalIdsResult = Readonly<{
     id: number;
@@ -233,7 +233,7 @@ export type MovieKeywordItem = Readonly<{
 }>;
 export type MovieKeywordsResult = Readonly<{
     id: number;
-    keywords: MovieKeywordItem[];
+    keywords: Readonly<MovieKeywordItem[]>;
 }>;
 export type MovieListDetail = Readonly<{
     description: string;
@@ -248,7 +248,7 @@ export type MovieListDetail = Readonly<{
 export type MovieListPaginatedResult = Readonly<PaginatedResult<MovieListDetail> & { id: number }>;
 export type MovieReleaseDateItem = Readonly<{
     certification: string;
-    descriptors: any[];
+    descriptors: Readonly<any[]>;
     iso_639_1: string;
     note: string;
     release_date: string;
@@ -256,11 +256,11 @@ export type MovieReleaseDateItem = Readonly<{
 }>;
 export type MovieReleaseDateResultItem = Readonly<{
     iso_631_1: string;
-    release_dates: MovieReleaseDateItem[];
+    release_dates: Readonly<MovieReleaseDateItem[]>;
 }>;
 export type MovieReleaseDatesResult = Readonly<{
     id: number;
-    results: MovieReleaseDateResultItem[];
+    results: Readonly<MovieReleaseDateResultItem[]>;
 }>;
 export type MovieReviewAuthorDetails = Readonly<{
     name: string;
@@ -294,7 +294,7 @@ export type MovieTranslationItem = Readonly<{
 }>;
 export type MovieTranslationsResult = Readonly<{
     id: number;
-    translations: MovieTranslationItem[];
+    translations: Readonly<MovieTranslationItem[]>;
 }>;
 export type MovieVideoItem = Readonly<{
     iso_639_1: string;
@@ -310,7 +310,7 @@ export type MovieVideoItem = Readonly<{
 }>;
 export type MovieVideosResult = Readonly<{
     id: number;
-    results: MovieVideoItem[];
+    results: Readonly<MovieVideoItem[]>;
 }>;
 export type MovieWatchProviderItem = Readonly<{
     logo_path: string;
@@ -320,9 +320,9 @@ export type MovieWatchProviderItem = Readonly<{
 }>;
 export type MovieWatchProviderResultItem = Readonly<{
     link: string;
-    flatrate: MovieWatchProviderItem[];
-    rent: MovieWatchProviderItem[];
-    buy: MovieWatchProviderItem[];
+    flatrate: Readonly<MovieWatchProviderItem[]>;
+    rent: Readonly<MovieWatchProviderItem[]>;
+    buy: Readonly<MovieWatchProviderItem[]>;
 }>;
 export type MovieWatchProvidersResult = Readonly<{
     id: number;
@@ -337,7 +337,7 @@ export type MovieDeleteRatingResult = Readonly<{
 export type MovieListItem = Readonly<{
     adult: boolean;
     backdrop_path: string;
-    genre_ids: number[];
+    genre_ids: Readonly<number[]>;
     id: number;
     original_language: string;
     original_title: string;
@@ -356,7 +356,7 @@ export type MovieDetail = Readonly<{
     backdrop_path: string;
     belongs_to_collection?: any;
     budget: number;
-    genres: MovieGenreItem[];
+    genres: Readonly<MovieGenreItem[]>;
     homepage: string;
     id: number;
     imdb_id: string;
@@ -365,12 +365,12 @@ export type MovieDetail = Readonly<{
     overview: string;
     popularity: number;
     poster_path: string;
-    production_companies: MovieProductionCompanyItem[];
-    production_countries: MovieProductionCountryItem[];
+    production_companies: Readonly<MovieProductionCompanyItem[]>;
+    production_countries: Readonly<MovieProductionCountryItem[]>;
     release_date: string;
     revenue: number;
     runtime: number;
-    spoken_languages: MovieSpokenLanguageItem[];
+    spoken_languages: Readonly<MovieSpokenLanguageItem[]>;
     status: string;
     tagline: string;
     title: string;
@@ -378,36 +378,27 @@ export type MovieDetail = Readonly<{
     vote_average: number;
     vote_count: number;
 }>;
-/**
- * Mapping from append value → the shape it adds to the response
- */
-type _AppendMapping = {
-    credits: { credits: Omit<MovieCreditsResult, 'id'> };
-    images: { images: Omit<MovieImagesResult, 'id'> };
-    videos: { videos: Omit<MovieVideosResult, 'id'> };
-    recommendations: { recommendations: PaginatedResult<MovieDetail> };
-    similar: { similar: PaginatedResult<MovieDetail> };
-    reviews: { reviews: PaginatedResult<MovieReviewItem> };
-    keywords: { keywords: Omit<MovieKeywordsResult, 'id'> };
-    release_dates: { release_dates: Omit<MovieReleaseDatesResult, 'id'> };
-    alternative_titles: { alternative_titles: Omit<MovieAlternativeTitlesResult, 'id'> };
-    translations: { translations: Omit<MovieTranslationsResult, 'id'> };
-    external_ids: { external_ids: Omit<MovieExternalIdsResult, 'id'> };
-    'watch/providers': { 'watch/providers': Omit<MovieWatchProvidersResult, 'id'> };
-};
 
-type _Normalized<T> = T extends any[] ? T : [];
+export type MovieDetailsWithAppends = Readonly<
+    MovieDetail & {
+        credits?: Omit<MovieCreditsResult, 'id'>;
+        images?: Omit<MovieImagesResult, 'id'>;
+        videos?: Omit<MovieVideosResult, 'id'>;
+        recommendations?: PaginatedResult<MovieDetail>;
+        similar?: PaginatedResult<MovieDetail>;
+        reviews?: PaginatedResult<MovieReviewItem>;
+        keywords?: Omit<MovieKeywordsResult, 'id'>;
+        release_dates?: Omit<MovieReleaseDatesResult, 'id'>;
+        alternative_titles?: Omit<MovieAlternativeTitlesResult, 'id'>;
+        translations?: Omit<MovieTranslationsResult, 'id'>;
+        external_ids?: Omit<MovieExternalIdsResult, 'id'>;
+        'watch/providers'?: Omit<MovieWatchProvidersResult, 'id'>;
+    }
+>;
 
-export type MovieDetailsWithAppends<
-    TAppend extends MovieAppendToResponse[] | undefined = [],
-> = Readonly<MovieDetail & {
-    [K in _Normalized<TAppend>[number] as _AppendMapping[K] extends Record<string, any>
-        ? keyof _AppendMapping[K]
-        : never]: _AppendMapping[K] extends Record<string, infer V> ? V : _AppendMapping[K];
-}>;
 export type MovieImagesResult = Readonly<{
-    backdrops: MovieImageItem[];
+    backdrops: Readonly<MovieImageItem[]>;
     id: number;
-    logos: MovieImageItem[];
-    posters: MovieImageItem[];
+    logos: Readonly<MovieImageItem[]>;
+    posters: Readonly<MovieImageItem[]>;
 }>;

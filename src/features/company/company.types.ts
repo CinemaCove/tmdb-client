@@ -1,3 +1,5 @@
+import { FileType } from '../../shared';
+
 export type CompanyDetailsResult = Readonly<{
     description: string;
     headquarters: string;
@@ -13,14 +15,14 @@ export type CompanyImageItem = Readonly<{
     file_path: string;
     height: number;
     id: string;
-    file_type: '.svg' | '.png';
+    file_type: FileType;
     vote_average: number;
     vote_count: number;
     width: number;
 }>;
 export type CompanyImagesResult = Readonly<{
     id: number;
-    logos: CompanyImageItem[];
+    logos: Readonly<CompanyImageItem[]>;
 }>;
 export type CompanyAlternativeNameItem = Readonly<{
     name: string;
@@ -28,5 +30,5 @@ export type CompanyAlternativeNameItem = Readonly<{
 }>;
 export type CompanyAlternativeNamesResult = Readonly<{
     id: number;
-    results: CompanyAlternativeNameItem[];
+    results: Readonly<CompanyAlternativeNameItem[]>;
 }>;
