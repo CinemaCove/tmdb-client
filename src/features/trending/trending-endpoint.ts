@@ -3,10 +3,10 @@ import { PaginatedResult } from '../../shared';
 
 import {
     TrendingAllItem,
-    TrendingMoviesResult,
-    TrendingPeopleResult,
+    TrendingMoviesResultItem,
+    TrendingPeopleResultItem,
     TrendingTimeWindow,
-    TrendingTvShowsResult,
+    TrendingTvShowsResultItem,
 } from './trending.types';
 
 export class TrendingEndpoint {
@@ -32,7 +32,7 @@ export class TrendingEndpoint {
         options?: Readonly<{
             language?: string;
         }>
-    ): Promise<PaginatedResult<TrendingMoviesResult>> {
+    ): Promise<PaginatedResult<TrendingMoviesResultItem>> {
         return await this.client.get(`/trending/movie/${timeWindow}`, options);
     }
 
@@ -44,7 +44,7 @@ export class TrendingEndpoint {
         options?: Readonly<{
             language?: string;
         }>
-    ): Promise<PaginatedResult<TrendingTvShowsResult>> {
+    ): Promise<PaginatedResult<TrendingTvShowsResultItem>> {
         return await this.client.get(`/trending/tv/${timeWindow}`, options);
     }
 
@@ -56,7 +56,7 @@ export class TrendingEndpoint {
         options?: Readonly<{
             language?: string;
         }>
-    ): Promise<PaginatedResult<TrendingPeopleResult>> {
+    ): Promise<PaginatedResult<TrendingPeopleResultItem>> {
         return await this.client.get(`/trending/person/${timeWindow}`, options);
     }
 }

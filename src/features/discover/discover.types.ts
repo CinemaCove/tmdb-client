@@ -26,7 +26,7 @@ export type DiscoverTvShowsSortBy =
     | 'vote_average.desc'
     | 'vote_count.asc'
     | 'vote_count.desc';
-export type DiscoverMovieItem = Readonly<{
+export type DiscoverMovieResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -42,7 +42,7 @@ export type DiscoverMovieItem = Readonly<{
     voteAverage: number;
     voteCount: number;
 }>;
-export type DiscoverTvShowItem = Readonly<{
+export type DiscoverTvShowResultItem = Readonly<{
     backdropPath: string;
     firstAirDate: string;
     genreIds: Readonly<number[]>;

@@ -1,6 +1,6 @@
 import { GenderType, MediaType } from '../../shared';
 
-export type SearchCollectionResult = Readonly<{
+export type SearchCollectionResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     id: number;
@@ -10,17 +10,17 @@ export type SearchCollectionResult = Readonly<{
     overview: string;
     posterPath: string;
 }>;
-export type SearchCompaniesResult = Readonly<{
+export type SearchCompaniesResultItem = Readonly<{
     id: number;
     logoPath: string;
     name: string;
     originCountry: string;
 }>;
-export type SearchKeywordsResult = Readonly<{
+export type SearchKeywordsResultItem = Readonly<{
     id: number;
     name: string;
 }>;
-export type SearchMoviesResult = Readonly<{
+export type SearchMoviesResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -36,7 +36,7 @@ export type SearchMoviesResult = Readonly<{
     voteAverage: number;
     voteCount: number;
 }>;
-export type SearchMultiResult = Readonly<{
+export type SearchMultiResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     id: number;
@@ -70,7 +70,7 @@ export type SearchPeopleKnownForItem = Readonly<{
     voteAverage: number;
     voteCount: number;
 }>;
-export type SearchPeopleResult = Readonly<{
+export type SearchPeopleResultItem = Readonly<{
     adult: boolean;
     gender: GenderType;
     id: number;
@@ -81,7 +81,7 @@ export type SearchPeopleResult = Readonly<{
     profilePath: string;
     knownFor: Readonly<SearchPeopleKnownForItem[]>;
 }>;
-export type SearchTvShowsResult = Readonly<{
+export type SearchTvShowsResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;

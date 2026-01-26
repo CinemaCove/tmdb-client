@@ -2,9 +2,9 @@ import { HttpClient } from '../../http-client.interface';
 import { PaginatedResult } from '../../shared';
 
 import {
-    GuestSessionRatedMovieItem,
-    GuestSessionRatedTvEpisodeItem,
-    GuestSessionRatedTvShowItem,
+    GuestSessionRatedMovieResultItem,
+    GuestSessionRatedTvEpisodeResultItem,
+    GuestSessionRatedTvShowResultItem,
 } from './guest-session.types';
 
 export class GuestSessionEndpoint {
@@ -20,7 +20,7 @@ export class GuestSessionEndpoint {
             language?: string;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<GuestSessionRatedMovieItem>> {
+    ): Promise<PaginatedResult<GuestSessionRatedMovieResultItem>> {
         return this.client.get(`/guest_session/${guestSessionId}/rated/movies`, options);
     }
 
@@ -34,7 +34,7 @@ export class GuestSessionEndpoint {
             language?: string;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<GuestSessionRatedTvShowItem>> {
+    ): Promise<PaginatedResult<GuestSessionRatedTvShowResultItem>> {
         return this.client.get(`/guest_session/${guestSessionId}/rated/tv`, options);
     }
 
@@ -48,7 +48,7 @@ export class GuestSessionEndpoint {
             language?: string;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<GuestSessionRatedTvEpisodeItem>> {
+    ): Promise<PaginatedResult<GuestSessionRatedTvEpisodeResultItem>> {
         return this.client.get(`/guest_session/${guestSessionId}/rated/tv/episodes`, options);
     }
 }

@@ -2,9 +2,9 @@ import { HttpClient } from '../../http-client.interface';
 import { PaginatedResult } from '../../shared';
 
 import {
-    DiscoverMovieItem,
+    DiscoverMovieResultItem,
     DiscoverMoviesSortBy,
-    DiscoverTvShowItem,
+    DiscoverTvShowResultItem,
     DiscoverTvShowsSortBy,
 } from './discover.types';
 
@@ -54,7 +54,7 @@ export class DiscoverEndpoint {
             withoutWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query
             year?: number;
         }>
-    ): Promise<PaginatedResult<DiscoverMovieItem>> {
+    ): Promise<PaginatedResult<DiscoverMovieResultItem>> {
         return await this.client.get(`/discover/movie`, options);
     }
 
@@ -96,7 +96,7 @@ export class DiscoverEndpoint {
             withoutWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query
             withType?: '1' | '2' | '3' | '4' | '5' | '6'; // can be a comma (AND) or pipe (OR) separated query. Can be used in conjunction with region
         }>
-    ): Promise<PaginatedResult<DiscoverTvShowItem>> {
+    ): Promise<PaginatedResult<DiscoverTvShowResultItem>> {
         return await this.client.get(`/discover/tv`, options);
     }
 }

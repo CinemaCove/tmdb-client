@@ -22,7 +22,7 @@ export type AccountResult = Readonly<{
     statusCode: number;
     statusMessage: string;
 }>;
-export type AccountFavoriteMovieItem = Readonly<{
+export type AccountFavoriteMovieResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -39,7 +39,7 @@ export type AccountFavoriteMovieItem = Readonly<{
     voteCount: number;
 }>;
 
-export type AccountFavoriteTvShowItem = Readonly<{
+export type AccountFavoriteTvShowResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -54,7 +54,7 @@ export type AccountFavoriteTvShowItem = Readonly<{
     voteAverage: number;
     voteCount: number;
 }>;
-export type AccountCustomListItem = Readonly<{
+export type AccountCustomListResultItem = Readonly<{
     description: string;
     favoriteCount: number;
     id: number;
@@ -64,7 +64,7 @@ export type AccountCustomListItem = Readonly<{
     name: string;
     posterPath: string;
 }>;
-export type AccountRatedMovieItem = Readonly<{
+export type AccountRatedMovieResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -81,7 +81,7 @@ export type AccountRatedMovieItem = Readonly<{
     voteCount: number;
     rating: number;
 }>;
-export type AccountRatedTvShowItem = Readonly<{
+export type AccountRatedTvShowResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -98,7 +98,7 @@ export type AccountRatedTvShowItem = Readonly<{
     voteCount: number;
     rating: number;
 }>;
-export type AccountRatedTvEpisodeItem = Readonly<{
+export type AccountRatedTvEpisodeResultItem = Readonly<{
     airDate: string;
     episodeNumber: number;
     id: number;
@@ -113,7 +113,7 @@ export type AccountRatedTvEpisodeItem = Readonly<{
     voteCount: number;
     rating: number;
 }>;
-export type AccountWatchlistMovieItem = Readonly<{
+export type AccountWatchlistMovieResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -129,7 +129,7 @@ export type AccountWatchlistMovieItem = Readonly<{
     voteAverage: number;
     voteCount: number;
 }>;
-export type AccountWatchlistTvShowItem = Readonly<{
+export type AccountWatchlistTvShowResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;

@@ -2,13 +2,13 @@ import { HttpClient } from '../../http-client.interface';
 import { PaginatedResult } from '../../shared';
 
 import {
-    SearchCollectionResult,
-    SearchCompaniesResult,
-    SearchKeywordsResult,
-    SearchMoviesResult,
-    SearchMultiResult,
-    SearchPeopleResult,
-    SearchTvShowsResult,
+    SearchCollectionResultItem,
+    SearchCompaniesResultItem,
+    SearchKeywordsResultItem,
+    SearchMoviesResultItem,
+    SearchMultiResultItem,
+    SearchPeopleResultItem,
+    SearchTvShowsResultItem,
 } from './search.types';
 
 export class SearchEndpoint {
@@ -25,7 +25,7 @@ export class SearchEndpoint {
             page?: number;
             region?: string;
         }>
-    ): Promise<PaginatedResult<SearchCollectionResult>> {
+    ): Promise<PaginatedResult<SearchCollectionResultItem>> {
         return await this.client.get('/search/collection', options);
     }
 
@@ -37,7 +37,7 @@ export class SearchEndpoint {
             query: string;
             page?: number;
         }>
-    ): Promise<PaginatedResult<SearchCompaniesResult>> {
+    ): Promise<PaginatedResult<SearchCompaniesResultItem>> {
         return await this.client.get('/search/company', options);
     }
 
@@ -49,7 +49,7 @@ export class SearchEndpoint {
             query: string;
             page?: number;
         }>
-    ): Promise<PaginatedResult<SearchKeywordsResult>> {
+    ): Promise<PaginatedResult<SearchKeywordsResultItem>> {
         return await this.client.get('/search/keyword', options);
     }
 
@@ -66,7 +66,7 @@ export class SearchEndpoint {
             region?: string;
             year?: string;
         }>
-    ): Promise<PaginatedResult<SearchMoviesResult>> {
+    ): Promise<PaginatedResult<SearchMoviesResultItem>> {
         return await this.client.get('/search/movie', options);
     }
 
@@ -80,7 +80,7 @@ export class SearchEndpoint {
             language?: string;
             page?: number;
         }>
-    ): Promise<PaginatedResult<SearchMultiResult>> {
+    ): Promise<PaginatedResult<SearchMultiResultItem>> {
         return await this.client.get('/search/multi', options);
     }
 
@@ -94,7 +94,7 @@ export class SearchEndpoint {
             language?: string;
             page?: number;
         }>
-    ): Promise<PaginatedResult<SearchPeopleResult>> {
+    ): Promise<PaginatedResult<SearchPeopleResultItem>> {
         return await this.client.get('/search/person', options);
     }
 
@@ -110,7 +110,7 @@ export class SearchEndpoint {
             page?: number;
             year?: number;
         }>
-    ): Promise<PaginatedResult<SearchTvShowsResult>> {
+    ): Promise<PaginatedResult<SearchTvShowsResultItem>> {
         return await this.client.get('/search/tv', options);
     }
 }

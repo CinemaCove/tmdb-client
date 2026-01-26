@@ -3,7 +3,7 @@ import { MediaType, PaginatedResult } from '../../shared';
 export type TrendingTimeWindow = 'day' | 'week';
 
 // Trending Movies
-export type TrendingMoviesResult = Readonly<{
+export type TrendingMoviesResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -21,7 +21,7 @@ export type TrendingMoviesResult = Readonly<{
 }>;
 
 // Trending TV Shows
-export type TrendingTvShowsResult = Readonly<{
+export type TrendingTvShowsResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -39,7 +39,7 @@ export type TrendingTvShowsResult = Readonly<{
 }>;
 
 // Trending People
-export type TrendingPeopleResult = Readonly<{
+export type TrendingPeopleResultItem = Readonly<{
     id: number;
     name: string;
     popularity: number;

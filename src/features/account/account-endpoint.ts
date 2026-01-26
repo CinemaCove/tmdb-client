@@ -2,16 +2,16 @@ import { HttpClient } from '../../http-client.interface';
 import { MediaType, PaginatedResult } from '../../shared';
 
 import {
-    AccountCustomListItem,
+    AccountCustomListResultItem,
     AccountDetailsResult,
-    AccountFavoriteMovieItem,
-    AccountFavoriteTvShowItem,
-    AccountRatedMovieItem,
-    AccountRatedTvEpisodeItem,
-    AccountRatedTvShowItem,
+    AccountFavoriteMovieResultItem,
+    AccountFavoriteTvShowResultItem,
+    AccountRatedMovieResultItem,
+    AccountRatedTvEpisodeResultItem,
+    AccountRatedTvShowResultItem,
     AccountResult,
-    AccountWatchlistMovieItem,
-    AccountWatchlistTvShowItem,
+    AccountWatchlistMovieResultItem,
+    AccountWatchlistTvShowResultItem,
 } from './account.types';
 
 export class AccountEndpoint {
@@ -74,7 +74,7 @@ export class AccountEndpoint {
             page?: number;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<AccountFavoriteMovieItem>> {
+    ): Promise<PaginatedResult<AccountFavoriteMovieResultItem>> {
         return await this.client.get(`/account/${accountId}/favorite/movies`, options);
     }
 
@@ -89,7 +89,7 @@ export class AccountEndpoint {
             page?: number;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<AccountFavoriteTvShowItem>> {
+    ): Promise<PaginatedResult<AccountFavoriteTvShowResultItem>> {
         return await this.client.get(`/account/${accountId}/favorite/tv`, options);
     }
 
@@ -102,7 +102,7 @@ export class AccountEndpoint {
             sessionId: string;
             page?: number;
         }>
-    ): Promise<PaginatedResult<AccountCustomListItem>> {
+    ): Promise<PaginatedResult<AccountCustomListResultItem>> {
         return await this.client.get(`/account/${accountId}/lists`, options);
     }
 
@@ -117,7 +117,7 @@ export class AccountEndpoint {
             language?: string;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<AccountRatedMovieItem>> {
+    ): Promise<PaginatedResult<AccountRatedMovieResultItem>> {
         return await this.client.get(`/account/${accountId}/rated/movies`, options);
     }
 
@@ -132,7 +132,7 @@ export class AccountEndpoint {
             language?: string;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<AccountRatedTvShowItem>> {
+    ): Promise<PaginatedResult<AccountRatedTvShowResultItem>> {
         return await this.client.get(`/account/${accountId}/rated/tv`, options);
     }
 
@@ -147,7 +147,7 @@ export class AccountEndpoint {
             language?: string;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<AccountRatedTvEpisodeItem>> {
+    ): Promise<PaginatedResult<AccountRatedTvEpisodeResultItem>> {
         return await this.client.get(`/account/${accountId}/rated/tv/episodes`, options);
     }
 
@@ -162,7 +162,7 @@ export class AccountEndpoint {
             language?: string;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<AccountWatchlistMovieItem>> {
+    ): Promise<PaginatedResult<AccountWatchlistMovieResultItem>> {
         return await this.client.get(`/account/${accountId}/watchlist/movies`, options);
     }
 
@@ -177,7 +177,7 @@ export class AccountEndpoint {
             language?: string;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<AccountWatchlistTvShowItem>> {
+    ): Promise<PaginatedResult<AccountWatchlistTvShowResultItem>> {
         return await this.client.get(`/account/${accountId}/watchlist/tv`, options);
     }
 }
