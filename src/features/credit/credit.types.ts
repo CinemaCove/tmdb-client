@@ -1,6 +1,6 @@
 import { GenderType, MediaType } from '../../shared';
 
-export type CreditDetailsSeasonItem = Readonly<{
+export type CreditMediaSeasonItem = Readonly<{
     id: number;
     airDate: string;
     episodeCount: number;
@@ -10,43 +10,77 @@ export type CreditDetailsSeasonItem = Readonly<{
     seasonNumber: number;
     showId: number;
 }>;
-export type CreditDetailsMedia = Readonly<{
+
+export type CreditMediaBase = Readonly<{
     adult: boolean;
     backdropPath: string;
     id: number;
-    name: string;
-    originalLanguage: string;
-    originalName: string;
     overview: string;
     posterPath: string;
-    mediaType: MediaType;
+    originalLanguage: string;
     genreIds: Readonly<number[]>;
     popularity: number;
-    firstAirDate: string;
     voteAverage: number;
     voteCount: number;
-    originCountry: Readonly<string[]>;
-    character: string;
-    episodes: Readonly<unknown[]>;
-    seasons: Readonly<CreditDetailsSeasonItem[]>;
 }>;
+
+export type CreditMediaMovie = CreditMediaBase & {
+    mediaType: MediaType.Movie;
+    title: string;
+    originalTitle: string;
+    releaseDate: string;
+    video: boolean;
+    character?: string;
+};
+
+export type CreditMediaTvEpisodeItem = Readonly<{
+    id: number;
+    name: string;
+    overview: string;
+    mediaType: MediaType.TVEpisode;
+    voteAverage: number;
+    voteCount: number;
+    airDate: string;
+    episodeNumber: number;
+    episodeType: string;
+    productionCode: string;
+    runtime: number;
+    seasonNumber: number;
+    showId: number;
+    stillPath: string | null;
+}>;
+
+export type CreditMediaTVShow = CreditMediaBase & Readonly<{
+    mediaType: 'tv';
+    name: string;
+    originalName: string;
+    firstAirDate: string;
+    originCountry: Readonly<string[]>;
+    character?: string;
+    episodes?: Readonly<CreditMediaTvEpisodeItem[]>;
+    seasons?: Readonly<CreditMediaSeasonItem[]>;
+}>;
+
+export type CreditDetailsMedia = CreditMediaMovie | CreditMediaTVShow;
+
 export type CreditDetailsPerson = Readonly<{
     adult: boolean;
     id: number;
     name: string;
     originalName: string;
-    mediaType: MediaType;
+    mediaType: MediaType.Person;
     popularity: number;
     gender: GenderType;
     knownForDepartment: string;
     profilePath: string;
 }>;
+
 export type CreditDetailsResult = Readonly<{
     creditType: string;
     department: string;
     job: string;
     media: CreditDetailsMedia;
-    mediaType: MediaType;
+    mediaType: MediaType.Movie | MediaType.TVShow;
     id: string;
     person: CreditDetailsPerson;
 }>;

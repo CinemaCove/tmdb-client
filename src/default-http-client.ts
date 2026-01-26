@@ -111,7 +111,6 @@ export class DefaultHttpClient implements HttpClient {
     }
 
     public async get<TRes>(url: string, params?: Record<string, unknown>): Promise<TRes> {
-        // const params = buildQueryParams(options);
         const res = await this.http.get<TRes>(url, { params });
         return res.data;
     }

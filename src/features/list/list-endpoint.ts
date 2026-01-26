@@ -46,15 +46,12 @@ export class ListEndpoint {
      */
     public async clear(
         listId: number,
-        body: Readonly<{
-            mediaId: number;
-        }>,
         options: Readonly<{
             sessionId: string;
             confirm: boolean;
         }>
     ): Promise<ListClearResult> {
-        return await this.client.post(`/list/${listId}/add_item`, body, options);
+        return await this.client.post(`/list/${listId}/clear`, undefined, options);
     }
 
     public async create(
@@ -89,7 +86,7 @@ export class ListEndpoint {
             language?: string;
         }>
     ): Promise<ListDetailsResult> {
-        return await this.client.post(`/list/${listId}`, options);
+        return await this.client.get(`/list/${listId}`, options);
     }
 
     /**
@@ -104,6 +101,6 @@ export class ListEndpoint {
             sessionId: string;
         }
     ): Promise<ListRemoveMovieResult> {
-        return await this.client.delete(`/list/${listId}/remove_item`, body, options);
+        return await this.client.post(`/list/${listId}/remove_item`, body, options);
     }
 }

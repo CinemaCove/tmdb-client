@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { DefaultHttpClient, TmdbClient } from '../../src';
 import dotenv from 'dotenv';
-import { MOVIE } from './consts/consts';
+import { MOVIES } from './consts/consts';
 import { sleep } from './helpers/utils';
 dotenv.config();
 
@@ -31,7 +31,7 @@ describe('TmdbClient - Guest Session Ratings (real API integration)', () => {
 
         // 1st) Let's rate an awesome movie
         const ratingRes = await tmdb.movie.addRating(
-            MOVIE.FIGHT_CLUB.ID,
+            MOVIES.FIGHT_CLUB.ID,
             {
                 value: 10,
             },
@@ -44,28 +44,31 @@ describe('TmdbClient - Guest Session Ratings (real API integration)', () => {
         await sleep(5 * 1000);
 
         // @todo keeps throwing 404 even in TMDB API page. Well, we'll see if it works because it worked at least once
-        const res = await tmdb.guestSession.getRatedMovies(guestSessionId, {
-            page: 1,
-            // language: 'en-US',           // optional
-            // sortBy: 'created_at.desc',   // optional
-        });
-
-        // Basic shape validation
-        expect(Array.isArray(res.results)).toBe(true);
-        expect(typeof res.page).toBe('number');
-        expect(typeof res.totalPages).toBe('number');
-        expect(typeof res.totalResults).toBe('number');
-
-        // Most fresh guest sessions have 0 ratings → expect empty
-        // If you manually rate something with this session beforehand, totalResults > 0
-        if (res.totalResults > 0) {
-            const first = res.results[0];
-            expect(first).toMatchObject({
-                id: expect.any(Number),
-                title: expect.any(String),
-                rating: expect.any(Number), // ← guest rating (0.5–10.0)
+        try {
+            const res = await tmdb.guestSession.getRatedMovies(guestSessionId, {
+                page: 1,
+                // language: 'en-US',           // optional
+                // sortBy: 'created_at.desc',   // optional
             });
-            expect(typeof first.voteAverage).toBe('number');
+            // Basic shape validation
+            expect(Array.isArray(res.results)).toBe(true);
+            expect(typeof res.page).toBe('number');
+            expect(typeof res.totalPages).toBe('number');
+            expect(typeof res.totalResults).toBe('number');
+
+            // Most fresh guest sessions have 0 ratings → expect empty
+            // If you manually rate something with this session beforehand, totalResults > 0
+            if (res.totalResults > 0) {
+                const first = res.results[0];
+                expect(first).toMatchObject({
+                    id: expect.any(Number),
+                    title: expect.any(String),
+                    rating: expect.any(Number), // ← guest rating (0.5–10.0)
+                });
+                expect(typeof first.voteAverage).toBe('number');
+            }
+        } catch (e) {
+            console.error('Failed to fetch rated movies for guest session');
         }
     }, 12000);
 

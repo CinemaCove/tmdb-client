@@ -51,9 +51,9 @@ describe('TmdbClient - Authentication (real API)', () => {
     it('tries to delete a non-existent/invalid session → expects failure', async () => {
         const fakeSessionId = 'this-is-not-a-real-session-id-0000000000';
 
-        await expect(tmdb.authentication.deleteSession({ sessionId: fakeSessionId })).rejects.toThrow(
-            /404|invalid|not found/i
-        ); // TMDB returns 404 + error body
+        await expect(
+            tmdb.authentication.deleteSession({ sessionId: fakeSessionId })
+        ).rejects.toThrow(/404|invalid|not found/i); // TMDB returns 404 + error body
         // Alternatively, when I throw structured errors:
         // .rejects.toMatchObject({ success: false, statusCode: 404 });
     }, 10000);
@@ -90,7 +90,6 @@ describe('TmdbClient - Authentication (real API)', () => {
         expect(tokenRes.success).toBe(true);
         console.log(`Step 1: Got request token: ${tokenRes.requestToken}`);
 
-        await sleep(15 * 1000); 
         // Step 2: Validate with login
         const validateRes = await tmdb.authentication.validateSessionWithLogin({
             username,
