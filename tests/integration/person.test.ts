@@ -21,7 +21,7 @@ describe('TmdbClient - People (real API)', () => {
     });
 
     it('fetches popular people', async () => {
-        const res = await tmdb.people.getPopular();
+        const res = await tmdb.person.getPopular();
 
         expect(res.totalResults).toBeGreaterThan(0);
         expect(res.results).toBeDefined();
@@ -36,7 +36,7 @@ describe('TmdbClient - People (real API)', () => {
     }, 10000);
 
     it('fetches popular people with pagination', async () => {
-        const res = await tmdb.people.getPopular({ page: 2 });
+        const res = await tmdb.person.getPopular({ page: 2 });
 
         expect(res.page).toBe(2);
         expect(res.results).toBeDefined();
@@ -47,7 +47,7 @@ describe('TmdbClient - People (real API)', () => {
 
     it('fetches details for a specific person (Brad Pitt)', async () => {
         const bradPittId = 287;
-        const res = await tmdb.people.getDetails(bradPittId);
+        const res = await tmdb.person.getDetails(bradPittId);
 
         expect(res.id).toBe(bradPittId);
         expect(res.name).toBe('Brad Pitt');
@@ -60,7 +60,7 @@ describe('TmdbClient - People (real API)', () => {
 
     it('fetches person details with all additional responses', async () => {
         const bradPittId = 287;
-        const res = await tmdb.people.getDetails(bradPittId, {
+        const res = await tmdb.person.getDetails(bradPittId, {
             appendToResponse: [
                 'changes',
                 'combined_credits',
@@ -89,7 +89,7 @@ describe('TmdbClient - People (real API)', () => {
 
     it('fetches recent changes for a person', async () => {
         const bradPittId = 287;
-        const res = await tmdb.people.getChanges(bradPittId);
+        const res = await tmdb.person.getChanges(bradPittId);
 
         expect(res.changes).toBeDefined();
         expect(Array.isArray(res.changes)).toBe(true);
@@ -99,7 +99,7 @@ describe('TmdbClient - People (real API)', () => {
 
     it('fetches combined credits for a person', async () => {
         const bradPittId = 287;
-        const res = await tmdb.people.getCombinedCredits(bradPittId);
+        const res = await tmdb.person.getCombinedCredits(bradPittId);
 
         expect(res.cast).toBeDefined();
         expect(res.crew).toBeDefined();
@@ -110,7 +110,7 @@ describe('TmdbClient - People (real API)', () => {
 
     it('fetches external IDs for a person', async () => {
         const bradPittId = 287;
-        const res = await tmdb.people.getExternalIds(bradPittId);
+        const res = await tmdb.person.getExternalIds(bradPittId);
 
         expect(res.imdbId).toBe('nm0000093');
         expect(res.facebookId).toBeDefined();
@@ -122,7 +122,7 @@ describe('TmdbClient - People (real API)', () => {
 
     it('fetches profile images for a person', async () => {
         const bradPittId = 287;
-        const res = await tmdb.people.getProfileImages(bradPittId);
+        const res = await tmdb.person.getProfileImages(bradPittId);
 
         expect(res.profiles).toBeDefined();
         expect(res.profiles.length).toBeGreaterThan(0);
@@ -135,7 +135,7 @@ describe('TmdbClient - People (real API)', () => {
     }, 10000);
 
     it('fetches the latest created person', async () => {
-        const res = await tmdb.people.getLatest();
+        const res = await tmdb.person.getLatest();
 
         expect(res.id).toBeDefined();
         expect(res.name).toBeDefined();
@@ -145,7 +145,7 @@ describe('TmdbClient - People (real API)', () => {
 
     it('fetches movie credits for a person', async () => {
         const bradPittId = 287;
-        const res = await tmdb.people.getMovieCredits(bradPittId);
+        const res = await tmdb.person.getMovieCredits(bradPittId);
 
         expect(res.cast).toBeDefined();
         expect(res.crew).toBeDefined();
@@ -160,7 +160,7 @@ describe('TmdbClient - People (real API)', () => {
 
     it('fetches TV credits for a person', async () => {
         const bradPittId = 287;
-        const res = await tmdb.people.getTVCredits(bradPittId);
+        const res = await tmdb.person.getTvCredits(bradPittId);
 
         expect(res.cast).toBeDefined();
         expect(res.crew).toBeDefined();
@@ -172,7 +172,7 @@ describe('TmdbClient - People (real API)', () => {
 
     it('fetches translations for a person', async () => {
         const bradPittId = 287;
-        const res = await tmdb.people.getTranslations(bradPittId);
+        const res = await tmdb.person.getTranslations(bradPittId);
 
         expect(res.translations).toBeDefined();
         expect(res.translations.length).toBeGreaterThan(0);

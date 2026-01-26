@@ -15,7 +15,7 @@ export type GuestSessionRatedMovieItem = Readonly<{
     voteCount: number;
     rating: number;
 }>;
-export type GuestSessionRatedTVShowItem = Readonly<{
+export type GuestSessionRatedTvShowItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -32,7 +32,7 @@ export type GuestSessionRatedTVShowItem = Readonly<{
     voteCount: number;
     rating: number;
 }>;
-export type GuestSessionRatedTVEpisodeItem = Readonly<{
+export type GuestSessionRatedTvEpisodeItem = Readonly<{
     airDate: string;
     episodeNumber: number;
     id: number;

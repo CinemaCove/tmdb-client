@@ -3,8 +3,8 @@ import { PaginatedResult } from '../../shared';
 
 import {
     GuestSessionRatedMovieItem,
-    GuestSessionRatedTVEpisodeItem,
-    GuestSessionRatedTVShowItem,
+    GuestSessionRatedTvEpisodeItem,
+    GuestSessionRatedTvShowItem,
 } from './guest-session.types';
 
 export class GuestSessionEndpoint {
@@ -27,28 +27,28 @@ export class GuestSessionEndpoint {
     /**
      * Get the rated TV shows for a guest session
      */
-    public async getRatedTVShows(
+    public async getRatedTvShows(
         guestSessionId: string,
         options?: Readonly<{
             page?: number;
             language?: string;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<GuestSessionRatedTVShowItem>> {
+    ): Promise<PaginatedResult<GuestSessionRatedTvShowItem>> {
         return this.client.get(`/guest_session/${guestSessionId}/rated/tv`, options);
     }
 
     /**
      * Get the rated TV Episodes for a guest session
      */
-    public async getRatedTVEpisodes(
+    public async getRatedTvEpisodes(
         guestSessionId: string,
         options?: Readonly<{
             page?: number;
             language?: string;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<GuestSessionRatedTVEpisodeItem>> {
+    ): Promise<PaginatedResult<GuestSessionRatedTvEpisodeItem>> {
         return this.client.get(`/guest_session/${guestSessionId}/rated/tv/episodes`, options);
     }
 }

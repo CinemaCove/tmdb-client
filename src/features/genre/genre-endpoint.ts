@@ -1,6 +1,6 @@
 import { HttpClient } from '../../http-client.interface';
 
-import { GenreMovieGenresResult, GenreTVShowGenresResult } from './genre.types';
+import { GenreMovieGenresResult, GenreTvShowGenresResult } from './genre.types';
 
 export class GenreEndpoint {
     public constructor(private readonly client: HttpClient) {}
@@ -17,9 +17,9 @@ export class GenreEndpoint {
     /**
      * Get the list of official genres for TV shows
      */
-    public async getTVShowGenres(
+    public async getTvShowGenres(
         options?: Readonly<{ language?: string }>
-    ): Promise<GenreTVShowGenresResult> {
+    ): Promise<GenreTvShowGenresResult> {
         return this.client.get('/genre/tv/list', options);
     }
 }

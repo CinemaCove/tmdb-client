@@ -42,3 +42,17 @@ export const KEYWORDS = {
         NAME: 'based on novel or book',
     },
 };
+export const NETWORKS = {
+    HBO: {
+        ID: 49,
+        NAME: 'HBO',
+    },
+    NETFLIX: {
+        ID: 213,
+        NAME: 'Netflix',
+    },
+    NBC: {
+        ID: 6,
+        NAME: 'NBC',
+    },
+};

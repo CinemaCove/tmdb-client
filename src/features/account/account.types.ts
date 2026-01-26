@@ -39,7 +39,7 @@ export type AccountFavoriteMovieItem = Readonly<{
     voteCount: number;
 }>;
 
-export type AccountFavoriteTVShowItem = Readonly<{
+export type AccountFavoriteTvShowItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -81,7 +81,7 @@ export type AccountRatedMovieItem = Readonly<{
     voteCount: number;
     rating: number;
 }>;
-export type AccountRatedTVShowItem = Readonly<{
+export type AccountRatedTvShowItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -98,7 +98,7 @@ export type AccountRatedTVShowItem = Readonly<{
     voteCount: number;
     rating: number;
 }>;
-export type AccountRatedTVEpisodeItem = Readonly<{
+export type AccountRatedTvEpisodeItem = Readonly<{
     airDate: string;
     episodeNumber: number;
     id: number;
@@ -129,7 +129,7 @@ export type AccountWatchlistMovieItem = Readonly<{
     voteAverage: number;
     voteCount: number;
 }>;
-export type AccountWatchlistTVShowItem = Readonly<{
+export type AccountWatchlistTvShowItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;

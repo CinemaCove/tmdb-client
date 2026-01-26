@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import dotenv from 'dotenv';
 import {
     CreditMediaMovie,
-    CreditMediaTVShow,
+    CreditMediaTvShow,
     DefaultHttpClient,
     GenderType,
     TmdbClient,
@@ -61,7 +61,7 @@ describe('TmdbClient - Credit (real API)', () => {
     it('fetches credit details for a TV show credit (example credit)', async () => {
         const creditId = TV_SHOWS.BREAKING_BAD.CREDITS.BRYAN_CRANSTON_ID;
         const res = await tmdb.credit.getDetails(creditId);
-        const media = res.media as CreditMediaTVShow; // Cast to TV
+        const media = res.media as CreditMediaTvShow; // Cast to Tv
 
         expect(res.creditType).toBeDefined();
         expect(res.id).toBe(creditId);

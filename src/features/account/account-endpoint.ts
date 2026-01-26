@@ -5,13 +5,13 @@ import {
     AccountCustomListItem,
     AccountDetailsResult,
     AccountFavoriteMovieItem,
-    AccountFavoriteTVShowItem,
+    AccountFavoriteTvShowItem,
     AccountRatedMovieItem,
-    AccountRatedTVEpisodeItem,
-    AccountRatedTVShowItem,
+    AccountRatedTvEpisodeItem,
+    AccountRatedTvShowItem,
     AccountResult,
     AccountWatchlistMovieItem,
-    AccountWatchlistTVShowItem,
+    AccountWatchlistTvShowItem,
 } from './account.types';
 
 export class AccountEndpoint {
@@ -81,7 +81,7 @@ export class AccountEndpoint {
     /**
      * Get a users list of favourite TV shows
      */
-    public async getFavoriteTVShows(
+    public async getFavoriteTvShows(
         accountId: number | null,
         options: Readonly<{
             sessionId: string;
@@ -89,7 +89,7 @@ export class AccountEndpoint {
             page?: number;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<AccountFavoriteTVShowItem>> {
+    ): Promise<PaginatedResult<AccountFavoriteTvShowItem>> {
         return await this.client.get(`/account/${accountId}/favorite/tv`, options);
     }
 
@@ -124,7 +124,7 @@ export class AccountEndpoint {
     /**
      * Get a users list of rated TV shows
      */
-    public async getRatedTVShows(
+    public async getRatedTvShows(
         accountId: number | null,
         options: Readonly<{
             sessionId: string;
@@ -132,14 +132,14 @@ export class AccountEndpoint {
             language?: string;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<AccountRatedTVShowItem>> {
+    ): Promise<PaginatedResult<AccountRatedTvShowItem>> {
         return await this.client.get(`/account/${accountId}/rated/tv`, options);
     }
 
     /**
      * Get a users list of rated TV Episodes
      */
-    public async getRatedTVEpisodes(
+    public async getRatedTvEpisodes(
         accountId: number | null,
         options: Readonly<{
             sessionId: string;
@@ -147,7 +147,7 @@ export class AccountEndpoint {
             language?: string;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<AccountRatedTVEpisodeItem>> {
+    ): Promise<PaginatedResult<AccountRatedTvEpisodeItem>> {
         return await this.client.get(`/account/${accountId}/rated/tv/episodes`, options);
     }
 
@@ -169,7 +169,7 @@ export class AccountEndpoint {
     /**
      * Get a list of TV shows added to a users watchlist
      */
-    public async getWatchlistTVShows(
+    public async getWatchlistTvShows(
         accountId: number | null,
         options: Readonly<{
             sessionId: string;
@@ -177,7 +177,7 @@ export class AccountEndpoint {
             language?: string;
             sortBy?: 'created_at.asc' | 'created_at.desc';
         }>
-    ): Promise<PaginatedResult<AccountWatchlistTVShowItem>> {
+    ): Promise<PaginatedResult<AccountWatchlistTvShowItem>> {
         return await this.client.get(`/account/${accountId}/watchlist/tv`, options);
     }
 }

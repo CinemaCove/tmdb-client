@@ -4,8 +4,8 @@ import { PaginatedResult } from '../../shared';
 import {
     DiscoverMovieItem,
     DiscoverMoviesSortBy,
-    DiscoverTVShowItem,
-    DiscoverTVShowsSortBy,
+    DiscoverTvShowItem,
+    DiscoverTvShowsSortBy,
 } from './discover.types';
 
 export class DiscoverEndpoint {
@@ -61,7 +61,7 @@ export class DiscoverEndpoint {
     /**
      * Find TV shows using over 30 filters and sort options.
      */
-    public async searchTVShows(
+    public async searchTvShows(
         options?: Readonly<{
             'airDate.gte'?: string;
             'airDate.lte'?: string;
@@ -73,7 +73,7 @@ export class DiscoverEndpoint {
             language?: string;
             page?: number;
             screenTheatrically?: boolean;
-            sortBy?: DiscoverTVShowsSortBy;
+            sortBy?: DiscoverTvShowsSortBy;
             timezone?: string;
             'voteAverage.gte'?: number;
             'voteAverage.lte'?: number;
@@ -96,7 +96,7 @@ export class DiscoverEndpoint {
             withoutWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query
             withType?: '1' | '2' | '3' | '4' | '5' | '6'; // can be a comma (AND) or pipe (OR) separated query. Can be used in conjunction with region
         }>
-    ): Promise<PaginatedResult<DiscoverTVShowItem>> {
+    ): Promise<PaginatedResult<DiscoverTvShowItem>> {
         return await this.client.get(`/discover/tv`, options);
     }
 }

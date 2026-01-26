@@ -15,7 +15,7 @@ import {
     ListEndpoint,
     MovieEndpoint,
     NetworkEndpoint,
-    PeopleEndpoint,
+    PersonEndpoint,
     ReviewEndpoint,
     SearchEndpoint,
 } from './features';
@@ -38,7 +38,7 @@ export class TmdbClient {
     public readonly list: ListEndpoint;
     public readonly movie: MovieEndpoint;
     public readonly network: NetworkEndpoint;
-    public readonly people: PeopleEndpoint;
+    public readonly person: PersonEndpoint;
     public readonly review: ReviewEndpoint;
     public readonly search: SearchEndpoint;
 
@@ -59,7 +59,7 @@ export class TmdbClient {
         this.list = new ListEndpoint(this.httpClient);
         this.movie = new MovieEndpoint(this.httpClient);
         this.network = new NetworkEndpoint(this.httpClient);
-        this.people = new PeopleEndpoint(this.httpClient);
+        this.person = new PersonEndpoint(this.httpClient);
         this.review = new ReviewEndpoint(this.httpClient);
         this.search = new SearchEndpoint(this.httpClient);
     }

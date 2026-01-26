@@ -90,7 +90,7 @@ describe('TmdbClient - Account (real API)', () => {
         const details = await tmdb.account.getDetails(null, {
             sessionId: testSession.sessionId || '',
         });
-        const res = await tmdb.account.getFavoriteTVShows(details.id, {
+        const res = await tmdb.account.getFavoriteTvShows(details.id, {
             sessionId: testSession.sessionId || '',
         });
 
@@ -132,7 +132,7 @@ describe('TmdbClient - Account (real API)', () => {
         const details = await tmdb.account.getDetails(null, {
             sessionId: testSession.sessionId || '',
         });
-        const res = await tmdb.account.getRatedTVShows(details.id, {
+        const res = await tmdb.account.getRatedTvShows(details.id, {
             sessionId: testSession.sessionId || '',
         });
 
@@ -146,7 +146,7 @@ describe('TmdbClient - Account (real API)', () => {
         const details = await tmdb.account.getDetails(null, {
             sessionId: testSession.sessionId || '',
         });
-        const res = await tmdb.account.getRatedTVEpisodes(details.id, {
+        const res = await tmdb.account.getRatedTvEpisodes(details.id, {
             sessionId: testSession.sessionId || '',
         });
 
@@ -174,7 +174,7 @@ describe('TmdbClient - Account (real API)', () => {
         const details = await tmdb.account.getDetails(null, {
             sessionId: testSession.sessionId || '',
         });
-        const res = await tmdb.account.getWatchlistTVShows(details.id, {
+        const res = await tmdb.account.getWatchlistTvShows(details.id, {
             sessionId: testSession.sessionId || '',
         });
 

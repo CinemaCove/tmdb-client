@@ -30,7 +30,7 @@ describe('TmdbClient - Certification (real API)', () => {
     }, 10000);
 
     it('fetches a list of tv certification for all available countries', async () => {
-        const res = await tmdb.certification.getTVCertifications();
+        const res = await tmdb.certification.getTvCertifications();
 
         // Spot-check a few well-known ones (stable data)
         expect(res.certifications.PT).toBeDefined();

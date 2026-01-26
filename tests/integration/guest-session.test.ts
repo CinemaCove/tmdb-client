@@ -77,7 +77,7 @@ describe('TmdbClient - Guest Session Ratings (real API integration)', () => {
         try {
             //const rateRes = await tmdb.tv.
 
-            const res = await tmdb.guestSession.getRatedTVShows(guestSessionId);
+            const res = await tmdb.guestSession.getRatedTvShows(guestSessionId);
 
             expect(Array.isArray(res.results)).toBe(true);
             expect(typeof res.page).toBe('number');
@@ -99,7 +99,7 @@ describe('TmdbClient - Guest Session Ratings (real API integration)', () => {
     it.skip('fetches rated TV episodes for guest session', async () => {
         if (!guestSessionId) throw new Error('No guest session ID available');
 
-        const res = await tmdb.guestSession.getRatedTVEpisodes(guestSessionId, {
+        const res = await tmdb.guestSession.getRatedTvEpisodes(guestSessionId, {
             page: 1,
             sortBy: 'created_at.desc',
         });

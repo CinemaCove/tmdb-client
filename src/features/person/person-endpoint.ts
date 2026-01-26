@@ -12,10 +12,10 @@ import {
     PeopleMovieCreditsResult,
     PeoplePopularItem,
     PeopleTranslationsResult,
-    PeopleTVCreditsResult,
-} from './people.types';
+    PeopleTvCreditsResult,
+} from './person.types';
 
-export class PeopleEndpoint {
+export class PersonEndpoint {
     public constructor(private readonly client: HttpClient) {}
 
     // region list
@@ -107,12 +107,12 @@ export class PeopleEndpoint {
     /**
      * Get the TV credits that belong to a person
      */
-    public async getTVCredits(
+    public async getTvCredits(
         personId: number,
         options?: {
             language?: string;
         }
-    ): Promise<PeopleTVCreditsResult> {
+    ): Promise<PeopleTvCreditsResult> {
         return await this.client.get(`/person/${personId}/tv_credits`, options);
     }
 

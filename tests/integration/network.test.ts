@@ -1,23 +1,9 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
 import dotenv from 'dotenv';
 import { DefaultHttpClient, TmdbClient } from '../../src';
+import { NETWORKS } from './consts/consts';
 
 dotenv.config(); // loads .env
-
-const NETWORKS = {
-    HBO: {
-        ID: 49,
-        NAME: 'HBO',
-    },
-    NETFLIX: {
-        ID: 213,
-        NAME: 'Netflix',
-    },
-    NBC: {
-        ID: 6,
-        NAME: 'NBC',
-    },
-};
 
 describe('TmdbClient - Network (real API)', () => {
     let tmdb: TmdbClient;

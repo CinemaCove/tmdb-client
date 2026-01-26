@@ -46,7 +46,7 @@ describe('TmdbClient - Discover (real API)', () => {
     }, 10000);
 
     it('find all tv shows related to survival horror sorted by first aired date descending', async () => {
-        const res = await tmdb.discover.searchTVShows({
+        const res = await tmdb.discover.searchTvShows({
             sortBy: 'first_air_date.desc',
             withKeywords: '50009',
         });

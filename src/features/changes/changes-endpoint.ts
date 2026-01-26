@@ -35,7 +35,7 @@ export class ChangesEndpoint {
     /**
      * Get a list of all of the TV show ids that have been changed in the given interval.
      */
-    public async getTVChanges(
+    public async getTvChanges(
         options?: Readonly<{
             page?: number;
             startDate?: string;

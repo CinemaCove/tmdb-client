@@ -37,7 +37,7 @@ describe('TmdbClient - Changes (real API)', () => {
     }, 10000);
 
     it('fetches all tv show change ids from the last 24 hours', async () => {
-        const res = await tmdb.changes.getTVChanges({
+        const res = await tmdb.changes.getTvChanges({
             startDate: startDate,
             endDate: endDate,
         });

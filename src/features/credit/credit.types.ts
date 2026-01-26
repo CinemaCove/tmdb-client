@@ -37,7 +37,7 @@ export type CreditMediaTvEpisodeItem = Readonly<{
     id: number;
     name: string;
     overview: string;
-    mediaType: MediaType.TVEpisode;
+    mediaType: MediaType.TvEpisode;
     voteAverage: number;
     voteCount: number;
     airDate: string;
@@ -50,7 +50,7 @@ export type CreditMediaTvEpisodeItem = Readonly<{
     stillPath: string | null;
 }>;
 
-export type CreditMediaTVShow = CreditMediaBase & Readonly<{
+export type CreditMediaTvShow = CreditMediaBase & Readonly<{
     mediaType: 'tv';
     name: string;
     originalName: string;
@@ -61,7 +61,7 @@ export type CreditMediaTVShow = CreditMediaBase & Readonly<{
     seasons?: Readonly<CreditMediaSeasonItem[]>;
 }>;
 
-export type CreditDetailsMedia = CreditMediaMovie | CreditMediaTVShow;
+export type CreditDetailsMedia = CreditMediaMovie | CreditMediaTvShow;
 
 export type CreditDetailsPerson = Readonly<{
     adult: boolean;
@@ -80,7 +80,7 @@ export type CreditDetailsResult = Readonly<{
     department: string;
     job: string;
     media: CreditDetailsMedia;
-    mediaType: MediaType.Movie | MediaType.TVShow;
+    mediaType: MediaType.Movie | MediaType.TvShow;
     id: string;
     person: CreditDetailsPerson;
 }>;

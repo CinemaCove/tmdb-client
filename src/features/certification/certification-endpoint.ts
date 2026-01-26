@@ -2,7 +2,7 @@ import { HttpClient } from '../../http-client.interface';
 
 import {
     CertificationMovieCertificationsResult,
-    CertificationTVCertificationsResult,
+    CertificationTvCertificationsResult,
 } from './certification.types';
 
 export class CertificationEndpoint {
@@ -18,7 +18,7 @@ export class CertificationEndpoint {
     /**
      *  Get an up to date list of the officially supported TV certifications on TMDB
      */
-    public async getTVCertifications(): Promise<CertificationTVCertificationsResult> {
+    public async getTvCertifications(): Promise<CertificationTvCertificationsResult> {
         return await this.client.get(`/certification/tv/list`);
     }
 }

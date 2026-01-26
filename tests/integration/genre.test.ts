@@ -29,7 +29,7 @@ describe('TmdbClient - Genre (real API)', () => {
     }, 10000);
 
     it('fetches all TV show genre', async () => {
-        const res = await tmdb.genre.getTVShowGenres();
+        const res = await tmdb.genre.getTvShowGenres();
 
         // Spot-check a few well-known ones (stable data)
         expect(res.genres.find(g => g.name === 'Drama')).toBeDefined();
