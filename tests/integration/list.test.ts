@@ -104,9 +104,9 @@ describe('TmdbClient - List (real API)', () => {
         }
 
         const res = await tmdb.list.checkItemStatus(createdListId, {
-            mediaId: MOVIES.FIGHT_CLUB.ID,
+            movieId: MOVIES.FIGHT_CLUB.ID,
             language: 'en-US',
-        });
+        }); 
 
         // Verify response structure
         expect(res).toHaveProperty('id');
@@ -164,7 +164,7 @@ describe('TmdbClient - List (real API)', () => {
         }
 
         const res = await tmdb.list.checkItemStatus(createdListId, {
-            mediaId: MOVIES.FIGHT_CLUB.ID,
+            movieId: MOVIES.FIGHT_CLUB.ID,
             language: 'en-US',
         });
 

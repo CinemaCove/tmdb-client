@@ -34,7 +34,7 @@ export class ListEndpoint {
     public async checkItemStatus(
         listId: number,
         options: Readonly<{
-            mediaId: number;
+            movieId: number;
             language: string;
         }>
     ): Promise<ListItemStatusResult> {
