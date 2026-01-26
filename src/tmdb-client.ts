@@ -18,6 +18,7 @@ import {
     PersonEndpoint,
     ReviewEndpoint,
     SearchEndpoint,
+    TrendingEndpoint,
 } from './features';
 import { HttpClient } from './http-client.interface';
 
@@ -41,6 +42,7 @@ export class TmdbClient {
     public readonly person: PersonEndpoint;
     public readonly review: ReviewEndpoint;
     public readonly search: SearchEndpoint;
+    public readonly trending: TrendingEndpoint;
 
     constructor(private httpClient: HttpClient) {
         this.account = new AccountEndpoint(this.httpClient);
@@ -62,5 +64,6 @@ export class TmdbClient {
         this.person = new PersonEndpoint(this.httpClient);
         this.review = new ReviewEndpoint(this.httpClient);
         this.search = new SearchEndpoint(this.httpClient);
+        this.trending = new TrendingEndpoint(this.httpClient);
     }
 }

@@ -19,3 +19,4 @@ export * from './network';
 export * from './person';
 export * from './review';
 export * from './search';
+export * from './trending';
