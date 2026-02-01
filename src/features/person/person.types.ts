@@ -16,7 +16,7 @@ export type PeoplePopularKnownForItem = Readonly<{
     voteAverage: number;
     voteCount: number;
 }>;
-export type PeoplePopularItem = {
+export type PersonPopularResultItem = {
     adult: boolean;
     gender: GenderType;
     id: number;

@@ -102,7 +102,7 @@ export type MovieNowPlayingDates = Readonly<{
 }>;
 
 export type MovieNowPlayingPaginatedResult = Readonly<
-    PaginatedResult<MovieListItem> & {
+    PaginatedResult<MovieListResultItem> & {
         dates: MovieNowPlayingDates;
     }
 >;
@@ -340,7 +340,7 @@ export type MovieDeleteRatingResult = Readonly<{
     statusCode: number;
     statusMessage: string;
 }>;
-export type MovieListItem = Readonly<{
+export type MovieListResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;

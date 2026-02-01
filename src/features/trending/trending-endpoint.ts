@@ -2,7 +2,7 @@ import { HttpClient } from '../../http-client.interface';
 import { PaginatedResult } from '../../shared';
 
 import {
-    TrendingAllItem,
+    TrendingAllResultItem,
     TrendingMoviesResultItem,
     TrendingPeopleResultItem,
     TrendingTimeWindow,
@@ -20,7 +20,7 @@ export class TrendingEndpoint {
         options?: Readonly<{
             language?: string;
         }>
-    ): Promise<PaginatedResult<TrendingAllItem>> {
+    ): Promise<PaginatedResult<TrendingAllResultItem>> {
         return await this.client.get(`/trending/all/${timeWindow}`, options);
     }
 

@@ -10,7 +10,7 @@ import {
     PeopleExternalIdsResult,
     PeopleImagesResult,
     PeopleMovieCreditsResult,
-    PeoplePopularItem,
+    PersonPopularResultItem,
     PeopleTranslationsResult,
     PeopleTvCreditsResult,
 } from './person.types';
@@ -27,7 +27,7 @@ export class PersonEndpoint {
             page?: number;
             language?: string;
         }>
-    ): Promise<Readonly<PaginatedResult<PeoplePopularItem>>> {
+    ): Promise<PaginatedResult<PersonPopularResultItem>> {
         return await this.client.get('/person/popular', options);
     }
     // endregion

@@ -14,7 +14,7 @@ import {
     MovieExternalIdsResult,
     MovieImagesResult,
     MovieKeywordsResult,
-    MovieListItem,
+    MovieListResultItem,
     MovieListPaginatedResult,
     MovieNowPlayingPaginatedResult,
     MovieReleaseDatesResult,
@@ -51,7 +51,7 @@ export class MovieEndpoint {
             page?: number;
             region?: string;
         }>
-    ): Promise<PaginatedResult<MovieListItem>> {
+    ): Promise<PaginatedResult<MovieListResultItem>> {
         return this.client.get('/movie/popular', options);
     }
 
@@ -64,7 +64,7 @@ export class MovieEndpoint {
             page?: number;
             region?: string;
         }>
-    ): Promise<PaginatedResult<MovieListItem>> {
+    ): Promise<PaginatedResult<MovieListResultItem>> {
         return this.client.get('/movie/top_rated', options);
     }
 
@@ -77,7 +77,7 @@ export class MovieEndpoint {
             page?: number;
             region?: string;
         }>
-    ): Promise<PaginatedResult<MovieListItem>> {
+    ): Promise<PaginatedResult<MovieListResultItem>> {
         return this.client.get('/movie/upcoming', options);
     }
     // endregion

@@ -46,7 +46,7 @@ export type TrendingPeopleResultItem = Readonly<{
     profilePath: string;
     adult: boolean;
     knownForDepartment: string;
-    knownFor: Readonly<TrendingPersonKnownForItem[]>; // any - mixed movie/tv results
+    knownFor?: Readonly<TrendingPersonKnownForItem[]>; // optional - mixed movie/tv results
 }>;
 
 export type TrendingPersonKnownForItem = Readonly<{
@@ -71,7 +71,7 @@ export type TrendingPersonKnownForItem = Readonly<{
 }>;
 
 // Trending All - mixed results
-export type TrendingAllItem = Readonly<{
+export type TrendingAllResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     id: number;
