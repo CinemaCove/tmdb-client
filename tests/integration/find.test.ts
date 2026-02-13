@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import dotenv from 'dotenv';
-import { DefaultHttpClient, FindExternalSource, TmdbClient } from '../../src';
+import { AxiosHttpClient, FindExternalSource, TmdbClient } from '../../src';
 
 dotenv.config(); // loads .env
 
@@ -16,7 +16,7 @@ describe('TmdbClient - Find (real API)', () => {
             );
         }
 
-        tmdb = new TmdbClient(new DefaultHttpClient(apiKey));
+        tmdb = new TmdbClient(new AxiosHttpClient(apiKey));
     });
 
     it('fetches data about the sinners given the id of each available source', async () => {

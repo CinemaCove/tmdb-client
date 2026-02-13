@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import dotenv from 'dotenv';
-import { DefaultHttpClient, TmdbClient } from '../../src';
+import { AxiosHttpClient, TmdbClient } from '../../src';
 
 dotenv.config(); // loads .env
 
@@ -18,7 +18,7 @@ describe('TmdbClient - Changes (real API)', () => {
             );
         }
 
-        tmdb = new TmdbClient(new DefaultHttpClient(apiKey));
+        tmdb = new TmdbClient(new AxiosHttpClient(apiKey));
         const dtNow = new Date();
         startDate = new Date(dtNow.getTime() - 24 * 60 * 60 * 1000).toISOString().split('T')[0];
         endDate = dtNow.toISOString().split('T')[0];

@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import { DefaultHttpClient, MediaType, TmdbClient } from '../../src';
+import { AxiosHttpClient, MediaType, TmdbClient } from '../../src';
 import dotenv from 'dotenv';
 import { createTestSession, TestSession } from './helpers/auth';
 
@@ -16,7 +16,7 @@ describe('TmdbClient - Account (real API)', () => {
                 'TMDB_API_READ_ACCESS_TOKEN is not set in .env — cannot run real API tests. Add it and try again.'
             );
         }
-        tmdb = new TmdbClient(new DefaultHttpClient({ accessToken: token }));
+        tmdb = new TmdbClient(new AxiosHttpClient({ accessToken: token }));
         testSession = await createTestSession(tmdb);
     });
 

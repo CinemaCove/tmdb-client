@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import dotenv from 'dotenv';
-import { DefaultHttpClient, TmdbClient } from '../../src';
+import { AxiosHttpClient, TmdbClient } from '../../src';
 
 dotenv.config(); // loads .env
 
@@ -16,7 +16,7 @@ describe('TmdbClient - Certification (real API)', () => {
             );
         }
 
-        tmdb = new TmdbClient(new DefaultHttpClient(apiKey));
+        tmdb = new TmdbClient(new AxiosHttpClient(apiKey));
     });
 
     it('fetches a list of movie certification for all available countries', async () => {

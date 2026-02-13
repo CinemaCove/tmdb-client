@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import {
     CreditMediaMovie,
     CreditMediaTvShow,
-    DefaultHttpClient,
+    AxiosHttpClient,
     GenderType,
     TmdbClient,
 } from '../../src';
@@ -23,7 +23,7 @@ describe('TmdbClient - Credit (real API)', () => {
             );
         }
 
-        tmdb = new TmdbClient(new DefaultHttpClient(apiKey));
+        tmdb = new TmdbClient(new AxiosHttpClient(apiKey));
     });
 
     it('fetches credit details for a specific credit ID (Brad Pitt in Fight Club)', async () => {

@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import dotenv from 'dotenv';
-import { DefaultHttpClient, TmdbClient } from '../../src';
+import { AxiosHttpClient, TmdbClient } from '../../src';
 import { KEYWORDS } from './consts/consts';
 
 dotenv.config(); // loads .env
@@ -17,7 +17,7 @@ describe('TmdbClient - Keyword (real API)', () => {
             );
         }
 
-        tmdb = new TmdbClient(new DefaultHttpClient(apiKey));
+        tmdb = new TmdbClient(new AxiosHttpClient(apiKey));
     });
 
     it('fetches keyword details for superhero keyword', async () => {

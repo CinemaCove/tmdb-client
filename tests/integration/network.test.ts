@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import dotenv from 'dotenv';
-import { DefaultHttpClient, TmdbClient } from '../../src';
+import { AxiosHttpClient, TmdbClient } from '../../src';
 import { NETWORKS } from './consts/consts';
 
 dotenv.config(); // loads .env
@@ -17,7 +17,7 @@ describe('TmdbClient - Network (real API)', () => {
             );
         }
 
-        tmdb = new TmdbClient(new DefaultHttpClient(apiKey));
+        tmdb = new TmdbClient(new AxiosHttpClient(apiKey));
     });
 
     it('fetches network details for HBO', async () => {

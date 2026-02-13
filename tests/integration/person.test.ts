@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import dotenv from 'dotenv';
 
-import { DefaultHttpClient, TmdbClient } from '../../src';
+import { AxiosHttpClient, TmdbClient } from '../../src';
 
 dotenv.config(); // loads .env
 
@@ -17,7 +17,7 @@ describe('TmdbClient - People (real API)', () => {
             );
         }
 
-        tmdb = new TmdbClient(new DefaultHttpClient(apiKey));
+        tmdb = new TmdbClient(new AxiosHttpClient(apiKey));
     });
 
     it('fetches popular people', async () => {

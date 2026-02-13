@@ -1,5 +1,5 @@
 import { beforeAll, describe, expect, it } from 'vitest';
-import { DefaultHttpClient, TmdbClient } from '../../src';
+import { AxiosHttpClient, TmdbClient } from '../../src';
 import dotenv from 'dotenv';
 import { MOVIES } from './consts/consts';
 import { sleep } from './helpers/utils';
@@ -15,7 +15,7 @@ describe('TmdbClient - Guest Session Ratings (real API integration)', () => {
             throw new Error('TMDB_API_KEY is not set in .env — cannot run real API tests.');
         }
 
-        tmdb = new TmdbClient(new DefaultHttpClient(apiKey));
+        tmdb = new TmdbClient(new AxiosHttpClient(apiKey));
 
         // Create a fresh guest session once per describe block
         const guestRes = await tmdb.authentication.getGuestSession();
