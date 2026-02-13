@@ -5,14 +5,29 @@
     "main": "dist/index.cjs",
     "module": "dist/index.mjs",
     "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "require": {
+                "types": "./dist/index.d.cts",
+                "default": "./dist/index.cjs"
+            },
+            "import": {
+                "types": "./dist/index.d.mts",
+                "default": "./dist/index.mjs"
+            }
+        }
+    },
+    "type": "module",
     "scripts": {
-        "build": "tsup",
+        "build": "cross-env NODE_ENV=production tsdown",
+        "build:dev": "tsdown",
         "test": "vitest",
         "lint": "eslint . --ext .ts",
         "lint:fix": "eslint . --ext .ts --fix",
         "format": "prettier --write .",
         "test:coverage": "vitest --coverage",
-        "clean": "npm run lint:fix && npm run format"
+        "clean": "npm run lint:fix && npm run format",
+        "build-and-publish": "npm run build && npx @libria/clean-publish build && npx @libria/clean-publish publish"
     },
     "repository": {
         "type": "git",
@@ -24,7 +39,7 @@
         "client",
         "typescript"
     ],
-    "author": "Paulo Santos",
+    "author": "CinemaCove",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/CinemaCove/tmdb-client/issues"
@@ -39,21 +54,23 @@
     "devDependencies": {
         "@eslint/eslintrc": "^3.3.3",
         "@eslint/js": "^9.39.2",
-        "@types/node": "^25.0.10",
+        "@libria/clean-publish": "^1.0.0",
+        "@types/node": "^22.0.0",
         "@types/qs": "^6.14.0",
-        "@typescript-eslint/eslint-plugin": "^8.53.1",
-        "@typescript-eslint/parser": "^8.53.1",
-        "@vitest/coverage-v8": "^4.0.18",
+        "@typescript-eslint/eslint-plugin": "^8.0.0",
+        "@typescript-eslint/parser": "^8.0.0",
+        "@vitest/coverage-v8": "^2.0.0",
         "dotenv": "^17.2.3",
-        "eslint": "^9.39.2",
-        "eslint-config-prettier": "^10.1.8",
-        "eslint-plugin-import": "^2.32.0",
-        "eslint-plugin-prettier": "^5.5.5",
-        "eslint-plugin-unused-imports": "^4.3.0",
-        "prettier": "^3.8.1",
-        "tsup": "^8.5.1",
-        "typescript": "^5.9.3",
-        "typescript-eslint": "^8.53.1",
-        "vitest": "^4.0.18"
+        "cross-env": "^10.1.0",
+        "eslint": "^9.0.0",
+        "eslint-config-prettier": "^10.0.0",
+        "eslint-plugin-import": "^2.30.0",
+        "eslint-plugin-prettier": "^5.0.0",
+        "eslint-plugin-unused-imports": "^4.0.0",
+        "prettier": "^3.0.0",
+        "tsdown": "^0.20.0",
+        "typescript": "^5.0.0",
+        "typescript-eslint": "^8.0.0",
+        "vitest": "^2.0.0"
     }
 }
