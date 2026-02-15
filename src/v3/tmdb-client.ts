@@ -21,8 +21,12 @@ import {
     ReviewEndpoint,
     SearchEndpoint,
     TrendingEndpoint,
+    TvEpisodeEndpoint,
+    TvEpisodeGroupEndpoint,
     TvSeasonEndpoint,
+    TvShowEndpoint,
     TvShowListEndpoint,
+    WatchProviderEndpoint,
 } from './features';
 
 import { AxiosHttpClient, HttpClient } from '#core';
@@ -52,9 +56,12 @@ export class TmdbClient {
     public readonly review: ReviewEndpoint;
     public readonly search: SearchEndpoint;
     public readonly trending: TrendingEndpoint;
-
-    public readonly tvShowList: TvShowListEndpoint;
+    public readonly tvEpisode: TvEpisodeEndpoint;
     public readonly tvSeason: TvSeasonEndpoint;
+    public readonly tvShow: TvShowEndpoint;
+    public readonly tvShowList: TvShowListEndpoint;
+    public readonly tvEpisodeGroup: TvEpisodeGroupEndpoint;
+    public readonly watchProvider: WatchProviderEndpoint;
 
     constructor(
         apiKey: string | Readonly<{ accessToken: string }>,
@@ -84,7 +91,11 @@ export class TmdbClient {
         this.review = new ReviewEndpoint(this.httpClient);
         this.search = new SearchEndpoint(this.httpClient);
         this.trending = new TrendingEndpoint(this.httpClient);
-        this.tvShowList = new TvShowListEndpoint(this.httpClient);
+        this.tvEpisode = new TvEpisodeEndpoint(this.httpClient);
+        this.tvEpisodeGroup = new TvEpisodeGroupEndpoint(this.httpClient);
         this.tvSeason = new TvSeasonEndpoint(this.httpClient);
+        this.tvShow = new TvShowEndpoint(this.httpClient);
+        this.tvShowList = new TvShowListEndpoint(this.httpClient);
+        this.watchProvider = new WatchProviderEndpoint(this.httpClient);
     }
 }

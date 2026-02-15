@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import { TmdbClient } from '../../../src/v3';
 
 dotenv.config(); // loads .env
- 
+
 describe('TmdbClient - TvShowList (real API)', () => {
     let tmdb: TmdbClient;
 

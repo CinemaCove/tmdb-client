@@ -244,7 +244,7 @@ export type TvSeasonAggregateCastItem = Readonly<{
 export type TvSeasonImageItem = Readonly<{
     aspectRatio: number;
     height: number;
-    iso6391: string;
+    iso639_1: string;
     filePath: string;
     voteAverage: number;
     voteCount: number;
@@ -315,8 +315,8 @@ export type TvSeasonTranslationData = Readonly<{
     overview: string;
 }>;
 export type TvSeasonTranslationItem = Readonly<{
-    iso31661: string;
-    iso6391: string;
+    iso3166_1: string;
+    iso639_1: string;
     name: string;
     englishName: string;
     data: TvSeasonTranslationData;
@@ -326,8 +326,8 @@ export type TvSeasonTranslationsResult = Readonly<{
     translations: Readonly<TvSeasonTranslationItem[]>;
 }>;
 export type TvSeasonVideoItem = Readonly<{
-    iso6391: string;
-    iso31661: string;
+    iso639_1: string;
+    iso3166_1: string;
     name: string;
     key: string;
     site: string;
@@ -340,4 +340,8 @@ export type TvSeasonVideoItem = Readonly<{
 export type TvSeasonVideosResult = Readonly<{
     id: number;
     results: Readonly<TvSeasonVideoItem[]>;
+}>;
+export type TvSeasonImagesResult = Readonly<{
+    id: number;
+    posters: Readonly<TvSeasonImageItem[]>;
 }>;

@@ -152,7 +152,7 @@ export type TvShowProductionCompanyItem = Readonly<{
 }>;
 
 export type TvShowProductionCountryItem = Readonly<{
-    iso31661: string;
+    iso3166_1: string;
     name: string;
 }>;
 
@@ -169,7 +169,7 @@ export type TvShowSeasonItem = Readonly<{
 
 export type TvShowSpokenLanguageItem = Readonly<{
     englishName: string;
-    iso6391: string;
+    iso639_1: string;
     name: string;
 }>;
 
@@ -299,7 +299,7 @@ export type TvShowAggregateCrewItem = Readonly<{
     totalEpisodeCount: number;
 }>;
 export type TvShowAlternativeTitleResultItem = Readonly<{
-    iso31661: string;
+    iso3166_1: string;
     title: string;
     type: string;
 }>;
@@ -309,7 +309,7 @@ export type TvShowAlternativeTitlesResult = Readonly<{
 }>;
 export type TvShowChangePoster = Readonly<{
     filePath: string;
-    iso6391: string;
+    iso639_1: string;
 }>;
 export type TvShowChangeValue = Readonly<{
     poster: TvShowChangePoster;
@@ -318,8 +318,8 @@ export type TvShowChangeItemsListItem = Readonly<{
     id: string;
     action: string;
     time: string;
-    iso6391: string;
-    iso31661: string;
+    iso639_1: string;
+    iso3166_1: string;
     value: TvShowChangeValue;
     originalValue: TvShowChangeValue;
 }>;
@@ -332,7 +332,7 @@ export type TvShowChangesResult = Readonly<{
 }>;
 export type TvShowContentRatingResultItem = Readonly<{
     descriptors: Readonly<any[]>;
-    iso31661: string;
+    iso3166_1: string;
     rating: string;
 }>;
 export type TvShowContentRatingsResult = Readonly<{
@@ -398,7 +398,7 @@ export type TvShowExternalIdsResult = Readonly<{
 export type TvShowImageItem = Readonly<{
     aspectRatio: number;
     height: number;
-    iso6391: string;
+    iso639_1: string;
     filePath: string;
     voteAverage: number;
     voteCount: number;
@@ -423,8 +423,8 @@ export type TvShowListResultItem = Readonly<{
     favoriteCount: number;
     id: number;
     itemCount: number;
-    iso6391: string;
-    iso31661: string;
+    iso639_1: string;
+    iso3166_1: string;
     name: string;
     posterPath: unknown;
 }>;
@@ -499,8 +499,8 @@ export type TvShowTranslationData = Readonly<{
     tagline: string;
 }>;
 export type TvShowTranslationItem = Readonly<{
-    iso31661: string;
-    iso6391: string;
+    iso3166_1: string;
+    iso639_1: string;
     name: string;
     englishName: string;
     data: TvShowTranslationData;
@@ -510,8 +510,8 @@ export type TvShowTranslationsResult = Readonly<{
     translations: Readonly<TvShowTranslationItem[]>;
 }>;
 export type TvShowVideoItem = Readonly<{
-    iso6391: string;
-    iso31661: string;
+    iso639_1: string;
+    iso3166_1: string;
     name: string;
     key: string;
     site: string;

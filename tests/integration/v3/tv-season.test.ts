@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import dotenv from 'dotenv';
 import { TmdbClient } from '../../../src/v3';
+import { createTestSession, TestSession } from '../helpers/auth';
 import { TV_SHOWS } from '../consts/consts';
 
 dotenv.config(); // loads .env
@@ -155,5 +156,42 @@ describe('TmdbClient - TvSeason (real API)', () => {
         expect(res.results).toBeDefined();
 
         console.log(`Fetched watch providers for ${Object.keys(res.results).length} countries`);
+    }, 10000);
+});
+
+describe('TmdbClient - TvSeason (authenticated)', () => {
+    let tmdb: TmdbClient;
+    let testSession: TestSession;
+
+    const seriesId = TV_SHOWS.THE_IT_CROWD.ID;
+    const seasonNumber = 1;
+
+    beforeAll(async () => {
+        const token: string | undefined = process.env.TMDB_API_READ_ACCESS_TOKEN;
+
+        if (!token) {
+            throw new Error(
+                'TMDB_API_READ_ACCESS_TOKEN is not set in .env — cannot run authenticated tests. Add it and try again.'
+            );
+        }
+        tmdb = new TmdbClient({ accessToken: token });
+        testSession = await createTestSession(tmdb);
+    });
+
+    it('fetches TV season account states', async () => {
+        const res = await tmdb.tvSeason.getAccountStates(
+            seriesId,
+            seasonNumber,
+            {
+                sessionId: testSession.sessionId || '',
+                guestSessionId: '',
+            }
+        );
+
+        expect(res.id).toBeDefined();
+        expect(res.results).toBeDefined();
+        expect(Array.isArray(res.results)).toBe(true);
+
+        console.log(`Fetched account states for ${res.results.length} episodes`);
     }, 10000);
 });

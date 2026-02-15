@@ -6,18 +6,13 @@ import {
     TvSeasonCreditsResult,
     TvSeasonDetailsWithAppend,
     TvSeasonExternalIdsResult,
-    TvSeasonImageItem,
+    TvSeasonImagesResult,
     TvSeasonTranslationsResult,
     TvSeasonVideosResult,
     TvSeasonWatchProvidersResult,
 } from './tv-season.types';
 
 import { HttpClient } from '#core';
-
-type TvSeasonImagesResult = Readonly<{
-    id: number;
-    posters: Readonly<TvSeasonImageItem[]>;
-}>;
 
 export class TvSeasonEndpoint {
     public constructor(private readonly client: HttpClient) {}

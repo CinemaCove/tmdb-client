@@ -26,10 +26,14 @@ export const TV_SHOWS = {
         },
     },
     BREAKING_BAD: {
+        ID: 1396,
         CREDITS: {
             BRYAN_CRANSTON_ID: '52542282760ee313280017f9',
         },
     },
+    GREYS_ANATOMY: {
+        ID: 1416
+    }
 };
 
 export const KEYWORDS = {
