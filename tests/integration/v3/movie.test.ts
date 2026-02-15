@@ -1,0 +1,58 @@
+import { describe, it, expect, beforeAll } from 'vitest';
+import dotenv from 'dotenv';
+import { TmdbClient } from '../../../src/v3';
+import { MOVIES } from '../consts/consts';
+
+dotenv.config(); // loads .env
+
+describe('TmdbClient - Movie (real API)', () => {
+    let tmdb: TmdbClient;
+
+    beforeAll(() => {
+        const apiKey: string | undefined = process.env.TMDB_API_KEY;
+
+        if (!apiKey) {
+            throw new Error(
+                'TMDB_API_KEY is not set in .env — cannot run real API tests. Add it and try again.'
+            );
+        }
+
+        tmdb = new TmdbClient(apiKey);
+    });
+
+    it('fetches fight club details with all additional responses', async () => {
+        const res = await tmdb.movie.getDetails(MOVIES.FIGHT_CLUB.ID, {
+            appendToResponse: [
+                'credits',
+                'images',
+                'videos',
+                'recommendations',
+                'similar',
+                'reviews',
+                'keywords',
+                'release_dates',
+                'alternative_titles',
+                'translations',
+                'external_ids',
+                'watch/providers',
+            ],
+        });
+
+        // Make sure the structure is correct
+        expect(res.credits).toBeDefined();
+        expect(res.images).toBeDefined();
+        expect(res.videos).toBeDefined();
+        expect(res.recommendations).toBeDefined();
+        expect(res.similar).toBeDefined();
+        expect(res.reviews).toBeDefined();
+        expect(res.keywords).toBeDefined();
+        expect(res.releaseDates).toBeDefined();
+        expect(res.alternativeTitles).toBeDefined();
+        expect(res.translations).toBeDefined();
+        expect(res.externalIds).toBeDefined();
+        expect(res['watch/providers']).toBeDefined();
+
+        // Spot-check a few well-known ones (stable data)
+        expect(res.externalIds!.imdbId).toBe(MOVIES.FIGHT_CLUB.IMDB_ID);
+    }, 10000);
+});

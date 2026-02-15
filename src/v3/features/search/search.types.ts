@@ -1,0 +1,99 @@
+import { GenderType, MediaType } from '../../shared';
+
+export type SearchCollectionResultItem = Readonly<{
+    adult: boolean;
+    backdropPath: string;
+    id: number;
+    name: string;
+    originalLanguage: string;
+    originalName: string;
+    overview: string;
+    posterPath: string;
+}>;
+export type SearchCompaniesResultItem = Readonly<{
+    id: number;
+    logoPath: string;
+    name: string;
+    originCountry: string;
+}>;
+export type SearchKeywordsResultItem = Readonly<{
+    id: number;
+    name: string;
+}>;
+export type SearchMoviesResultItem = Readonly<{
+    adult: boolean;
+    backdropPath: string;
+    genreIds: Readonly<number[]>;
+    id: number;
+    originalLanguage: string;
+    originalTitle: string;
+    overview: string;
+    popularity: number;
+    posterPath: string;
+    releaseDate: string;
+    title: string;
+    video: boolean;
+    voteAverage: number;
+    voteCount: number;
+}>;
+export type SearchMultiResultItem = Readonly<{
+    adult: boolean;
+    backdropPath: string;
+    id: number;
+    title: string;
+    originalLanguage: string;
+    originalTitle: string;
+    overview: string;
+    posterPath: string;
+    mediaType: MediaType;
+    genreIds: Readonly<number[]>;
+    popularity: number;
+    releaseDate: string;
+    video: boolean;
+    voteAverage: number;
+    voteCount: number;
+}>;
+export type SearchPeopleKnownForItem = Readonly<{
+    adult: boolean;
+    backdropPath: string;
+    id: number;
+    title: string;
+    originalLanguage: string;
+    originalTitle: string;
+    overview: string;
+    posterPath: string;
+    mediaType: MediaType;
+    genreIds: Readonly<number[]>;
+    popularity: number;
+    releaseDate: string;
+    video: boolean;
+    voteAverage: number;
+    voteCount: number;
+}>;
+export type SearchPeopleResultItem = Readonly<{
+    adult: boolean;
+    gender: GenderType;
+    id: number;
+    knownForDepartment: Readonly<string[]>;
+    name: string;
+    originalName: string;
+    popularity: number;
+    profilePath: string;
+    knownFor: Readonly<SearchPeopleKnownForItem[]>;
+}>;
+export type SearchTvShowsResultItem = Readonly<{
+    adult: boolean;
+    backdropPath: string;
+    genreIds: Readonly<number[]>;
+    id: number;
+    originCountry: Readonly<string[]>;
+    originalLanguage: string;
+    originalName: string;
+    overview: string;
+    popularity: number;
+    posterPath: string;
+    firstAirDate: string;
+    name: string;
+    voteAverage: number;
+    voteCount: number;
+}>;

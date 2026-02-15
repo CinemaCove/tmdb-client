@@ -1,0 +1,109 @@
+{
+    "name": "@cinemacove/tmdb-client",
+    "version": "1.0.1",
+    "description": "TypeScript client for The Movie Database (TMDB) API.",
+    "exports": {
+        "./v3": {
+            "require": {
+                "types": "./dist/v3.d.cts",
+                "default": "./dist/v3.cjs"
+            },
+            "import": {
+                "types": "./dist/v3.d.mts",
+                "default": "./dist/v3.mjs"
+            }
+        },
+        "./v4": {
+            "require": {
+                "types": "./dist/v4.d.cts",
+                "default": "./dist/v4.cjs"
+            },
+            "import": {
+                "types": "./dist/v4.d.mts",
+                "default": "./dist/v4.mjs"
+            }
+        },
+        "./core": {
+            "require": {
+                "types": "./dist/core.d.cts",
+                "default": "./dist/core.cjs"
+            },
+            "import": {
+                "types": "./dist/core.d.mts",
+                "default": "./dist/core.mjs"
+            }
+        },
+        "./utils": {
+            "require": {
+                "types": "./dist/utils.d.cts",
+                "default": "./dist/utils.cjs"
+            },
+            "import": {
+                "types": "./dist/utils.d.mts",
+                "default": "./dist/utils.mjs"
+            }
+        }
+    },
+    "imports": {
+        "#core/*": "./src/core/*.ts",
+        "#utils/*": "./src/utils/*.ts"
+    },
+    "type": "module",
+    "scripts": {
+        "build": "npm run typecheck && cross-env NODE_ENV=production tsdown",
+        "typecheck": "tsc --noEmit",
+        "build:dev": "tsdown",
+        "test": "vitest",
+        "lint": "eslint . --ext .ts",
+        "lint:fix": "eslint . --ext .ts --fix",
+        "format": "prettier --write .",
+        "test:coverage": "vitest --coverage",
+        "clean": "npm run lint:fix && npm run format",
+        "build-and-publish": "npm run build && npx @libria/clean-publish build && npx @libria/clean-publish publish"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CinemaCove/tmdb-client.git"
+    },
+    "keywords": [
+        "tmdb",
+        "api",
+        "client",
+        "typescript"
+    ],
+    "author": "CinemaCove",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/CinemaCove/tmdb-client/issues"
+    },
+    "homepage": "https://github.com/CinemaCove/tmdb-client#readme",
+    "dependencies": {
+        "qs": "^6.14.1"
+    },
+    "peerDependencies": {
+        "axios": "^1.13.2"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "^3.3.3",
+        "@eslint/js": "^9.39.2",
+        "@libria/clean-publish": "^1.0.0",
+        "@types/node": "^22.0.0",
+        "@types/qs": "^6.14.0",
+        "@typescript-eslint/eslint-plugin": "^8.0.0",
+        "@typescript-eslint/parser": "^8.0.0",
+        "@vitest/coverage-v8": "^2.0.0",
+        "cross-env": "^10.1.0",
+        "dotenv": "^17.2.3",
+        "eslint": "^9.0.0",
+        "eslint-config-prettier": "^10.0.0",
+        "eslint-plugin-import": "^2.30.0",
+        "eslint-plugin-prettier": "^5.0.0",
+        "eslint-plugin-unused-imports": "^4.0.0",
+        "prettier": "^3.0.0",
+        "tsdown": "^0.20.0",
+        "typescript": "^5.0.0",
+        "typescript-eslint": "^8.0.0",
+        "vite-tsconfig-paths": "^6.1.1",
+        "vitest": "^2.0.0"
+    }
+}

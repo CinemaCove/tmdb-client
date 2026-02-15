@@ -1,0 +1,24 @@
+import {
+    CertificationMovieCertificationsResult,
+    CertificationTvCertificationsResult,
+} from './certification.types';
+
+import { HttpClient } from '#core';
+
+export class CertificationEndpoint {
+    public constructor(private readonly client: HttpClient) {}
+
+    /**
+     *  Get an up to date list of the officially supported movie certifications on TMDB
+     */
+    public async getMovieCertifications(): Promise<CertificationMovieCertificationsResult> {
+        return await this.client.get(`/certification/movie/list`);
+    }
+
+    /**
+     *  Get an up to date list of the officially supported TV certifications on TMDB
+     */
+    public async getTvCertifications(): Promise<CertificationTvCertificationsResult> {
+        return await this.client.get(`/certification/tv/list`);
+    }
+}
