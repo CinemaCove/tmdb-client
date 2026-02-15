@@ -130,4 +130,13 @@ export class AxiosHttpClient implements HttpClient {
         const res = await this.http.delete<TRes>(url, { params: options, data: body });
         return res.data;
     }
+
+    public async put<TRes>(
+        url: string,
+        body?: Record<string, unknown>,
+        options?: Record<string, unknown>
+    ): Promise<TRes> {
+        const res = await this.http.put<TRes>(url, body, { params: options });
+        return res.data;
+    }
 }

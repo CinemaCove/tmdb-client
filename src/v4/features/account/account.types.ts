@@ -1,27 +1,5 @@
-export type AccountGravatar = Readonly<{
-    hash: string;
-}>;
-export type AccountTmdb = Readonly<{
-    avatarPath: string;
-}>;
-export type AccountAvatar = Readonly<{
-    gravatar: AccountGravatar;
-    tmdb: AccountTmdb;
-}>;
-export type AccountDetailsResult = Readonly<{
-    avatar: AccountAvatar;
-    id: number;
-    iso639_1: string;
-    iso3166_1: string;
-    name: string;
-    includeAdult: boolean;
-    username: string;
-}>;
-export type AccountResult = Readonly<{
-    success: boolean;
-    statusCode: number;
-    statusMessage: string;
-}>;
+import { MediaType } from '../../shared';
+
 export type AccountFavoriteMovieResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
@@ -56,15 +34,24 @@ export type AccountFavoriteTvShowResultItem = Readonly<{
     voteCount: number;
 }>;
 export type AccountCustomListResultItem = Readonly<{
+    accountObjectId: string;
+    adult: number;
+    averageRating: number;
+    createdAt: string;
     description: string;
-    favoriteCount: number;
+    featured: number;
     id: number;
-    itemCount: number;
+    iso3166_1: string;
     iso639_1: string;
-    listType: string;
     name: string;
-    posterPath: string;
+    numberOfItems: number;
+    public: number;
+    revenue: string;
+    runtime: number;
+    sortBy: number;
+    updatedAt: string;
 }>;
+
 export type AccountRatedMovieResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
@@ -80,7 +67,7 @@ export type AccountRatedMovieResultItem = Readonly<{
     video: boolean;
     voteAverage: number;
     voteCount: number;
-    rating: number;
+    accoutRating: number;
 }>;
 export type AccountRatedTvShowResultItem = Readonly<{
     adult: boolean;
@@ -97,35 +84,22 @@ export type AccountRatedTvShowResultItem = Readonly<{
     name: string;
     voteAverage: number;
     voteCount: number;
-    rating: number;
+    accountRating: number;
 }>;
-export type AccountRatedTvEpisodeResultItem = Readonly<{
-    airDate: string;
-    episodeNumber: number;
-    id: number;
-    name: string;
-    overview: string;
-    productionCode: string;
-    runtime: number;
-    seasonNumber: number;
-    showId: number;
-    stillPath: string;
-    voteAverage: number;
-    voteCount: number;
-    rating: number;
-}>;
+
 export type AccountWatchlistMovieResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
-    genreIds: Readonly<number[]>;
     id: number;
+    title: string;
     originalLanguage: string;
     originalTitle: string;
     overview: string;
-    popularity: number;
     posterPath: string;
+    mediaType: MediaType;
+    genreIds: Readonly<number[]>;
+    popularity: number;
     releaseDate: string;
-    title: string;
     video: boolean;
     voteAverage: number;
     voteCount: number;
@@ -133,16 +107,51 @@ export type AccountWatchlistMovieResultItem = Readonly<{
 export type AccountWatchlistTvShowResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
-    genreIds: Readonly<number[]>;
     id: number;
-    originCountry: Readonly<string[]>;
+    name: string;
     originalLanguage: string;
     originalName: string;
     overview: string;
-    popularity: number;
     posterPath: string;
+    mediaType: MediaType;
+    genreIds: Readonly<number[]>;
+    popularity: number;
     firstAirDate: string;
-    name: string;
     voteAverage: number;
     voteCount: number;
+    originCountry: Readonly<string[]>;
+}>;
+export type AccountRecommendedMovieItem = Readonly<{
+    adult: boolean;
+    backdropPath: string;
+    id: number;
+    title: string;
+    originalLanguage: string;
+    originalTitle: string;
+    overview: string;
+    posterPath: string;
+    mediaType: MediaType;
+    genreIds: Readonly<number[]>;
+    popularity: number;
+    releaseDate: string;
+    video: boolean;
+    voteAverage: number;
+    voteCount: number;
+}>;
+export type AccountRecommendedTvShowItem = Readonly<{
+    adult: boolean;
+    backdropPath: string;
+    id: number;
+    name: string;
+    originalLanguage: string;
+    originalName: string;
+    overview: string;
+    posterPath: string;
+    mediaType: MediaType;
+    genreIds: Readonly<number[]>;
+    popularity: number;
+    firstAirDate: string;
+    voteAverage: number;
+    voteCount: number;
+    originCountry: string;
 }>;

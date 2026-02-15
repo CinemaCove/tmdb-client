@@ -14,5 +14,5 @@ export default defineConfig({
     sourcemap: true,
     clean: true,
     minify: !isDebug,
-    external: [/^#core/, /^#utils/, 'axios'],
+    external: [/^#core/, /^#utils/, 'axios']
 });

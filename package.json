@@ -50,7 +50,8 @@
     },
     "type": "module",
     "scripts": {
-        "build": "cross-env NODE_ENV=production tsdown",
+        "build": "npm run typecheck && cross-env NODE_ENV=production tsdown",
+        "typecheck": "tsc --noEmit",
         "build:dev": "tsdown",
         "test": "vitest",
         "lint": "eslint . --ext .ts",

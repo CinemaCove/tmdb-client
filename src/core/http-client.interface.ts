@@ -10,4 +10,9 @@ export interface HttpClient {
         body?: Record<string, unknown>,
         options?: Record<string, unknown>
     ): Promise<T>;
+    put<T>(
+        url: string,
+        body?: Record<string, unknown>,
+        options?: Record<string, unknown>
+    ): Promise<T>;
 }

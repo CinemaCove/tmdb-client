@@ -22,6 +22,7 @@ import {
     TvShowSimilarItem,
     TvShowTranslationsResult,
     TvShowWatchProvidersResult,
+    TvShowVideosResult,
 } from './tv-show.types';
 
 import { HttpClient } from '#core';

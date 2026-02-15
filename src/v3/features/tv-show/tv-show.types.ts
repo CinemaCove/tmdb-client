@@ -331,7 +331,7 @@ export type TvShowChangesResult = Readonly<{
     changes: Readonly<TvShowChangeItem[]>;
 }>;
 export type TvShowContentRatingResultItem = Readonly<{
-    descriptors: Readonly<any[]>;
+    descriptors: Readonly<unknown[]>;
     iso3166_1: string;
     rating: string;
 }>;
