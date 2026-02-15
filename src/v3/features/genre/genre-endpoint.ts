@@ -1,6 +1,6 @@
-import { HttpClient } from '../../http-client.interface';
-
 import { GenreMovieGenresResult, GenreTvShowGenresResult } from './genre.types';
+
+import { HttpClient } from '#core';
 
 export class GenreEndpoint {
     public constructor(private readonly client: HttpClient) {}

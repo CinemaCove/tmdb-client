@@ -1,6 +1,6 @@
-import { HttpClient } from '../../http-client.interface';
-
 import { CreditDetailsResult } from './credit.types';
+
+import { HttpClient } from '#core';
 
 export class CreditEndpoint {
     public constructor(private readonly client: HttpClient) {}

@@ -1,4 +1,4 @@
-import { TmdbClient } from '../../../src';
+import { TmdbClient } from '../../../src/v3';
 
 export class TestSession {
     constructor(

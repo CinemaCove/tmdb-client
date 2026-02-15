@@ -1,5 +1,3 @@
-import { HttpClient } from '../../http-client.interface';
-
 import {
     AuthenticationCreateSessionResult,
     AuthenticationDeleteSessionResult,
@@ -8,6 +6,8 @@ import {
     AuthenticationValidateSessionWithLoginResult,
     AuthenticationValidationResult,
 } from './authentication.types';
+
+import { HttpClient } from '#core';
 
 export class AuthenticationEndpoint {
     public constructor(private readonly client: HttpClient) {}

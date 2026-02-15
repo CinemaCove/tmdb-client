@@ -1,10 +1,10 @@
-import { HttpClient } from '../../http-client.interface';
-
 import {
     CompanyAlternativeNamesResult,
     CompanyDetailsResult,
     CompanyImagesResult,
 } from './company.types';
+
+import { HttpClient } from '#core';
 
 export class CompanyEndpoint {
     public constructor(private readonly client: HttpClient) {}

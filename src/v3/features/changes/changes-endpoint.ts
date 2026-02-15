@@ -1,7 +1,8 @@
-import { HttpClient } from '../../http-client.interface';
 import { PaginatedResult } from '../../shared';
 
 import { ChangesResultItem } from './changes.types';
+
+import { HttpClient } from '#core';
 
 export class ChangesEndpoint {
     public constructor(private readonly client: HttpClient) {}

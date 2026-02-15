@@ -1,9 +1,9 @@
-import { HttpClient } from '../../http-client.interface';
-
 import {
     CertificationMovieCertificationsResult,
     CertificationTvCertificationsResult,
 } from './certification.types';
+
+import { HttpClient } from '#core';
 
 export class CertificationEndpoint {
     public constructor(private readonly client: HttpClient) {}

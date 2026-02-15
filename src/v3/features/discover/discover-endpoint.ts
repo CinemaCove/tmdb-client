@@ -1,4 +1,3 @@
-import { HttpClient } from '../../http-client.interface';
 import { PaginatedResult } from '../../shared';
 
 import {
@@ -7,6 +6,8 @@ import {
     DiscoverTvShowResultItem,
     DiscoverTvShowsSortBy,
 } from './discover.types';
+
+import { HttpClient } from '#core';
 
 export class DiscoverEndpoint {
     public constructor(private readonly client: HttpClient) {}

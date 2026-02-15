@@ -1,10 +1,10 @@
-import { HttpClient } from '../../http-client.interface';
-
 import {
     CollectionDetailsResult,
     CollectionImagesResult,
     CollectionTranslationsResult,
 } from './collection.types';
+
+import { HttpClient } from '#core';
 
 export class CollectionEndpoint {
     public constructor(private readonly client: HttpClient) {}

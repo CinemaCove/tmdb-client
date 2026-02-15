@@ -1,5 +1,3 @@
-import { HttpClient } from '../../http-client.interface';
-
 import {
     ListAddMovieResult,
     ListClearResult,
@@ -9,6 +7,8 @@ import {
     ListItemStatusResult,
     ListRemoveMovieResult,
 } from './list.types';
+
+import { HttpClient } from '#core';
 
 export class ListEndpoint {
     public constructor(private readonly client: HttpClient) {}

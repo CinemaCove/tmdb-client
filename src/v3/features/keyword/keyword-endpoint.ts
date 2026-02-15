@@ -1,6 +1,6 @@
-import { HttpClient } from '../../http-client.interface';
-
 import { KeywordDetailsResult } from './keyword.types';
+
+import { HttpClient } from '#core';
 
 export class KeywordEndpoint {
     public constructor(private readonly client: HttpClient) {}

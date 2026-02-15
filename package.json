@@ -2,20 +2,51 @@
     "name": "@cinemacove/tmdb-client",
     "version": "1.0.0",
     "description": "TypeScript client for The Movie Database (TMDB) API v3.",
-    "main": "dist/index.cjs",
-    "module": "dist/index.mjs",
-    "types": "dist/index.d.ts",
     "exports": {
-        ".": {
+        "./v3": {
             "require": {
-                "types": "./dist/index.d.cts",
-                "default": "./dist/index.cjs"
+                "types": "./dist/v3.d.cts",
+                "default": "./dist/v3.cjs"
             },
             "import": {
-                "types": "./dist/index.d.mts",
-                "default": "./dist/index.mjs"
+                "types": "./dist/v3.d.mts",
+                "default": "./dist/v3.mjs"
+            }
+        },
+        "./v4": {
+            "require": {
+                "types": "./dist/v4.d.cts",
+                "default": "./dist/v4.cjs"
+            },
+            "import": {
+                "types": "./dist/v4.d.mts",
+                "default": "./dist/v4.mjs"
+            }
+        },
+        "./core": {
+            "require": {
+                "types": "./dist/core.d.cts",
+                "default": "./dist/core.cjs"
+            },
+            "import": {
+                "types": "./dist/core.d.mts",
+                "default": "./dist/core.mjs"
+            }
+        },
+        "./utils": {
+            "require": {
+                "types": "./dist/utils.d.cts",
+                "default": "./dist/utils.cjs"
+            },
+            "import": {
+                "types": "./dist/utils.d.mts",
+                "default": "./dist/utils.mjs"
             }
         }
+    },
+    "imports": {
+        "#core/*": "./src/core/*.ts",
+        "#utils/*": "./src/utils/*.ts"
     },
     "type": "module",
     "scripts": {
@@ -60,8 +91,8 @@
         "@typescript-eslint/eslint-plugin": "^8.0.0",
         "@typescript-eslint/parser": "^8.0.0",
         "@vitest/coverage-v8": "^2.0.0",
-        "dotenv": "^17.2.3",
         "cross-env": "^10.1.0",
+        "dotenv": "^17.2.3",
         "eslint": "^9.0.0",
         "eslint-config-prettier": "^10.0.0",
         "eslint-plugin-import": "^2.30.0",
@@ -71,6 +102,7 @@
         "tsdown": "^0.20.0",
         "typescript": "^5.0.0",
         "typescript-eslint": "^8.0.0",
+        "vite-tsconfig-paths": "^6.1.1",
         "vitest": "^2.0.0"
     }
 }

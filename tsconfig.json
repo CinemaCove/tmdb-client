@@ -10,7 +10,14 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "#core/*": ["./src/core/*"],
+      "#utils/*": ["./src/utils/*"],
+      "#core": ["./src/core/index.ts"],
+      "#utils": ["./src/utils/index.ts"]
+    }
   },
   "include": [
     "src/**/*"

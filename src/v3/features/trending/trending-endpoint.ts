@@ -1,4 +1,3 @@
-import { HttpClient } from '../../http-client.interface';
 import { PaginatedResult } from '../../shared';
 
 import {
@@ -8,6 +7,8 @@ import {
     TrendingTimeWindow,
     TrendingTvShowsResultItem,
 } from './trending.types';
+
+import { HttpClient } from '#core';
 
 export class TrendingEndpoint {
     public constructor(private readonly client: HttpClient) {}

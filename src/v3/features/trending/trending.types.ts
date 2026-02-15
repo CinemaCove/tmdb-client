@@ -1,4 +1,4 @@
-import { MediaType, PaginatedResult } from '../../shared';
+import { MediaType } from '../../shared';
 
 export type TrendingTimeWindow = 'day' | 'week';
 
@@ -98,4 +98,3 @@ export type TrendingAllResultItem = Readonly<{
     knownForDepartment?: string;
     knownFor?: Readonly<TrendingPersonKnownForItem[]>;
 }>;
-

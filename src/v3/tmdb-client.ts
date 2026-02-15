@@ -14,15 +14,18 @@ import {
     KeywordEndpoint,
     ListEndpoint,
     MovieEndpoint,
+    MovieListEndpoint,
     NetworkEndpoint,
     PersonEndpoint,
+    PersonListEndpoint,
     ReviewEndpoint,
     SearchEndpoint,
     TrendingEndpoint,
+    TvSeasonEndpoint,
+    TvShowListEndpoint,
 } from './features';
 
-import { HttpClient } from '../http-client';
-import { AxiosHttpClient } from '../axios-http-client';
+import { AxiosHttpClient, HttpClient } from '#core';
 
 export class TmdbClient {
     private readonly httpClient: HttpClient;
@@ -42,11 +45,16 @@ export class TmdbClient {
     public readonly keyword: KeywordEndpoint;
     public readonly list: ListEndpoint;
     public readonly movie: MovieEndpoint;
+    public readonly movieList: MovieListEndpoint;
     public readonly network: NetworkEndpoint;
     public readonly person: PersonEndpoint;
+    public readonly personList: PersonListEndpoint;
     public readonly review: ReviewEndpoint;
     public readonly search: SearchEndpoint;
     public readonly trending: TrendingEndpoint;
+
+    public readonly tvShowList: TvShowListEndpoint;
+    public readonly tvSeason: TvSeasonEndpoint;
 
     constructor(
         apiKey: string | Readonly<{ accessToken: string }>,
@@ -69,10 +77,14 @@ export class TmdbClient {
         this.keyword = new KeywordEndpoint(this.httpClient);
         this.list = new ListEndpoint(this.httpClient);
         this.movie = new MovieEndpoint(this.httpClient);
+        this.movieList = new MovieListEndpoint(this.httpClient);
         this.network = new NetworkEndpoint(this.httpClient);
         this.person = new PersonEndpoint(this.httpClient);
+        this.personList = new PersonListEndpoint(this.httpClient);
         this.review = new ReviewEndpoint(this.httpClient);
         this.search = new SearchEndpoint(this.httpClient);
         this.trending = new TrendingEndpoint(this.httpClient);
+        this.tvShowList = new TvShowListEndpoint(this.httpClient);
+        this.tvSeason = new TvSeasonEndpoint(this.httpClient);
     }
 }

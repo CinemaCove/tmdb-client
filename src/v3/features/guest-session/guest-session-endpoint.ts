@@ -1,4 +1,3 @@
-import { HttpClient } from '../../http-client.interface';
 import { PaginatedResult } from '../../shared';
 
 import {
@@ -6,6 +5,8 @@ import {
     GuestSessionRatedTvEpisodeResultItem,
     GuestSessionRatedTvShowResultItem,
 } from './guest-session.types';
+
+import { HttpClient } from '#core';
 
 export class GuestSessionEndpoint {
     public constructor(private readonly client: HttpClient) {}

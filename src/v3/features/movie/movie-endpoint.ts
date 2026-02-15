@@ -1,4 +1,3 @@
-import { HttpClient } from '../../http-client.interface';
 import { PaginatedResult } from '../../shared';
 
 import {
@@ -14,9 +13,7 @@ import {
     MovieExternalIdsResult,
     MovieImagesResult,
     MovieKeywordsResult,
-    MovieListResultItem,
     MovieListPaginatedResult,
-    MovieNowPlayingPaginatedResult,
     MovieReleaseDatesResult,
     MovieReviewsPaginatedResult,
     MovieTranslationsResult,
@@ -24,63 +21,10 @@ import {
     MovieWatchProvidersResult,
 } from './movie.types';
 
+import { HttpClient } from '#core';
+
 export class MovieEndpoint {
     public constructor(private readonly client: HttpClient) {}
-
-    // region Lists
-
-    /**
-     * Get a list of movies that are currently in theatres
-     */
-    public async getNowPlayingList(
-        options?: Readonly<{
-            language?: string;
-            page?: number;
-            region?: string;
-        }>
-    ): Promise<MovieNowPlayingPaginatedResult> {
-        return this.client.get('/movie/now_playing', options);
-    }
-
-    /**
-     * Get a list of movies ordered by popularity
-     */
-    public async getPopularList(
-        options?: Readonly<{
-            language?: string;
-            page?: number;
-            region?: string;
-        }>
-    ): Promise<PaginatedResult<MovieListResultItem>> {
-        return this.client.get('/movie/popular', options);
-    }
-
-    /**
-     * Get a list of movies ordered by rating
-     */
-    public async getTopRatedList(
-        options?: Readonly<{
-            language?: string;
-            page?: number;
-            region?: string;
-        }>
-    ): Promise<PaginatedResult<MovieListResultItem>> {
-        return this.client.get('/movie/top_rated', options);
-    }
-
-    /**
-     * Get a list of movies that are being released soon
-     */
-    public async getUpcomingList(
-        options?: Readonly<{
-            language?: string;
-            page?: number;
-            region?: string;
-        }>
-    ): Promise<PaginatedResult<MovieListResultItem>> {
-        return this.client.get('/movie/upcoming', options);
-    }
-    // endregion
 
     /**
      * JustWatch Attribution Required
@@ -90,7 +34,7 @@ export class MovieEndpoint {
     public async getDetails(
         movieId: number,
         options?: Readonly<{
-            appendToResponse?: MovieAppendToResponse[]; // 20 items max
+            appendToResponse?: Readonly<MovieAppendToResponse[]>; // 20 items max
             language?: string;
         }>
     ): Promise<MovieDetailsWithAppends> {

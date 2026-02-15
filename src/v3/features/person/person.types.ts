@@ -1,32 +1,6 @@
-import { GenderType, MediaType } from '../../shared';
+import { GenderType } from '../../shared';
 
-export type PeoplePopularKnownForItem = Readonly<{
-    adult: boolean;
-    backdropPath: string;
-    genreIds: Readonly<number[]>;
-    id: number;
-    mediaType: MediaType;
-    originalLanguage: string;
-    originalTitle: string;
-    overview: string;
-    posterPath: string;
-    releaseDate: string;
-    title: string;
-    video: boolean;
-    voteAverage: number;
-    voteCount: number;
-}>;
-export type PersonPopularResultItem = {
-    adult: boolean;
-    gender: GenderType;
-    id: number;
-    knownFor: PeoplePopularKnownForItem[];
-    knownForDepartment: Readonly<string[]>;
-    name: string;
-    popularity: number;
-    profilePath: string;
-};
-export type PeopleAppendToResponse =
+export type PersonAppendToResponse =
     | 'changes'
     | 'combined_credits'
     | 'external_ids'
@@ -34,7 +8,7 @@ export type PeopleAppendToResponse =
     | 'movie_credits'
     | 'tv_credits'
     | 'translations';
-export type PeopleDetail = {
+export type PersonDetail = {
     adult: boolean;
     alsoKnownAs: Readonly<string[]>;
     biography: string;
@@ -50,7 +24,7 @@ export type PeopleDetail = {
     popularity: number;
     profilePath: string;
 };
-export type PeopleCreditsCrewItem = Readonly<{
+export type PersonCreditsCrewItem = Readonly<{
     adult: boolean;
     gender: GenderType;
     id: number;
@@ -63,7 +37,7 @@ export type PeopleCreditsCrewItem = Readonly<{
     department: string;
     job: string;
 }>;
-export type PeopleCreditsCastItem = Readonly<{
+export type PersonCreditsCastItem = Readonly<{
     adult: boolean;
     gender: GenderType;
     id: number;
@@ -77,12 +51,12 @@ export type PeopleCreditsCastItem = Readonly<{
     creditId: string;
     order: number;
 }>;
-export type PeopleCombinedCreditsResult = Readonly<{
+export type PersonCombinedCreditsResult = Readonly<{
     id: number;
-    cast: Readonly<PeopleCreditsCastItem[]>;
-    crew: Readonly<PeopleCreditsCrewItem[]>;
+    cast: Readonly<PersonCreditsCastItem[]>;
+    crew: Readonly<PersonCreditsCrewItem[]>;
 }>;
-export type PeopleExternalIdsResult = Readonly<{
+export type PersonExternalIdsResult = Readonly<{
     id: number;
     freebaseMid: string;
     freebaseId: string;
@@ -95,7 +69,7 @@ export type PeopleExternalIdsResult = Readonly<{
     twitterId: string;
     youtubeId: unknown;
 }>;
-export type PeopleImagesProfileItem = Readonly<{
+export type PersonImagesProfileItem = Readonly<{
     aspectRatio: number;
     height: number;
     iso639_1: unknown;
@@ -104,11 +78,11 @@ export type PeopleImagesProfileItem = Readonly<{
     voteCount: number;
     width: number;
 }>;
-export type PeopleImagesResult = Readonly<{
+export type PersonImagesResult = Readonly<{
     id: number;
-    profiles: PeopleImagesProfileItem[];
+    profiles: PersonImagesProfileItem[];
 }>;
-export type PeopleMovieCreditsCastItem = Readonly<{
+export type PersonMovieCreditsCastItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -127,7 +101,7 @@ export type PeopleMovieCreditsCastItem = Readonly<{
     creditId: string;
     order: number;
 }>;
-export type PeopleMovieCreditsCrewItem = Readonly<{
+export type PersonMovieCreditsCrewItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -146,12 +120,12 @@ export type PeopleMovieCreditsCrewItem = Readonly<{
     department: string;
     job: string;
 }>;
-export type PeopleMovieCreditsResult = Readonly<{
+export type PersonMovieCreditsResult = Readonly<{
     id: number;
-    cast: Readonly<PeopleMovieCreditsCastItem[]>;
-    crew: Readonly<PeopleMovieCreditsCrewItem[]>;
+    cast: Readonly<PersonMovieCreditsCastItem[]>;
+    crew: Readonly<PersonMovieCreditsCrewItem[]>;
 }>;
-export type PeopleTvCreditsCastItem = Readonly<{
+export type PersonTvCreditsCastItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -170,7 +144,7 @@ export type PeopleTvCreditsCastItem = Readonly<{
     creditId: string;
     episodeCount: number;
 }>;
-export type PeopleTvCreditsCrewItem = Readonly<{
+export type PersonTvCreditsCrewItem = Readonly<{
     adult: boolean;
     backdropPath: string;
     genreIds: Readonly<number[]>;
@@ -190,38 +164,38 @@ export type PeopleTvCreditsCrewItem = Readonly<{
     episodeCount: number;
     job: string;
 }>;
-export type PeopleTvCreditsResult = Readonly<{
+export type PersonTvCreditsResult = Readonly<{
     id: number;
-    cast: Readonly<PeopleTvCreditsCastItem[]>;
-    crew: Readonly<PeopleTvCreditsCrewItem[]>;
+    cast: Readonly<PersonTvCreditsCastItem[]>;
+    crew: Readonly<PersonTvCreditsCrewItem[]>;
 }>;
-export type PeopleTranslationDataItem = Readonly<{
+export type PersonTranslationDataItem = Readonly<{
     biography: string;
     name: string;
 }>;
-export type PeopleTranslationItem = Readonly<{
+export type PersonTranslationItem = Readonly<{
     iso3166_1: string;
     iso639_1: string;
     name: string;
     englishName: string;
-    data: Readonly<PeopleTranslationDataItem[]>;
+    data: Readonly<PersonTranslationDataItem[]>;
 }>;
-export type PeopleTranslationsResult = Readonly<{
+export type PersonTranslationsResult = Readonly<{
     id: number;
-    translations: Readonly<PeopleTranslationItem[]>;
+    translations: Readonly<PersonTranslationItem[]>;
 }>;
-export type PeopleDetailsWithAppends = Readonly<
-    PeopleDetail & {
-        changes?: Omit<PeopleChangesResult, 'id'>;
-        combinedCredits?: Omit<PeopleCombinedCreditsResult, 'id'>;
-        externalIds?: Omit<PeopleExternalIdsResult, 'id'>;
-        images?: Omit<PeopleImagesResult, 'id'>;
-        movieCredits?: Omit<PeopleMovieCreditsResult, 'id'>;
-        tvCredits?: Omit<PeopleTvCreditsResult, 'id'>;
-        translations?: Omit<PeopleTranslationsResult, 'id'>;
+export type PersonDetailsWithAppends = Readonly<
+    PersonDetail & {
+        changes?: Omit<PersonChangesResult, 'id'>;
+        combinedCredits?: Omit<PersonCombinedCreditsResult, 'id'>;
+        externalIds?: Omit<PersonExternalIdsResult, 'id'>;
+        images?: Omit<PersonImagesResult, 'id'>;
+        movieCredits?: Omit<PersonMovieCreditsResult, 'id'>;
+        tvCredits?: Omit<PersonTvCreditsResult, 'id'>;
+        translations?: Omit<PersonTranslationsResult, 'id'>;
     }
 >;
-export type PeopleChangesChangeItems = Readonly<{
+export type PersonChangesChangeItems = Readonly<{
     id: string;
     action: string;
     time: string;
@@ -229,10 +203,10 @@ export type PeopleChangesChangeItems = Readonly<{
     iso3166_1: string;
     value: string;
 }>;
-export type PeopleChangesItem = Readonly<{
+export type PersonChangesItem = Readonly<{
     key: string;
-    items: Readonly<PeopleChangesChangeItems[]>;
+    items: Readonly<PersonChangesChangeItems[]>;
 }>;
-export type PeopleChangesResult = Readonly<{
-    changes: Readonly<PeopleChangesItem[]>;
+export type PersonChangesResult = Readonly<{
+    changes: Readonly<PersonChangesItem[]>;
 }>;

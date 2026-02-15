@@ -1,4 +1,3 @@
-import { HttpClient } from '../../http-client.interface';
 import { MediaType, PaginatedResult } from '../../shared';
 
 import {
@@ -13,6 +12,8 @@ import {
     AccountWatchlistMovieResultItem,
     AccountWatchlistTvShowResultItem,
 } from './account.types';
+
+import { HttpClient } from '#core';
 
 export class AccountEndpoint {
     public constructor(private readonly client: HttpClient) {}

@@ -1,10 +1,10 @@
-import { HttpClient } from '../../http-client.interface';
-
 import {
     NetworkAlternativeNamesResult,
     NetworkDetailsResult,
     NetworkImageItem,
 } from './network.types';
+
+import { HttpClient } from '#core';
 
 export class NetworkEndpoint {
     public constructor(private readonly client: HttpClient) {}

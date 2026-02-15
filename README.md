@@ -1,6 +1,6 @@
 # @cinemacove/tmdb-client
 
-TypeScript client for The Movie Database (TMDB) API v3.
+TypeScript client for The Movie Database (TMDB) API.
 
 ## Features
 - ESM + CJS bundles

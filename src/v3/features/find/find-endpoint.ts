@@ -1,6 +1,6 @@
-import { HttpClient } from '../../http-client.interface';
-
 import { FindExternalIdResult, FindExternalSource } from './find.types';
+
+import { HttpClient } from '#core';
 
 export class FindEndpoint {
     public constructor(private readonly client: HttpClient) {}

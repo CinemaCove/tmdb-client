@@ -1,6 +1,6 @@
 // barrel.js
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const currentDir = process.argv[2] || process.cwd();
 const indexPath = path.join(currentDir, 'index.ts');

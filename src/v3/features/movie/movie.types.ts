@@ -96,16 +96,6 @@ export type MovieWatchProviderCountry =
     | 'VE'
     | 'YE'
     | 'ZA';
-export type MovieNowPlayingDates = Readonly<{
-    maximum: string;
-    minimum: string;
-}>;
-
-export type MovieNowPlayingPaginatedResult = Readonly<
-    PaginatedResult<MovieListResultItem> & {
-        dates: MovieNowPlayingDates;
-    }
->;
 
 /**
  * All possible append_to_response values for a movie
@@ -339,22 +329,6 @@ export type MovieWatchProvidersResult = Readonly<{
 export type MovieDeleteRatingResult = Readonly<{
     statusCode: number;
     statusMessage: string;
-}>;
-export type MovieListResultItem = Readonly<{
-    adult: boolean;
-    backdropPath: string;
-    genreIds: Readonly<number[]>;
-    id: number;
-    originalLanguage: string;
-    originalTitle: string;
-    overview: string;
-    popularity: number;
-    posterPath: string;
-    releaseDate: string;
-    title: string;
-    video: boolean;
-    voteAverage: number;
-    voteCount: number;
 }>;
 
 export type MovieDetail = Readonly<{

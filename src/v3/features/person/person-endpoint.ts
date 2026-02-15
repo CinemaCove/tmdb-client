@@ -1,36 +1,20 @@
-import { HttpClient } from '../../http-client.interface';
-import { PaginatedResult } from '../../shared';
-
 import {
-    PeopleAppendToResponse,
-    PeopleChangesResult,
-    PeopleCombinedCreditsResult,
-    PeopleDetail,
-    PeopleDetailsWithAppends,
-    PeopleExternalIdsResult,
-    PeopleImagesResult,
-    PeopleMovieCreditsResult,
-    PersonPopularResultItem,
-    PeopleTranslationsResult,
-    PeopleTvCreditsResult,
+    PersonAppendToResponse,
+    PersonChangesResult,
+    PersonCombinedCreditsResult,
+    PersonDetail,
+    PersonDetailsWithAppends,
+    PersonExternalIdsResult,
+    PersonImagesResult,
+    PersonMovieCreditsResult,
+    PersonTranslationsResult,
+    PersonTvCreditsResult,
 } from './person.types';
+
+import { HttpClient } from '#core';
 
 export class PersonEndpoint {
     public constructor(private readonly client: HttpClient) {}
-
-    // region list
-    /**
-     * Get a list of people ordered by popularity
-     */
-    public async getPopular(
-        options?: Readonly<{
-            page?: number;
-            language?: string;
-        }>
-    ): Promise<PaginatedResult<PersonPopularResultItem>> {
-        return await this.client.get('/person/popular', options);
-    }
-    // endregion
 
     /**
      * Query the top-level details of a person
@@ -38,10 +22,10 @@ export class PersonEndpoint {
     public async getDetails(
         personId: number,
         options?: Readonly<{
-            appendToResponse?: PeopleAppendToResponse[];
+            appendToResponse?: PersonAppendToResponse[];
             language?: string;
         }>
-    ): Promise<PeopleDetailsWithAppends> {
+    ): Promise<PersonDetailsWithAppends> {
         return await this.client.get(`/person/${personId}`, options);
     }
 
@@ -55,7 +39,7 @@ export class PersonEndpoint {
             startDate?: string;
             endDate?: string;
         }>
-    ): Promise<PeopleChangesResult> {
+    ): Promise<PersonChangesResult> {
         return await this.client.get(`/person/${personId}/changes`, options);
     }
 
@@ -67,28 +51,28 @@ export class PersonEndpoint {
         options?: {
             language?: string;
         }
-    ): Promise<PeopleCombinedCreditsResult> {
+    ): Promise<PersonCombinedCreditsResult> {
         return await this.client.get(`/person/${personId}/combined_credits`, options);
     }
 
     /**
      * Get the external ID's that belong to a person
      */
-    public async getExternalIds(personId: number): Promise<PeopleExternalIdsResult> {
+    public async getExternalIds(personId: number): Promise<PersonExternalIdsResult> {
         return await this.client.get(`/person/${personId}/external_ids`);
     }
 
     /**
      * Get the profile images that belong to a person
      */
-    public async getProfileImages(personId: number): Promise<PeopleImagesResult> {
+    public async getProfileImages(personId: number): Promise<PersonImagesResult> {
         return await this.client.get(`/person/${personId}/images`);
     }
 
     /**
      * Get the newest created person. This is a live response and will continuously change
      */
-    public async getLatest(): Promise<PeopleDetail> {
+    public async getLatest(): Promise<PersonDetail> {
         return await this.client.get(`/person/latest`);
     }
 
@@ -100,7 +84,7 @@ export class PersonEndpoint {
         options?: {
             language?: string;
         }
-    ): Promise<PeopleMovieCreditsResult> {
+    ): Promise<PersonMovieCreditsResult> {
         return await this.client.get(`/person/${personId}/movie_credits`, options);
     }
 
@@ -112,14 +96,14 @@ export class PersonEndpoint {
         options?: {
             language?: string;
         }
-    ): Promise<PeopleTvCreditsResult> {
+    ): Promise<PersonTvCreditsResult> {
         return await this.client.get(`/person/${personId}/tv_credits`, options);
     }
 
     /**
      * Get the translations that belong to a person
      */
-    public async getTranslations(personId: number): Promise<PeopleTranslationsResult> {
+    public async getTranslations(personId: number): Promise<PersonTranslationsResult> {
         return await this.client.get(`/person/${personId}/translations`);
     }
 }

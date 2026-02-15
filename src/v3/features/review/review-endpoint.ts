@@ -1,6 +1,6 @@
-import { HttpClient } from '../../http-client.interface';
-
 import { ReviewDetailsResult } from './review.types';
+
+import { HttpClient } from '#core';
 
 export class ReviewEndpoint {
     public constructor(private readonly client: HttpClient) {}

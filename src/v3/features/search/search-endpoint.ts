@@ -1,4 +1,3 @@
-import { HttpClient } from '../../http-client.interface';
 import { PaginatedResult } from '../../shared';
 
 import {
@@ -10,6 +9,8 @@ import {
     SearchPeopleResultItem,
     SearchTvShowsResultItem,
 } from './search.types';
+
+import { HttpClient } from '#core';
 
 export class SearchEndpoint {
     public constructor(private readonly client: HttpClient) {}

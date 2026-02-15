@@ -50,16 +50,17 @@ export type CreditMediaTvEpisodeItem = Readonly<{
     stillPath: string | null;
 }>;
 
-export type CreditMediaTvShow = CreditMediaBase & Readonly<{
-    mediaType: 'tv';
-    name: string;
-    originalName: string;
-    firstAirDate: string;
-    originCountry: Readonly<string[]>;
-    character?: string;
-    episodes?: Readonly<CreditMediaTvEpisodeItem[]>;
-    seasons?: Readonly<CreditMediaSeasonItem[]>;
-}>;
+export type CreditMediaTvShow = CreditMediaBase &
+    Readonly<{
+        mediaType: 'tv';
+        name: string;
+        originalName: string;
+        firstAirDate: string;
+        originCountry: Readonly<string[]>;
+        character?: string;
+        episodes?: Readonly<CreditMediaTvEpisodeItem[]>;
+        seasons?: Readonly<CreditMediaSeasonItem[]>;
+    }>;
 
 export type CreditDetailsMedia = CreditMediaMovie | CreditMediaTvShow;
 
