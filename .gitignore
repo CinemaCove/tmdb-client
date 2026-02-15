@@ -145,3 +145,4 @@ vite.config.ts.timestamp-*
 /.clean-publish.last-hash
 /.tmp/
 .aider*
+/.npmrc

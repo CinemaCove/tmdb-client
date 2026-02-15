@@ -14,7 +14,7 @@ npm install @cinemacove/tmdb-client
 
 ## Usage
 ```typescript
-import TmdbClient from '@cinemacove/tmdb-client';
+import TmdbClient from '@cinemacove/tmdb-client/v3';
 const tmdb = new TmdbClient('your-api-key');
 const movie = await tmdb.movies.getDetails(550);
 ```
