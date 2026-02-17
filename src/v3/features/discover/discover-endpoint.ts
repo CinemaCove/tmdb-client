@@ -43,6 +43,7 @@ export class DiscoverEndpoint {
             withGenres?: string; // can be a comma (AND) or pipe (OR) separated query
             withKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
             withOriginCountry?: string;
+            withOriginalLanguage?: string;
             withPeople?: string; // can be a comma (AND) or pipe (OR) separated query
             withReleaseType?: '1' | '2' | '3' | '4' | '5' | '6'; // can be a comma (AND) or pipe (OR) separated query. Can be used in conjunction with region
             'withRuntime.gte'?: number;
@@ -86,6 +87,7 @@ export class DiscoverEndpoint {
             withKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
             withNetworks?: number; // can be a comma (AND) or pipe (OR) separated query
             withOriginCountry?: string;
+            withOriginalLanguage?: string;
             'withRuntime.gte'?: number;
             'withRuntime.lte'?: number;
             withStatus?: '0' | '1' | '2' | '3' | '4' | '5'; // can be a comma (AND) or pipe (OR) separated query

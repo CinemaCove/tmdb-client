@@ -1,4 +1,5 @@
 import { defineConfig } from 'tsdown';
+import { resolve } from 'node:path';
 
 const isDebug = process.env.NODE_ENV !== 'production';
 
@@ -14,5 +15,11 @@ export default defineConfig({
     sourcemap: true,
     clean: true,
     minify: !isDebug,
-    external: [/^#core/, /^#utils/, 'axios']
+    external: ['axios'],
+    resolve: {
+        alias: {
+            '#core': resolve('./src/core'),
+            '#utils': resolve('./src/utils'),
+        },
+    },
 });
