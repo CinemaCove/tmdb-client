@@ -50,6 +50,7 @@ export class DiscoverEndpoint {
             'withRuntime.lte'?: number;
             withWatchMonetizationTypes?: 'flatrate' | 'free' | 'ads' | 'rent' | 'buy'; // can be a comma (AND) or pipe (OR) separated query
             withWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query. Use in conjunction with region
+            withTextQuery?: string;
             withoutCompanies?: string; // can be a comma (AND) or pipe (OR) separated query
             withoutGenres?: string; // can be a comma (AND) or pipe (OR) separated query
             withoutKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
@@ -93,6 +94,7 @@ export class DiscoverEndpoint {
             withStatus?: '0' | '1' | '2' | '3' | '4' | '5'; // can be a comma (AND) or pipe (OR) separated query
             withWatchMonetizationTypes?: 'flatrate' | 'free' | 'ads' | 'rent' | 'buy'; // can be a comma (AND) or pipe (OR) separated query
             withWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query. Use in conjunction with region
+            withTextQuery?: string;
             withoutCompanies?: string; // can be a comma (AND) or pipe (OR) separated query
             withoutGenres?: string; // can be a comma (AND) or pipe (OR) separated query
             withoutKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
