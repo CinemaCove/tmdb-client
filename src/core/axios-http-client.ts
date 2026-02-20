@@ -5,6 +5,18 @@ import { HttpClient } from './http-client.interface';
 
 import { camelToSnakeCase, snakeToCamelCase } from '#utils';
 
+export class TmdbError extends Error {
+    public readonly httpStatus: number;
+    public readonly tmdbStatusCode: number | undefined;
+
+    public constructor(message: string, httpStatus: number, tmdbStatusCode?: number) {
+        super(message);
+        this.name = 'TmdbError';
+        this.httpStatus = httpStatus;
+        this.tmdbStatusCode = tmdbStatusCode;
+    }
+}
+
 const customProcessing: Record<string, (key: string) => string> = {
     iso3166_1: _ => 'iso_3166_1',
     iso_3166_1: _ => 'iso3166_1',
@@ -103,7 +115,19 @@ export class AxiosHttpClient implements HttpClient {
         this.http.interceptors.request.use(requestFormatterInterceptor);
 
         this.http.interceptors.response.use(responseFormatterInterceptor, err => {
-            // normalize TMDB errors, log, etc.
+            if (axios.isAxiosError(err)) {
+                const httpStatus = err.response?.status ?? 0;
+                const data = err.response?.data;
+
+                if (data && typeof data === 'object' && 'status_message' in data) {
+                    return Promise.reject(
+                        new TmdbError(data.status_message, httpStatus, data.status_code)
+                    );
+                }
+
+                return Promise.reject(new TmdbError(err.message, httpStatus));
+            }
+
             return Promise.reject(err);
         });
     }
