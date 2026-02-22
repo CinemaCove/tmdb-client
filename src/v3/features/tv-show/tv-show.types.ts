@@ -232,7 +232,7 @@ export type TvShowVideosResult = Readonly<{
 }>;
 export type TvShowDetailsWithAppend = Readonly<
     TvShowDetails & {
-        content_ratings?: Omit<TvShowContentRatingsResult, 'id'>;
+        contentRatings?: Omit<TvShowContentRatingsResult, 'id'>;
         images?: Omit<TvShowImagesResult, 'id'>;
         videos?: Omit<TvShowVideosResult, 'id'>;
         credits?: Omit<TvShowCreditsResult, 'id'>;
@@ -240,13 +240,13 @@ export type TvShowDetailsWithAppend = Readonly<
         reviews?: PaginatedResult<TvShowReviewItem>;
         changes?: Omit<TvShowChangesResult, 'id'>;
         similar?: PaginatedResult<TvShowSimilarItem>;
-        alternative_titles?: Omit<TvShowAlternativeTitlesResult, 'id'>;
-        external_ids?: Omit<TvShowExternalIdsResult, 'id'>;
+        alternativeTitles?: Omit<TvShowAlternativeTitlesResult, 'id'>;
+        externalIds?: Omit<TvShowExternalIdsResult, 'id'>;
         translations?: Omit<TvShowTranslationsResult, 'id'>;
         'watch/providers'?: Omit<TvShowWatchProvidersResult, 'id'>;
-        aggregate_credits?: Omit<TvShowAggregateCreditsResult, 'id'>;
-        episode_groups?: Omit<TvShowEpisodeGroupsResult, 'id'>;
-        screened_theatrically?: Omit<TvShowScreenedTheatricallyResult, 'id'>;
+        aggregateCredits?: Omit<TvShowAggregateCreditsResult, 'id'>;
+        episodeGroups?: Omit<TvShowEpisodeGroupsResult, 'id'>;
+        screenedTheatrically?: Omit<TvShowScreenedTheatricallyResult, 'id'>;
         keywords?: Omit<TvShowKeywordsResult, 'id'>;
     }
 >;

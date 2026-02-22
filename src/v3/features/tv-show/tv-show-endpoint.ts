@@ -37,7 +37,7 @@ export class TvShowEndpoint {
         seriesId: number,
         options: Readonly<{
             appendToResponse: Readonly<TvShowAppendToResponse[]>;
-            language: string;
+            language?: string;
         }>
     ): Promise<TvShowDetailsWithAppend> {
         return await this.client.get(`/tv/${seriesId}`, options);

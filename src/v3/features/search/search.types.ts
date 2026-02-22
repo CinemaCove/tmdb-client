@@ -23,18 +23,21 @@ export type SearchKeywordsResultItem = Readonly<{
 export type SearchMoviesResultItem = Readonly<{
     adult: boolean;
     backdropPath: string;
-    genreIds: Readonly<number[]>;
     id: number;
+    title: string;
     originalLanguage: string;
     originalTitle: string;
     overview: string;
-    popularity: number;
     posterPath: string;
+    mediaType: MediaType;
+    genreIds: Readonly<number[]>;
+    popularity: number;
     releaseDate: string;
-    title: string;
     video: boolean;
     voteAverage: number;
     voteCount: number;
+    name: string;
+    originalName: string;
 }>;
 export type SearchMultiResultItem = Readonly<{
     adult: boolean;

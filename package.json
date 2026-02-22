@@ -1,6 +1,6 @@
 {
     "name": "@cinemacove/tmdb-client",
-    "version": "1.0.1",
+    "version": "1.0.6",
     "description": "TypeScript client for The Movie Database (TMDB) API.",
     "exports": {
         "./v3": {

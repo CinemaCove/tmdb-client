@@ -43,12 +43,14 @@ export class DiscoverEndpoint {
             withGenres?: string; // can be a comma (AND) or pipe (OR) separated query
             withKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
             withOriginCountry?: string;
+            withOriginalLanguage?: string;
             withPeople?: string; // can be a comma (AND) or pipe (OR) separated query
             withReleaseType?: '1' | '2' | '3' | '4' | '5' | '6'; // can be a comma (AND) or pipe (OR) separated query. Can be used in conjunction with region
             'withRuntime.gte'?: number;
             'withRuntime.lte'?: number;
             withWatchMonetizationTypes?: 'flatrate' | 'free' | 'ads' | 'rent' | 'buy'; // can be a comma (AND) or pipe (OR) separated query
             withWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query. Use in conjunction with region
+            withTextQuery?: string;
             withoutCompanies?: string; // can be a comma (AND) or pipe (OR) separated query
             withoutGenres?: string; // can be a comma (AND) or pipe (OR) separated query
             withoutKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
@@ -86,11 +88,13 @@ export class DiscoverEndpoint {
             withKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
             withNetworks?: number; // can be a comma (AND) or pipe (OR) separated query
             withOriginCountry?: string;
+            withOriginalLanguage?: string;
             'withRuntime.gte'?: number;
             'withRuntime.lte'?: number;
             withStatus?: '0' | '1' | '2' | '3' | '4' | '5'; // can be a comma (AND) or pipe (OR) separated query
             withWatchMonetizationTypes?: 'flatrate' | 'free' | 'ads' | 'rent' | 'buy'; // can be a comma (AND) or pipe (OR) separated query
             withWatchProviders?: string; // can be a comma (AND) or pipe (OR) separated query. Use in conjunction with region
+            withTextQuery?: string;
             withoutCompanies?: string; // can be a comma (AND) or pipe (OR) separated query
             withoutGenres?: string; // can be a comma (AND) or pipe (OR) separated query
             withoutKeywords?: string; // can be a comma (AND) or pipe (OR) separated query
